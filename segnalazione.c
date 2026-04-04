@@ -6,6 +6,7 @@
 Segnalazione* creaSegnalazione(){
     Segnalazione *s = malloc(sizeof(Segnalazione));
     if(s == NULL) return NULL;
+    int choice;
 
     printf("Inserire Codice di Identificazione: \n");
     scanf("%d", &s->id);
@@ -43,9 +44,28 @@ Segnalazione* creaSegnalazione(){
 
     printf("-----------------------------\n");
 
-    printf("Inserire status della segnalazione: \n");
-    fgets(s->status, 20, stdin);
-    s->status[strcspn(s->status, "\n")] = '\0';
+   
+    printf("Inserisci stato:\n");
+    printf("1. Aperta\n");
+    printf("2. In lavoraziona\n");
+    printf("3. Chiusa\n");
+    
+    scanf("%d", &choice);
+    getchar();
+
+    switch(choice){
+    case 1:
+        strcpy(s->status, "Aperta");
+        break;
+    case 2:
+        strcpy(s->status, "In lavorazione");
+        break;
+    case 3:
+        strcpy(s->status, "Chiusa");
+        break;
+    default:
+        printf("Scelta non valida\n");
+    }
 
     printf("-----------------------------\n");
 

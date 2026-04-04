@@ -14,5 +14,8 @@ Segnalazione* ricercaPerId(nodo* testa, int id);
 void ricercaPerCategoria(nodo** testa, char* categoria);
 void aggiornaStatus(nodo* testa, int id);
 void stampaPerStatus(nodo* testa, char* status);
+void filtraSegnalazioni(nodo* testa);
+void stampaPerUrgenza(nodo* testa);
+
 
 #endif
