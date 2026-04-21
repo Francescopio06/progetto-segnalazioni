@@ -1,21 +1,16 @@
 #ifndef LISTA_H
 #define LISTA_H
-#include "segnalazione.h"
 
-typedef struct{
-    Segnalazione * s;
-   struct nodo* next;
-} nodo;
+//ADT Lista come puntatore alla struttura nodo
+typedef struct nodo *lista;
 
-nodo* creaNodo(Segnalazione* x);
-void InserisciSegnalazione(nodo** testa, Segnalazione* s);
-void StampaLista(nodo* testa);
-Segnalazione* ricercaPerId(nodo* testa, int id);
-void ricercaPerCategoria(nodo** testa, char* categoria);
-void aggiornaStatus(nodo* testa, int id);
-void stampaPerStatus(nodo* testa, char* status);
-void filtraSegnalazioni(nodo* testa);
-void stampaPerUrgenza(nodo* testa);
-
+lista newList();
+int emptyList(lista list1);
+lista consList(lista lista1, segnalazione* s);
+void outputList(lista lista1);
+segnalazione* ricercaPerId(lista lista1, int id);
+void ricercaPerCategoria(lista lista1, char* categoria);
+void stampaPerStatus(lista lista1, char* status);
+void stampaPerUrgenza(lista lista1, int urgenza);
 
 #endif

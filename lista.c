@@ -2,51 +2,65 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lista.h"
+#include "segnalazione.h"
 
-nodo* creaNodo(Segnalazione* x){
-    if(x == NULL) return NULL;
+// struct nodo
+struct nodo{
+    //item
+    segnalazione* s;
+    //puntatore al nodo successivo
+    struct nodo* next;
+};
 
-    nodo* p = malloc(sizeof(nodo)); 
-    if(p == NULL) return NULL;
-
-    p->s = x;
-    p->next = NULL;
-    return p;
-}
-
-void InserisciSegnalazione(nodo** testa, Segnalazione* s){
-    nodo* nuovo = creaNodo(s);
-    nuovo->next = *testa;
-    *testa = nuovo;
-}
-
-
-void StampaLista(nodo* testa){
-    while(testa != NULL){
-        stampaSegnalazione(testa->s);
-        testa = testa->next;
-    }
-}
-
-Segnalazione* ricercaPerId(nodo* testa, int id){
-    nodo* tmp = testa;
-
-    while(tmp != NULL){
-        if(tmp->s->id == id){
-            return tmp->s;
-        } else {
-            tmp = tmp->next;
-        }
-    }
-    printf("Segnalazione non trovata\n");
+//creo una lista vuota
+lista newList(){
     return NULL;
 }
 
-void ricercaPerCategoria(nodo** testa, char* categoria){
-    nodo* tmp = *testa;
+//verifico se la lista è vuota
+int emptyList(lista lista1){
+    return lista1 == NULL;
+}
+
+//inserisco un nuovo nodo nella lista
+lista consList(lista lista1, segnalazione* s){
+    lista new_node = (lista)malloc(sizeof(struct nodo));
+    if(new_node == NULL){
+        fprintf(stderr, "ERRORE: impossibile allocare memoria per il nuovo nodo");
+        exit(EXIT_FAILURE);
+    }
+    
+    new_node->s = s;
+    new_node->next = NULL;
+    return new_node;
+}
+
+//stampo tutta la lista
+void outputList(lista lista1){
+    while(lista1 != NULL){
+        stampaSegnalazione(lista1->s); //funzione presente in segnalazione.c
+        lista1 = lista1->next;
+    }
+    printf("\n");
+}
+
+segnalazione* ricercaPerId(lista lista1, int id){
+    lista tmp = lista1;
+
+        while(tmp != NULL){
+            if(tmp->s->id == id){
+                return tmp->s;
+            } 
+            tmp = tmp->next;
+        }
+    return NULL;
+}
+
+void ricercaPerCategoria(lista lista1, char* categoria){
+    lista tmp = lista1;
     int count = 0;
 
-    while(tmp != NULL){
+      while(tmp != NULL){
         if(strcmp(tmp->s->categoria, categoria) == 0){
             stampaSegnalazione(tmp->s);
             count++;
@@ -60,53 +74,29 @@ void ricercaPerCategoria(nodo** testa, char* categoria){
     }
 }
 
-void aggiornaStatus(nodo* testa, int id){
-    Segnalazione* s = ricercaPerId(testa, id);
-    if(s == NULL) return;
-
-    printf("Inserisci nuovo status: \n");
-    getchar();
-    fgets(s->status, 20, stdin);
-    s->status[strcspn(s->status, "\n")] = '0';
-
-    printf("Status Aggiornato!\n");
-}
-
-void stampaPerStatus(nodo* testa, char* status){ //da usare nel main per filtrare tutte le segnalazioni
+void stampaPerStatus(lista lista1, char* status){
+    lista tmp = lista1;
     int found = 0;
-    while(testa != NULL){
-        if(strcmp(testa->s->status, status) == 0){
-            stampaSegnalazione(testa->s);
-            printf("-----------------------------\n");
+    while(tmp != NULL){
+        if(strcmp(tmp->s->status, status) == 0){
+            stampaSegnalazione(tmp->s);
             found++;
         }
-        testa = testa->next;
+        tmp = tmp->next;
     }
+
     if(found == 0){
-        printf("Nessuna segnalazione trovata per status: %s\n", status);
+        printf("nessuna segnalazione per lo stato %s\n", status);
     }
 }
 
-void filtraSegnalazioni(nodo* testa){
-
-    printf("---Segnalazioni Aperte---");
-    stampaPerStatus(testa, "Aperta");
-
-    printf("---Segnalazioni In Lavorazione---");
-    stampaPerStatus(testa, "In lavorazione");
-
-    printf("---Segnalazioni Chiuse---");
-    stampaPerStatus(testa, "Chiusa");
-
-}
-
-void stampaPerUrgenza(nodo* testa){
-    if(testa == NULL){
+void stampaPerUrgenza(lista lista1){
+    if(lista1 == NULL){
         printf("Nessuna Segnalazione Registrata\n");
         return;
     }
 
-    nodo* tmp = testa;
+    lista tmp = lista1;
     int trovato = 0;
 
     //livello 1
@@ -122,7 +112,7 @@ void stampaPerUrgenza(nodo* testa){
     //livello 2
     if(trovato == 0){
         printf("\nNessuna segnalazione di livello 1, mostro livello 2:\n");
-        tmp = testa;
+        tmp = lista1;
         while(tmp != NULL){
             if(tmp->s->urgenza == 2){
                 stampaSegnalazione(tmp->s);
@@ -131,10 +121,11 @@ void stampaPerUrgenza(nodo* testa){
             tmp = tmp->next;
         }
     }
-
+    
     //livello 3
     if(trovato == 0){
         printf("\nNessuna segnalazione di livello 1 o 2, mostro livello 3:\n");
+        tmp = lista1;
         while(tmp != NULL){
             if(tmp->s->urgenza == 3){
                 stampaSegnalazione(tmp->s);

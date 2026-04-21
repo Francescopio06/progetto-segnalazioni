@@ -2,10 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include "segnalazione.h"
+#include "lista.h"
 
-Segnalazione* creaSegnalazione(){
-    Segnalazione *s = malloc(sizeof(Segnalazione));
-    if(s == NULL) return NULL;
+struct Segnalazione{
+    int id;
+    char nome[50];
+    char categoria[50];
+    char descrizione[100];
+    char data[11];
+    int urgenza;
+    char status[20];
+};
+
+segnalazione creaSegnalazione(){
+    segnalazione* s;
+    s = malloc(sizeof(segnalazione));
+    if(s == NULL) return;
     int choice;
 
     printf("Inserire Codice di Identificazione: \n");
@@ -45,34 +57,39 @@ Segnalazione* creaSegnalazione(){
     printf("-----------------------------\n");
 
    
+   do{
     printf("Inserisci stato:\n");
     printf("1. Aperta\n");
-    printf("2. In lavoraziona\n");
+    printf("2. In lavorazione\n");
     printf("3. Chiusa\n");
     
     scanf("%d", &choice);
     getchar();
 
+   } while(choice < 1 || choice > 3);
+    
     switch(choice){
     case 1:
-        strcpy(s->status, "Aperta");
+        strcpy(s->status, "aperta");
         break;
     case 2:
-        strcpy(s->status, "In lavorazione");
+        strcpy(s->status, "in lavorazione");
         break;
     case 3:
-        strcpy(s->status, "Chiusa");
+        strcpy(s->status, "chiusa");
         break;
     default:
         printf("Scelta non valida\n");
     }
 
+
     printf("-----------------------------\n");
 
-    return s;
+
+    return *s;
 }
 
-void stampaSegnalazione(Segnalazione* s){
+void stampaSegnalazione(segnalazione* s){
     if(s == NULL){
         printf("Segnalazione non valida\n");
         return;
