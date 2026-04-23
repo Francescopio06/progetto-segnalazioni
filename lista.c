@@ -24,14 +24,14 @@ int emptyList(lista lista1){
 
 //inserisco un nuovo nodo nella lista
 lista consList(lista lista1, segnalazione* s){
-    lista new_node = (lista)malloc(sizeof(struct nodo));
+    struct nodo* new_node = (lista)malloc(sizeof(struct nodo));
     if(new_node == NULL){
         fprintf(stderr, "ERRORE: impossibile allocare memoria per il nuovo nodo");
         exit(EXIT_FAILURE);
     }
     
     new_node->s = s;
-    new_node->next = NULL;
+    new_node->next = lista1;
     return new_node;
 }
 
@@ -48,7 +48,7 @@ segnalazione* ricercaPerId(lista lista1, int id){
     lista tmp = lista1;
 
         while(tmp != NULL){
-            if(tmp->s->id == id){
+            if(getID(tmp->s) == id){
                 return tmp->s;
             } 
             tmp = tmp->next;
@@ -61,7 +61,7 @@ void ricercaPerCategoria(lista lista1, char* categoria){
     int count = 0;
 
       while(tmp != NULL){
-        if(strcmp(tmp->s->categoria, categoria) == 0){
+        if(strcmp(getCategoria(tmp->s), categoria) == 0){
             stampaSegnalazione(tmp->s);
             count++;
         } 
@@ -78,7 +78,7 @@ void stampaPerStatus(lista lista1, char* status){
     lista tmp = lista1;
     int found = 0;
     while(tmp != NULL){
-        if(strcmp(tmp->s->status, status) == 0){
+        if(strcmp(getStatus(tmp->s), status) == 0){
             stampaSegnalazione(tmp->s);
             found++;
         }
@@ -102,7 +102,7 @@ void stampaPerUrgenza(lista lista1){
     //livello 1
     printf("\n--- Urgenza 1 (massima) ---\n");
     while(tmp != NULL){
-        if(tmp->s->urgenza == 1){
+        if(getUrgenza(tmp->s) == 1){
             stampaSegnalazione(tmp->s);
             trovato = 1;
         }
@@ -114,7 +114,7 @@ void stampaPerUrgenza(lista lista1){
         printf("\nNessuna segnalazione di livello 1, mostro livello 2:\n");
         tmp = lista1;
         while(tmp != NULL){
-            if(tmp->s->urgenza == 2){
+            if(getUrgenza(tmp->s) == 2){
                 stampaSegnalazione(tmp->s);
                 trovato = 1;
             }
@@ -127,11 +127,55 @@ void stampaPerUrgenza(lista lista1){
         printf("\nNessuna segnalazione di livello 1 o 2, mostro livello 3:\n");
         tmp = lista1;
         while(tmp != NULL){
-            if(tmp->s->urgenza == 3){
+            if(tmp->s== 3){
                 stampaSegnalazione(tmp->s);
             }
             tmp = tmp->next;
         }
     }
 
+}
+
+lista rimuoviSegnalazione(lista lista1, int id){
+    lista curr = lista1;
+    lista prec = NULL;
+
+    while(curr != NULL){
+        if(getID(curr->s) == id){
+            if(prec == NULL){
+                lista1 = curr->next;
+            } else {
+                prec->next = curr->next;
+            }
+            free(curr);
+            printf("segnalazione rimossa con successo\n");
+            return lista1;
+        }
+        prec = curr;
+        curr = curr->next;
+    }
+
+    printf("Segnalazione non trovata");
+    return lista1;
+}
+
+/*void stampaListaConIndice(lista lista1){
+    int i = 1;
+    while(lista1 != NULL){
+        printf("%d) ID: %d - Categoria: %s", i, getID(lista1->s), getCategoria(lista1->s));
+        lista1 = lista1->next;
+        i++;
+    }
+}*/
+
+int prendiID(lista lista1, int scelta){
+    int i = 1;
+    while(lista1 != NULL){
+        if(i == scelta){
+            return getID(lista1->s);
+        }
+        lista1 = lista1->next;
+        i++;
+    }
+    return -1; 
 }

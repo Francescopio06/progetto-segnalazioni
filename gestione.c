@@ -32,3 +32,22 @@ void filtraPerStatus(lista lista1){
     stampaPerStatus(lista1, "chiusa");
 
 }
+
+void rimuovoSegnalazioneGuidata(lista lista1){
+    if(lista1 == NULL){
+        return;
+    }
+
+    stampaListaConIndice(lista1);
+
+    int scelta;
+    printf("scegli il numero: ");
+    scanf("%d", &scelta);
+
+    int id = prendiID(lista1, scelta);
+    if(id == -1){
+        printf("Scelta non valida\n");
+        return;
+    }
+    rimuoviSegnalazione(lista1, id);
+}

@@ -4,7 +4,7 @@
 #include "segnalazione.h"
 #include "lista.h"
 
-struct Segnalazione{
+typedef struct Segnalazione{
     int id;
     char nome[50];
     char categoria[50];
@@ -15,7 +15,7 @@ struct Segnalazione{
 };
 
 segnalazione creaSegnalazione(){
-    segnalazione* s;
+    segnalazione s;
     s = malloc(sizeof(segnalazione));
     if(s == NULL) return;
     int choice;
@@ -86,10 +86,10 @@ segnalazione creaSegnalazione(){
     printf("-----------------------------\n");
 
 
-    return *s;
+    return s;
 }
 
-void stampaSegnalazione(segnalazione* s){
+void stampaSegnalazione(segnalazione s){
     if(s == NULL){
         printf("Segnalazione non valida\n");
         return;
@@ -108,4 +108,26 @@ void stampaSegnalazione(segnalazione* s){
     printf("-----------------------------\n");
     printf("Stato della segnalazione: %s\n", s->status);
     printf("-----------------------------\n");
+}
+
+
+//per poter eseguire queste operazioni in livelli più lontani dalla struct
+int getID(segnalazione s){
+    return s->id;
+}
+
+char* getCategoria(segnalazione s){
+    return s->categoria;
+}
+
+char* getStatus(segnalazione s){
+    return s->status;
+}
+
+char* getUrgenza(segnalazione s){
+    return s->urgenza;
+}
+
+void setStatus(segnalazione s, char* status){
+    strcpy(s->status, status);
 }
