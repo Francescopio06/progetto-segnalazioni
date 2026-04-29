@@ -10,10 +10,10 @@ segnalazione creaSegnalazione();
 void stampaSegnalazione(segnalazione s);
 
 //Funzioni ausiliari per lista e gestioni
-int getID(segnalazione s);
+char* getID(segnalazione s);
 char* getCategoria(segnalazione s);
 char* getStatus(segnalazione s);
-char* getUrgenza(segnalazione s);
+int getUrgenza(segnalazione s);
 int getIDInterno(segnalazione s);
 
 //Per impostare in altri file

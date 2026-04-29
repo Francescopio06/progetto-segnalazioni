@@ -14,12 +14,17 @@ typedef struct Segnalazione{
     time_t data;
     int urgenza;
     char status[20];
-};
+}Segnalazione;
+
+int IncrementaIDinterno();
+void generaID(char* id);
+time_t generaData();
+void stampaData(time_t data);
 
 segnalazione creaSegnalazione(){
     segnalazione s;
     s = malloc(sizeof(segnalazione));
-    if(s == NULL) return;
+    if(s == NULL) return NULL;
     int choice;
 
     //id Utente
@@ -49,7 +54,7 @@ segnalazione creaSegnalazione(){
     printf("-----------------------------\n");
 
     //Data automatica
-    s->data = generaData;
+    s->data = generaData();
 
     printf("-----------------------------\n");
 
@@ -128,7 +133,7 @@ void stampaSegnalazione(segnalazione s){
 
 
 //per poter eseguire queste operazioni in livelli più lontani dalla struct
-int getID(segnalazione s){
+char* getID(segnalazione s){
     return s->id;
 }
 
@@ -140,7 +145,7 @@ char* getStatus(segnalazione s){
     return s->status;
 }
 
-char* getUrgenza(segnalazione s){
+int getUrgenza(segnalazione s){
     return s->urgenza;
 }
 

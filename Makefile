@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -I./Modulo_Segnalazione -I./Modulo_BST -I./Modulo_Gestione
 OBJDIR = obj
 TARGET = main.out
 
