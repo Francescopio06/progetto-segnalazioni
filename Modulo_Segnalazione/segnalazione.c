@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "segnalazione.h"
 #include "lista.h"
 
 typedef struct Segnalazione{
-    int id;
+    char id[9];
+    int idInterno; //per ordinare ADT albero
     char nome[50];
     char categoria[50];
     char descrizione[100];
-    char data[11];
+    time_t data;
     int urgenza;
     char status[20];
 };
@@ -20,9 +22,11 @@ segnalazione creaSegnalazione(){
     if(s == NULL) return;
     int choice;
 
-    printf("Inserire Codice di Identificazione: \n");
-    scanf("%d", &s->id);
-    getchar();
+    //id Utente
+    generaID(s->id);
+
+    //id interno
+    s->idInterno = IncrementaIDinterno();
 
     printf("-----------------------------\n");
 
@@ -44,9 +48,8 @@ segnalazione creaSegnalazione(){
 
     printf("-----------------------------\n");
 
-    printf("Inserire data: \n");
-    fgets(s->data, 11, stdin);
-    s->data[strcspn(s->data, "\n")] = '\0';
+    //Data automatica
+    s->data = generaData;
 
     printf("-----------------------------\n");
 
@@ -94,18 +97,31 @@ void stampaSegnalazione(segnalazione s){
         printf("Segnalazione non valida\n");
         return;
     }
-    printf("Codice Identificativo: %d\n", s->id);
+    //ID utente
+    printf("Codice Identificativo: %s\n", s->id);
     printf("-----------------------------\n");
+
+    //Nome segnalatore
     printf("Nome Segnalatore: %s\n", s->nome);
     printf("-----------------------------\n");
+
+    //Categoria Segnalazione
     printf("Categoria della segnalazione: %s\n", s->categoria);
     printf("-----------------------------\n");
+
+    //Descrizione Segnalazione
     printf("Descrizione: %s\n", s->descrizione);
     printf("-----------------------------\n");
-    printf("Data di inserimento: %s\n", s->data);
+
+    //Data di inserimento
+    stampaData(s->data);
     printf("-----------------------------\n");
+
+    //Livello di urgenza 
     printf("Livello di Urgenza: %d (1= elevato, 2= intermedio, 3= lieve)\n", s->urgenza);
     printf("-----------------------------\n");
+
+    //Status segnalazione
     printf("Stato della segnalazione: %s\n", s->status);
     printf("-----------------------------\n");
 }
@@ -128,6 +144,41 @@ char* getUrgenza(segnalazione s){
     return s->urgenza;
 }
 
+int getIDIntero(segnalazione s){
+    return s->idInterno;
+}
+
 void setStatus(segnalazione s, char* status){
     strcpy(s->status, status);
+}
+
+//funzioni visibili solo nel source file
+int IncrementaIDinterno(){ 
+    static int contatore = 0;
+    return contatore++;
+}
+
+void generaID(char* id){
+    const char set[] = "ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789";
+
+    for(int i = 0; i < 8; i++){
+        int indice = rand() % (sizeof(set)-1);
+        id[i] = set[indice];
+    }
+    id[8] = '\0';
+}
+
+//funzioni per la data automatica
+
+time_t generaData(){
+    return time(NULL);
+}
+
+void stampaData(time_t data){
+    struct tm tm = *localtime(&data);
+
+    printf("Data di inserimento: %02d/%02d/%d", 
+        tm.tm_mday, 
+        tm.tm_mon + 1, 
+        tm.tm_year + 1900);
 }
