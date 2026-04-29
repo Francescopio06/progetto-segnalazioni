@@ -1,23 +1,31 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
+OBJDIR = obj
+TARGET = main.out
 
-OBJ = main.o segnalazione.o BST.o gestione.o
+OBJ = ${OBJDIR}/main.o \
+	${OBJDIR}/segnalazione.o \
+	${OBJDIR}/BST.o \
+	${OBJDIR}/gestione.o
 
-main.out: ${OBJ}
-	${CC} ${OBJ} -o main.out
+${TARGET}: ${OBJ}
+	${CC} ${OBJ} -o ${TARGET}
 
+${OBJDIR}/main.o: main.c
+	@mkdir -p ${OBJDIR}
+	${CC} ${CFLAGS} -c $< -o $@
 
-main.o: main.c
-	${CC} ${CFLAGS} -c main.c
+${OBJDIR}/segnalazione.o: Modulo_Segnalazione/segnalazione.c
+	@mkdir -p ${OBJDIR}
+	${CC} ${CFLAGS} -c $< -o $@
 
-segnalazione.o: segnalazione.c
-	${CC} ${CFLAGS} -c segnalazione.c
+${OBJDIR}/BST.o: Modulo_BST/BST.c
+	@mkdir -p ${OBJDIR}
+	${CC} ${CFLAGS} -c $< -o $@
 
-BST.o: BST.c
-	${CC} ${CFLAGS} -c BST.c
+${OBJDIR}/gestione.o: Modulo_Gestione/gestione.c
+	@mkdir -p ${OBJDIR}
+	${CC} ${CFLAGS} -c $< -o $@
 
-gestione.o: gestione.c
-	${CC} ${CFLAGS} -c gestione.c
-
-clean: 
-	rm -f *.o main.out
+clean:
+	rm -rf ${OBJDIR} main.out
