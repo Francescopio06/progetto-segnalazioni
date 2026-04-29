@@ -7,7 +7,7 @@
 
 typedef struct Segnalazione{
     char id[9];
-    int idInterno; //per ordinare ADT albero
+    int chiave; //per ordinare ADT albero
     char nome[50];
     char categoria[50];
     char descrizione[100];
@@ -31,7 +31,7 @@ segnalazione creaSegnalazione(){
     generaID(s->id);
 
     //id interno
-    s->idInterno = IncrementaIDinterno();
+    s->chiave = IncrementaIDinterno();
 
     printf("-----------------------------\n");
 
@@ -149,8 +149,8 @@ int getUrgenza(segnalazione s){
     return s->urgenza;
 }
 
-int getIDIntero(segnalazione s){
-    return s->idInterno;
+int getChiave(segnalazione s){
+    return s->chiave;
 }
 
 void setStatus(segnalazione s, char* status){

@@ -14,7 +14,7 @@ char* getID(segnalazione s);
 char* getCategoria(segnalazione s);
 char* getStatus(segnalazione s);
 int getUrgenza(segnalazione s);
-int getIDInterno(segnalazione s);
+int getChiave(segnalazione s);
 
 //Per impostare in altri file
 void setStatus(segnalazione s, char* status);
