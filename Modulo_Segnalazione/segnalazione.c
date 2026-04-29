@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "segnalazione.h"
-#include "lista.h"
+#include "BST.h"
 
 typedef struct Segnalazione{
     char id[9];

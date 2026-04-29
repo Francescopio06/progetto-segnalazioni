@@ -1,14 +1,14 @@
 #ifndef GESTIONE_H
 #define GESTIONE_H
-#include "lista.h"
+#include "BST.h"
 
-void inserisciSegnalazione(lista lista1);
-void visualizzaSegnalazione(lista lista1);
-void ricercaSegnalazione(lista lista1);
-void aggiornaStato(lista lista1);
-void filtraSegnalazioni(lista lista1);
-void mostraUrgenza(lista lista1);
-void eliminaSegnalazione(lista lista1);
-void reportSegnalazioni(lista lista1);
+void inserisciSegnalazione(BST Albero);
+void visualizzaSegnalazioneI(BST Albero);
+void ricercaSegnalazione(BST Albero);
+void aggiornaStato(BST Albero);
+void filtraSegnalazioni(BST Albero);
+void mostraUrgenza(BST Albero);
+void eliminaSegnalazione(BST Albero);
+void reportSegnalazioni(BST Albero);
 
 #endif
