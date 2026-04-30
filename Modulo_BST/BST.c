@@ -12,39 +12,34 @@ struct nodo{
     struct nodo* dx;
 };
 
-//funzioni ausiliari
-segnalazione getSegnalazione(struct nodo* N){
-    return N->s;
+//funzioni Helper
+
+static BST creaFoglia(segnalazione s){
+    struct nodo* T;
+    T = malloc(sizeof(struct nodo));
+    if(T == NULL) return NULL;
+    T->s = s;
+    T->dx = NULL;
+    T->sx = NULL;
+    return T;
 }
 
-void setSegnalazione(struct nodo* N, segnalazione s){
-    N->s = s;
+static int minore(int x, int y){
+    if(x < y);
 }
 
-BST creaFoglia(segnalazione s){
-    struct nodo* N;
-    N = malloc(sizeof(struct nodo));
-    if(N == NULL) return NULL;
-    setSegnalazione(N,s);
-    N->dx = NULL;
-    N->sx = NULL;
-    return N;
+static BST minvalue(BST Albero){
+    BST current = Albero;
+
+    while(current->sx != NULL){
+        current = current->sx;
+    }
+    return current;
+
 }
 
-BST figlioSX(BST Albero){
-    return Albero->sx;
-}
+//FUNZIONI PRINCIPALI
 
-BST figlioDX(BST Albero){
-    return Albero->dx;
-}
-
-int minore(int x, int y){
-    if(x < y) return 1;
-    return 0;
-}
-
-//funzioni principali
 BST newBST(){
     return NULL;
 }
@@ -57,120 +52,137 @@ void outputBST(BST Albero){
 
     if(Albero == NULL) return;
 
-    outputBST(figlioSX(Albero));
+    outputBST(Albero->sx);
 
-    stampaSegnalazione(getSegnalazione(Albero));
+    stampaSegnalazione(Albero->s);
 
-    outputBST(figlioDX(Albero));
+    outputBST(Albero->dx);
 }
 
-BST minvalue(BST Albero){
-    BST current = Albero;
-    while(current != NULL){
-        current = figlioSX(current);
-    }
-    return current;
+//FUNZIONI DI MODIFICA
 
-}
-
-//funzioni di modifica
 BST insert(BST Albero, segnalazione s){
-    segnalazione x = getSegnalazione(Albero); //nodo attuale
-    
+
     if(Albero == NULL) return creaFoglia(s);
-    else if(minore(getChiave(s), getChiave(x))){
-        Albero->sx = insert(figlioSX(Albero), s);
-    } else if(minore(getChiave(x), getChiave(s))){
-        Albero->dx = insert(figlioDX(Albero), s);
+    else if(minore(getChiave(s), getChiave(Albero->s))){
+        Albero->sx = insert(Albero->sx, s);
+    } else if(minore(getChiave(Albero->s), getChiave(s))){
+        Albero->dx = insert(Albero->dx, s);
     }
     return Albero;
 }
 
 BST deleteNodo(BST root, int chiave){
+    
     if(root == NULL) return NULL;
-    segnalazione s = getSegnalazione(root);
-   
-    if(minore(chiave, getChiave(s))){
-        root->sx = deleteNodo(figlioSX(root), chiave);
-    } else if(minore(getChiave(s), chiave)){
-        root->dx = deleteNodo(figlioDX(root), chiave);
+
+    if(minore(chiave, getChiave(root->s))){
+        root->sx = deleteNodo(root->sx, chiave);
+    } else if(minore(getChiave(root->s), chiave)){
+        root->dx = deleteNodo(root->dx, chiave);
     } 
     
     
     else{
         //caso con nessuno o un figlio
         if(figlioSX(root) == NULL){
-            BST temp = figlioDX(root);
+            BST temp = root->dx;
             free(root);
             return temp;
-        } else if(figlioDX(root) == NULL){
-            BST temp = figlioSX(root);
+        } else if(root->dx == NULL){
+            BST temp = root->sx;
             free(root);
             return temp;
         }
         
         //caso con 2 figli
-        BST temp = minvalue(figlioDX(root));
-        s = getSegnalazione(temp);
-        root->dx = deleteNodo(figlioDX(root), getChiave(s));
+        BST temp = minvalue(root->dx);
+        root->s = getSegnalazione(temp);
+        root->dx = deleteNodo(root->dx, getChiave(root->s));
     }
     return root;
 }
 
+//FUNZIONI DI RICERCA
 
-//funzioni di ricerca
 segnalazione ricercaPerId(BST Albero, char* id){
     if(Albero == NULL) return NULL;
-
-    segnalazione s = getSegnalazione(Albero);
+    
     //cerco nel nodo attuale
-    if(strcmp(getID(s), id) == 0){
-        return s;
+    if(strcmp(getID(Albero->s), id) == 0){
+        return Albero->s;
     }
     
     //cerco nel nodo di sinistra
-    segnalazione tmp = ricercaPerId(figlioSX(Albero), id);
+    segnalazione tmp = ricercaPerId(Albero->sx, id);
     if(tmp != NULL) return tmp;
 
     //cerca nel nodo di destra
-    return ricercaPerId(figlioDX(Albero), id);
+    return ricercaPerId(Albero->dx, id);
+}
+
+void ricercaPerCategoria(BST Albero, char* categoria){
+    if(Albero == NULL) return;
+    
+    ricercaPerCategoria(Albero->sx, categoria);
+
+    if(strcmp (getCategoria(Albero->s), categoria) == 0){
+        stampaSegnalazione(Albero->s);
+    }
+
+    ricercaPerCategoria(Albero->dx, categoria);
 }
 
 int esisteUrgenza(BST Albero, int livello){
-    segnalazione s = getSegnalazione(Albero);
-    
-    if(getUrgenza(s) == livello){
+    if(Albero == NULL) return 0;
+   
+    if(getUrgenza(Albero->s) == livello){
         return 1;
     }
 
-    return esisteUrgenza(figlioSX(Albero), livello) || esisteUrgenza(figlioDX(Albero), livello);
+    return esisteUrgenza(Albero->sx, livello) || esisteUrgenza(Albero->dx, livello);
 }
 
+//FUNZIONI DI STAMPA
 
-//funzioni di stampa
 void stampaPerStatus(BST Albero, char* status){
     if(Albero == NULL) return;
 
-    segnalazione s = getSegnalazione(Albero);
-
-   stampaPerStatus(figlioSX(Albero), status);
+   stampaPerStatus(Albero->sx, status);
    
-    if(strcmp(getStatus(s), status) == 0){
-        stampaSegnalazione(s);
+    if(strcmp(getStatus(Albero->s), status) == 0){
+        stampaSegnalazione(Albero->s);
     }
 
-    stampaPerStatus(figlioDX(Albero), status);
+    stampaPerStatus(Albero->dx, status);
 }
 
 void stampaPerUrgenza(BST Albero, int livello){
     if(Albero == NULL) return;
-    segnalazione s = getSegnalazione(Albero);
 
-    if(getUrgenza(s) == livello){
-        stampaSegnalazione(s);
+
+    if(getUrgenza(Albero->s) == livello){
+        stampaSegnalazione(Albero->s);
     }
 
-    stampaPerUrgenza(figlioSX(Albero), livello);
-    stampaPerUrgenza(figlioDX(Albero), livello);
+    stampaPerUrgenza(Albero->sx, livello);
+    stampaPerUrgenza(Albero->dx, livello);
 }
 
+//GETTER
+BST figlioSX(BST Albero){
+    return Albero->sx;
+}
+
+BST figlioDX(BST Albero){
+    return Albero->dx;
+}
+
+segnalazione getSegnalazione(BST T){
+    return T->s;
+}
+
+//SETTER
+void setSegnalazione(BST T, segnalazione s){
+    T->s = s;
+}

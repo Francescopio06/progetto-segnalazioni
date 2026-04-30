@@ -8,20 +8,28 @@ typedef struct nodo *BST;
 //operazioni su lista
 BST newBST();
 int emptyBST(BST Albero);
-BST insert(BST Albero, segnalazione s);
 void outputBST(BST Albero);
+
+//operazione di modifica
+BST insert(BST Albero, segnalazione s);
+BST deleteNodo(BST root, int chiave);
 
 //operazioni di ricerca
 segnalazione ricercaPerId(BST Albero, char* id);
-void ricercaPerCategoria(BST Albero, char* categoria); //potrei restituire una lista
+void ricercaPerCategoria(BST Albero, char* categoria); //void + stampa
 int esisteUrgenza(BST Albero, int livello);
 
 //operazioni di stampa
 void stampaPerStatus(BST Albero, char* status);
 void stampaPerUrgenza(BST Albero, int livello);
 
-//operazione di modifica
-BST deleteNodo(BST root, int chiave);
-//void stampaListaConIndice(lista lista1);
+//getter
+BST figlioDX(BST Albero);
+BST figlioSX(BST Albero);
+segnalazione getSegnalazione(BST T);
+
+//setter
+void setSegnalazione(BST T, segnalazione s);
+
 
 #endif
