@@ -18,7 +18,7 @@ void inserisciSegnalazione(BST Albero){
     insert(Albero, s);
 }
 
-void visualizzaSegnalazioneI(BST Albero){
+void visualizzaSegnalazione(BST Albero){
     outputBST(Albero);
 }
 

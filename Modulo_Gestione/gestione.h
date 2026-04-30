@@ -4,7 +4,7 @@
 
 void inserisciSegnalazione(BST Albero);
 
-void visualizzaSegnalazioneI(BST Albero);
+void visualizzaSegnalazione(BST Albero);
 
 void ricercaSegnalazione(BST Albero);
 
@@ -16,6 +16,6 @@ void mostraUrgenza(BST Albero);
 
 void eliminaSegnalazione(BST Albero);
 
-void reportSegnalazioni(BST Albero);
+void generaReport(BST Albero);
 
 #endif
