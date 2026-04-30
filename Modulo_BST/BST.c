@@ -25,7 +25,8 @@ static BST creaFoglia(segnalazione s){
 }
 
 static int minore(int x, int y){
-    if(x < y);
+    if(x < y) return 1;
+    return 0;
 }
 
 static BST minvalue(BST Albero){
@@ -72,14 +73,14 @@ BST insert(BST Albero, segnalazione s){
     return Albero;
 }
 
-BST deleteNodo(BST root, int chiave){
+BST CancellaSegnalazione(BST root, int chiave){
     
     if(root == NULL) return NULL;
 
     if(minore(chiave, getChiave(root->s))){
-        root->sx = deleteNodo(root->sx, chiave);
+        root->sx = CancellaSegnalazione(root->sx, chiave);
     } else if(minore(getChiave(root->s), chiave)){
-        root->dx = deleteNodo(root->dx, chiave);
+        root->dx = CancellaSegnalazione(root->dx, chiave);
     } 
     
     
@@ -98,7 +99,7 @@ BST deleteNodo(BST root, int chiave){
         //caso con 2 figli
         BST temp = minvalue(root->dx);
         root->s = getSegnalazione(temp);
-        root->dx = deleteNodo(root->dx, getChiave(root->s));
+        root->dx = CancellaSegnalazione(root->dx, getChiave(root->s));
     }
     return root;
 }

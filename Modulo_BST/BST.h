@@ -12,7 +12,7 @@ void outputBST(BST Albero);
 
 //operazione di modifica
 BST insert(BST Albero, segnalazione s);
-BST deleteNodo(BST root, int chiave);
+BST CancellaSegnalazione(BST root, int chiave);
 
 //operazioni di ricerca
 segnalazione ricercaPerId(BST Albero, char* id);
