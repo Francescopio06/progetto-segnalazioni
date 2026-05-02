@@ -2,7 +2,7 @@
 #define GESTIONE_H
 #include "BST.h"
 
-void inserisciSegnalazione(BST Albero);
+void inserisciSegnalazione(BST* Albero);
 
 void visualizzaSegnalazione(BST Albero);
 

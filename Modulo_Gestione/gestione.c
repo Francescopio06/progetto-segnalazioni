@@ -13,9 +13,9 @@ typedef struct {
 static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie);
 
 //funzioni principali
-void inserisciSegnalazione(BST Albero){
+void inserisciSegnalazione(BST* Albero){
     segnalazione s = creaSegnalazione();
-    insert(Albero, s);
+    *Albero = insert(*Albero, s);
 }
 
 void visualizzaSegnalazione(BST Albero){

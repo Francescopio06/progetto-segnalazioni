@@ -18,48 +18,52 @@ typedef struct Segnalazione{
 
 //helper
 void stampaData(time_t data);
-
-//funzioni per creaSegnalazione
 void generaID(char* id);
 int IncrementaChiave();
-void InserimentoNome(char* nome);
-void InserimentoCategoria(char* categoria);
-void InserimentoDescrizione(char* descrizione);
 time_t generaData();
-void InserimentoUrgenza(int livello);
-void InserimentoStatus(char* stato);
 
 
 segnalazione creaSegnalazione(){
     segnalazione s;
 
     
-    s = malloc(sizeof(segnalazione));
+    s = malloc(sizeof(Segnalazione));
     if(s == NULL) return NULL;
 
     generaID(s->id);
+    printf("ID generato Automaticamente:%s \n", s->id);
     printf("-----------------------------\n");
 
     s->chiave = IncrementaChiave();
+
+    printf("Inserire Nome del Segnalatore: ");
+    fgets(s->nome, 50, stdin);
+    s->nome[strcspn(s->nome, "\n")] = '\0';
     printf("-----------------------------\n");
 
-    InserimentoNome(s->nome);
+    printf("Inserire Categoria della segnalazione: ");
+    fgets(s->categoria, 50, stdin);
+    s->categoria[strcspn(s->categoria, "\n")] = '\0';
     printf("-----------------------------\n");
 
-    InserimentoCategoria(s->categoria);
-    printf("-----------------------------\n");
-
-    InserimentoDescrizione(s->descrizione);
+    printf("Inserire informazioni aggiuntive della segnalazione: ");
+    fgets(s->descrizione, 100, stdin);
+    s->descrizione[strcspn(s->descrizione, "\n")] = '\0';
     printf("-----------------------------\n");
 
     s->data = generaData();
+    stampaData(s->data);
     printf("-----------------------------\n");
 
-    InserimentoUrgenza(s->urgenza);
+    printf("Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa): ");
+    scanf("%d", s->urgenza);
+    getchar();
     printf("-----------------------------\n");
 
     InserimentoStatus(s->status);
     printf("-----------------------------\n");
+
+    printf("=== Segnalazione Inserita! ===\n");
 
     return s;
 }
@@ -94,10 +98,34 @@ void stampaSegnalazione(segnalazione s){
     printf("-----------------------------\n");
 
     //Status segnalazione
-    printf("Stato della segnalazione: %s\n", s->status);
+    int choice = 0;
+    do{
+    printf("Inserisci stato:");
+    printf("\n1. Aperta");
+    printf("\n2. In lavorazione");
+    printf("\n3. Chiusa");
+    printf("\nScelta: ");
+    
+    scanf("%d", &choice);
+    getchar();
+
+   } while(choice < 1 || choice > 3);
+    
+    switch(choice){
+    case 1:
+        strcpy(s->status, "aperta");
+        break;
+    case 2:
+        strcpy(s->status, "in lavorazione");
+        break;
+    case 3:
+        strcpy(s->status, "chiusa");
+        break;
+    default:
+        printf("\nScelta non valida");
+    }
     printf("-----------------------------\n");
 }
-
 
 //helper
 void generaID(char* id){
@@ -115,62 +143,17 @@ int IncrementaChiave(){
     return contatore++;
 }
 
-void InserimentoNome(char* nome){
-    printf("Inserire Nome del Segnalatore: \n");
-    fgets(nome, 50, stdin);
-    nome[strcspn(nome, "\n")] = '\0';
-}
-
-void InserimentoCategoria(char* categoria){
-    printf("Inserire Categoria della segnalazione: \n");
-    fgets(categoria, 50, stdin);
-    categoria[strcspn(categoria, "\n")] = '\0';
-}
-
-void InserimentoDescrizione(char* descrizione){
-    printf("Inserire informazioni aggiuntive della segnalazione: \n");
-    fgets(descrizione, 100, stdin);
-    descrizione[strcspn(descrizione, "\n")] = '\0';
-}
-
 time_t generaData(){
     return time(NULL);
 }
 
-void InserimentoUrgenza(int livello){
-    printf("Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa): \n");
-    scanf("%d", &livello);
-    getchar();
-}
+void stampaData(time_t data){
+    struct tm tm = *localtime(&data);
 
-void InserimentoStatus(char* stato){
-    int choice = 0;
-    do{
-    printf("Inserisci stato:\n");
-    printf("1. Aperta\n");
-    printf("2. In lavorazione\n");
-    printf("3. Chiusa\n");
-    
-    scanf("%d", &choice);
-    getchar();
-
-   } while(choice < 1 || choice > 3);
-    
-    switch(choice){
-    case 1:
-        strcpy(stato, "aperta");
-        break;
-    case 2:
-        strcpy(stato, "in lavorazione");
-        break;
-    case 3:
-        strcpy(stato, "chiusa");
-        break;
-    default:
-        printf("Scelta non valida\n");
-    }
-
-
+    printf("Data di inserimento: %02d/%02d/%d\n", 
+        tm.tm_mday, 
+        tm.tm_mon + 1, 
+        tm.tm_year + 1900);
 }
 
 //getter
@@ -197,13 +180,4 @@ int getChiave(segnalazione s){
 //setter
 void setStatus(segnalazione s, char* status){
     strcpy(s->status, status);
-}
-
-void stampaData(time_t data){
-    struct tm tm = *localtime(&data);
-
-    printf("Data di inserimento: %02d/%02d/%d", 
-        tm.tm_mday, 
-        tm.tm_mon + 1, 
-        tm.tm_year + 1900);
 }

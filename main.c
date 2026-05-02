@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "BST.h"
 #include "gestione.h"
 
@@ -6,6 +8,7 @@ int main(){
 
     BST T = newBST();
     int scelta;
+    srand(time(NULL));
 
     do{
         printf("\n===== MENU =====\n");
@@ -26,7 +29,7 @@ int main(){
         switch(scelta){
 
             case 1:
-                inserisciSegnalazione(T);
+                inserisciSegnalazione(&T);
                 break;
 
             case 2:
