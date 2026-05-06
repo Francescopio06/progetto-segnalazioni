@@ -23,8 +23,11 @@ int main(){
         printf("0. Esci\n");
         printf("Scelta: ");
 
-        scanf("%d", &scelta);
-        getchar();
+        if(scanf("%d", &scelta) != 1){
+            printf("\nInput non valido.\n");
+            while(getchar() != '\n');
+            continue;
+        }
 
         switch(scelta){
 

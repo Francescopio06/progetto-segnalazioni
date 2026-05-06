@@ -11,10 +11,13 @@ typedef struct {
 } ContaCategoria;
 
 static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie);
+static void controlloID(BST Albero, char* ID);
 
 //funzioni principali
 void inserisciSegnalazione(BST* Albero){
+
     segnalazione s = creaSegnalazione();
+    controlloID(*Albero, getID(s));
     *Albero = insert(*Albero, s);
 }
 
@@ -184,44 +187,6 @@ void eliminaSegnalazione(BST Albero){
     printf("Cancellazione Riuscita!\n");
 }
 
-//funzione helper per il Report
-static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie){
-
-    if(Albero == NULL) return;
-
-    visitaReport(figlioSX(Albero), tot, aperte, chiuse, stats, nCategorie);
-
-    segnalazione s = getSegnalazione(Albero);
-
-    (*tot)++;
-
-    // stato
-    if(strcmp(getStatus(s), "aperta") == 0)
-        (*aperte)++;
-    else if(strcmp(getStatus(s), "chiusa") == 0)
-        (*chiuse)++;
-
-    // categoria
-    char* cat = getCategoria(s);
-    int trovato = 0;
-
-    for(int i = 0; i < *nCategorie; i++){
-        if(strcmp(stats[i].categoria, cat) == 0){
-            stats[i].count++;
-            trovato = 1;
-            break;
-        }
-    }
-
-    if(!trovato){
-        strcpy(stats[*nCategorie].categoria, cat);
-        stats[*nCategorie].count = 1;
-        (*nCategorie)++;
-    }
-
-    visitaReport(figlioDX(Albero), tot, aperte, chiuse, stats, nCategorie);
-}
-
 void generaReport(BST Albero){
 
     if(Albero == NULL){
@@ -266,4 +231,52 @@ void generaReport(BST Albero){
                stats[indice].categoria,
                stats[indice].count);
     }
+}
+
+//funzione helper per il Report
+static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie){
+
+    if(Albero == NULL) return;
+
+    visitaReport(figlioSX(Albero), tot, aperte, chiuse, stats, nCategorie);
+
+    segnalazione s = getSegnalazione(Albero);
+
+    (*tot)++;
+
+    // stato
+    if(strcmp(getStatus(s), "aperta") == 0)
+        (*aperte)++;
+    else if(strcmp(getStatus(s), "chiusa") == 0)
+        (*chiuse)++;
+
+    // categoria
+    char* cat = getCategoria(s);
+    int trovato = 0;
+
+    for(int i = 0; i < *nCategorie; i++){
+        if(strcmp(stats[i].categoria, cat) == 0){
+            stats[i].count++;
+            trovato = 1;
+            break;
+        }
+    }
+
+    if(!trovato){
+        strcpy(stats[*nCategorie].categoria, cat);
+        stats[*nCategorie].count = 1;
+        (*nCategorie)++;
+    }
+
+    visitaReport(figlioDX(Albero), tot, aperte, chiuse, stats, nCategorie);
+}
+
+static void controlloID(BST Albero, char* ID){
+
+    while(ricercaPerId(Albero, ID) != NULL){
+
+        generaID(ID);
+
+    }
+
 }

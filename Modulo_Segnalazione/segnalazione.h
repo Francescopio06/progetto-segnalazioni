@@ -9,6 +9,9 @@ segnalazione creaSegnalazione();
 //stampa
 void stampaSegnalazione(segnalazione s);
 
+//genera ID
+void generaID(char* id);
+
 //Funzioni ausiliari per lista e gestioni
 char* getID(segnalazione s);
 char* getCategoria(segnalazione s);

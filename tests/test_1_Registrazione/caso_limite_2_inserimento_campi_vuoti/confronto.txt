@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_1_Registrazione/caso_limite_2_inserimento_campi_vuoti/oracolo.txt tests/test_1_Registrazione/caso_limite_2_inserimento_campi_vuoti/output.txt
+
+ESITO: === TEST SUPERATO ===

@@ -1,4 +1,8 @@
+#cartella degli oggetti
 obj/
+#file oggetti
 *.o
-main.out
+#file eseguibili
+*.out
+#file temporanei
 .DS_Store

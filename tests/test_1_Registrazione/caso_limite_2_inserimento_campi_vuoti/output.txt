@@ -1,0 +1,23 @@
+ID generato Automaticamente: HOYNU2JI
+-----------------------------
+Inserire Nome del Segnalatore:
+Inserire Nome del Segnalatore:
+-----------------------------
+Inserire Categoria della segnalazione:
+Inserire Categoria della segnalazione:
+-----------------------------
+Inserire informazioni aggiuntive della segnalazione:
+Inserire informazioni aggiuntive della segnalazione:
+-----------------------------
+Data di inserimento: 06/05/2026
+-----------------------------
+Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
+-----------------------------
+Inserisci stato:
+1. Aperta
+2. In lavorazione
+3. Chiusa
+Scelta:
+-----------------------------
+
+=== Segnalazione Inserita! ===
