@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/oracolo.txt tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/output.txt
+
+ESITO: === TEST SUPERATO ===

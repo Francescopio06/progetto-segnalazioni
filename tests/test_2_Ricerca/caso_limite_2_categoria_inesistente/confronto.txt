@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/oracolo.txt tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/output.txt
+
+ESITO: === TEST SUPERATO ===

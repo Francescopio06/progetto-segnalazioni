@@ -56,11 +56,14 @@ void ricercaSegnalazione(BST Albero){
         fgets(CategoriaTemp, 50, stdin);
         CategoriaTemp[strcspn(CategoriaTemp, "\n")] = '\0';
 
-        ricercaPerCategoria(Albero, CategoriaTemp);
+        if(ricercaPerCategoria(Albero, CategoriaTemp) == 0){
+        printf("=== NESSUNA SEGNALAZIONE TROVATA ===");
+        }
+        
         break;
 
     default:
-        printf("\n---Scelta non valida---");
+        printf("\n---Scelta non valida---");        
     }
 }
 

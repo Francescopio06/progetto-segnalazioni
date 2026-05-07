@@ -16,7 +16,7 @@ BST CancellaSegnalazione(BST root, int chiave);
 
 //operazioni di ricerca
 segnalazione ricercaPerId(BST Albero, char* id);
-void ricercaPerCategoria(BST Albero, char* categoria); //void + stampa
+int ricercaPerCategoria(BST Albero, char* categoria); //void + stampa
 int esisteUrgenza(BST Albero, int livello);
 
 //operazioni di stampa

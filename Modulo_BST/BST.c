@@ -122,16 +122,21 @@ segnalazione ricercaPerId(BST Albero, char* id){
     return ricercaPerId(Albero->dx, id);
 }
 
-void ricercaPerCategoria(BST Albero, char* categoria){
-    if(Albero == NULL) return;
-    
-    ricercaPerCategoria(Albero->sx, categoria);
+int ricercaPerCategoria(BST Albero, char* categoria){ //intero temporaneo
 
+    int cont = 0;
+
+    if(Albero == NULL) return 0;
+    
     if(strcmp (getCategoria(Albero->s), categoria) == 0){
         stampaSegnalazione(Albero->s);
-    }
+        cont = 1;
+    }  
 
-    ricercaPerCategoria(Albero->dx, categoria);
+    cont += ricercaPerCategoria(Albero->sx, categoria);
+    cont += ricercaPerCategoria(Albero->dx, categoria);
+
+    return cont;
 }
 
 int esisteUrgenza(BST Albero, int livello){

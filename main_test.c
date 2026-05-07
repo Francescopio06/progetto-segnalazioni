@@ -12,7 +12,6 @@ int main(){
 
     int scelta;
 
-    
     scanf("%d", &scelta);
     getchar();
 
@@ -83,7 +82,7 @@ static void testRicerca(){
 
         }else{
 
-            printf("=== Segnalazione non trovata ===\n");
+            printf("\n=== Segnalazione non trovata ===\n");
         }
 
     }
@@ -98,7 +97,9 @@ static void testRicerca(){
         categoria[strcspn(categoria, "\n")] = '\0';
 
 
-        // usa qui la tua funzione di ricerca categoria
-        ricercaPerCategoria(T, categoria);
+        // uso la funzione di ricerca categoria
+        if(ricercaPerCategoria(T, categoria) == 0){
+        printf("\n=== NESSUNA SEGNALAZIONE TROVATA ===\n");
+        }
     }
 }
