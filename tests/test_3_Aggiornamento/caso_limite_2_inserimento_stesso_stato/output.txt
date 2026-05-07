@@ -69,4 +69,6 @@ Scegliere il nuovo status della segnalazione:
 2. In lavorazione
 3. Chiusa
 scelta: 
-=== REINSERITO LO STESSO STATO ===
+---------------------------------
+=== Nuovo stato corrisponde all'attuale! ===
+---------------------------------

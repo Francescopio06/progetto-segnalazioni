@@ -63,12 +63,12 @@ Scelta:
 === Segnalazione Inserita! ===
 
 Inserire ID della segnalazione: 
-Status: aperta
+Status: chiusa
 Scegliere il nuovo status della segnalazione:
 1. Aperta 
 2. In lavorazione
 3. Chiusa
 scelta: 
 ---------------------------------
-=== Nuovo stato corrisponde all'attuale! ===
+=== Stato aggiornato! ===
 ---------------------------------

@@ -70,5 +70,5 @@ Scegliere il nuovo status della segnalazione:
 3. Chiusa
 scelta: 
 ---------------------------------
-=== Nuovo stato corrisponde all'attuale! ===
+=== STATO AGGIORNATO CORRETTAMENTE ===
 ---------------------------------

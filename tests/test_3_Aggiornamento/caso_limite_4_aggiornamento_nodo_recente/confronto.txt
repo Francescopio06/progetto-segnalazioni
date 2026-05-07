@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/oracolo.txt tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/output.txt
+
+ESITO: === TEST SUPERATO ===

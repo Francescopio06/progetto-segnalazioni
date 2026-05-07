@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/oracolo.txt tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/output.txt
+
+ESITO: === TEST SUPERATO ===

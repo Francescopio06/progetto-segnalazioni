@@ -108,8 +108,14 @@ void aggiornaStato(BST Albero){
     }
 
     if(strcmp(statusTmp, getStatus(s)) == 0){
-        printf("\n=== REINSERITO LO STESSO STATO ===\n");
-    } else printf("\n=== STATO AGGIORNATO CORRETTAMENTE ===\n");
+        printf("\n---------------------------------\n");
+        printf("=== Nuovo stato corrisponde all'attuale! ===\n");
+        printf("---------------------------------\n");
+    } else {
+        printf("\n---------------------------------\n");
+        printf("=== Stato aggiornato! ===\n");
+        printf("---------------------------------\n");      
+    }
 }
 
 void filtraSegnalazioni(BST Albero){

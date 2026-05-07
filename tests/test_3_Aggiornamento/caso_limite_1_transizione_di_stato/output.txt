@@ -69,7 +69,9 @@ Scegliere il nuovo status della segnalazione:
 2. In lavorazione
 3. Chiusa
 scelta: 
-=== STATO AGGIORNATO CORRETTAMENTE ===
+---------------------------------
+=== Stato aggiornato! ===
+---------------------------------
 
 Inserire ID della segnalazione: 
 Status: in lavorazione
@@ -78,4 +80,6 @@ Scegliere il nuovo status della segnalazione:
 2. In lavorazione
 3. Chiusa
 scelta: 
-=== STATO AGGIORNATO CORRETTAMENTE ===
+---------------------------------
+=== Stato aggiornato! ===
+---------------------------------
