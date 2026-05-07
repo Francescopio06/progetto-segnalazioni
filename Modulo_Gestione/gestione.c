@@ -69,22 +69,27 @@ void ricercaSegnalazione(BST Albero){
 
 void aggiornaStato(BST Albero){
 
-    char IDtemp[9];
+    char IDtemp[10];
     int choice;
+    char statusTmp[20];
 
-    printf("Inserire ID della segnalazione: ");
-    fgets(IDtemp, 9, stdin);
+    printf("\nInserire ID della segnalazione: ");
+    fgets(IDtemp, 10, stdin);
     IDtemp[strcspn(IDtemp, "\n")]= '\0';
 
     segnalazione s = ricercaPerId(Albero, IDtemp);
     if(s == NULL){
-        printf("Segnalazione non trovata\n");
+        printf("\nSegnalazione non trovata\n");
         return;
     }
 
+    strcpy(statusTmp, getStatus(s));
+
     printf("\nStatus: %s", getStatus(s));
-    printf("\nScegliere il nuovo status della segnalazione: ");
+    printf("\nScegliere il nuovo status della segnalazione:");
     printf("\n1. Aperta \n2. In lavorazione\n3. Chiusa");
+    printf("\nscelta: ");
+
     scanf("%d", &choice);
     getchar();
 
@@ -101,6 +106,10 @@ void aggiornaStato(BST Albero){
     default:
         printf("\n---Scelta non valida---");
     }
+
+    if(strcmp(statusTmp, getStatus(s)) == 0){
+        printf("\n=== REINSERITO LO STESSO STATO ===\n");
+    } else printf("\n=== STATO AGGIORNATO CORRETTAMENTE ===\n");
 }
 
 void filtraSegnalazioni(BST Albero){

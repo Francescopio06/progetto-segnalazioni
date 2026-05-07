@@ -7,6 +7,7 @@
 
 static void testInserimento();
 static void testRicerca();
+static void testAggiornamento();
 
 int main(){
 
@@ -23,6 +24,10 @@ int main(){
 
             case 2:
                 testRicerca();
+                break;
+            
+            case 3:
+                testAggiornamento();
                 break;
 
             default:
@@ -101,5 +106,33 @@ static void testRicerca(){
         if(ricercaPerCategoria(T, categoria) == 0){
         printf("\n=== NESSUNA SEGNALAZIONE TROVATA ===\n");
         }
+    }
+}
+
+static void testAggiornamento(){
+
+    srand(1);
+
+    BST T = newBST();
+
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+
+    int tipoTest;
+
+    scanf("%d", &tipoTest);
+    getchar();
+
+
+    if(tipoTest == 1){
+
+        aggiornaStato(T);
+
+        aggiornaStato(T);
+    }
+    else{
+
+        aggiornaStato(T);
     }
 }
