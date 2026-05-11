@@ -1,0 +1,18 @@
+5
+2
+Mario Rossi
+Strade
+Buca davanti scuola
+1
+2
+Giulia Bianchi
+Illuminazione
+Lampione guasto
+2
+1
+Luca Verdi
+Rifiuti
+Cassonetto pieno
+3
+2
+3

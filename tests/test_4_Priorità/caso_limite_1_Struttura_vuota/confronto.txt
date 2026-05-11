@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_4_Priorità/caso_limite_1_Struttura_vuota/oracolo.txt tests/test_4_Priorità/caso_limite_1_Struttura_vuota/output.txt
+
+ESITO: === TEST SUPERATO ===

@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/oracolo.txt tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/output.txt
+
+ESITO: === TEST SUPERATO ===

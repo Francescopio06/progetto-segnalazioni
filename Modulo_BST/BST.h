@@ -20,7 +20,7 @@ int ricercaPerCategoria(BST Albero, char* categoria); //void + stampa
 int esisteUrgenza(BST Albero, int livello);
 
 //operazioni di stampa
-void stampaPerStatus(BST Albero, char* status);
+void stampaPerStatus(BST Albero, char* status, int* trovato);
 void stampaPerUrgenza(BST Albero, int livello);
 
 //getter

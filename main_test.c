@@ -8,6 +8,8 @@
 static void testInserimento();
 static void testRicerca();
 static void testAggiornamento();
+static void testUrgenza();
+static void testFiltra();
 
 int main(){
 
@@ -28,6 +30,14 @@ int main(){
             
             case 3:
                 testAggiornamento();
+                break;
+
+            case 4:
+                testUrgenza();
+                break;
+
+            case 5: 
+                testFiltra();
                 break;
 
             default:
@@ -135,4 +145,53 @@ static void testAggiornamento(){
 
         aggiornaStato(T);
     }
+}
+
+static void testUrgenza(){
+
+    BST T = newBST();
+
+    int tipoTest;
+
+    scanf("%d", &tipoTest);
+    getchar();
+
+    // Caso struttura vuota
+    if(tipoTest == 1){
+
+        mostraUrgenza(T);
+
+        return;
+    }
+
+    srand(1);
+
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+
+    mostraUrgenza(T);
+}
+
+static void testFiltra(){
+
+    BST T = newBST();
+
+    int tipoTest;
+
+    scanf("%d", &tipoTest);
+    getchar();
+
+    if(tipoTest == 1){
+        filtraSegnalazioni(T);
+        return;
+    }
+
+    srand(1);
+
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+    inserisciSegnalazione(&T);
+
+    filtraSegnalazioni(T);
 }

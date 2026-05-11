@@ -95,62 +95,115 @@ void aggiornaStato(BST Albero){
 
     switch(choice){
     case 1:
+        if(strcmp(getStatus(s), "aperta") == 0){
+            printf("\n---------------------------------\n");
+            printf("=== Nuovo stato corrisponde all'attuale! ===\n");
+            printf("---------------------------------\n");
+            return;
+        }
         setStatus(s, "aperta");
         break;
     case 2:
+        if(strcmp(getStatus(s), "in lavorazione") == 0){
+            printf("\n---------------------------------\n");
+            printf("=== Nuovo stato corrisponde all'attuale! ===\n");
+            printf("---------------------------------\n");
+            return;
+        }
         setStatus(s, "in lavorazione");
         break;
     case 3:
+        if(strcmp(getStatus(s), "chiusa") == 0){
+            printf("\n---------------------------------\n");
+            printf("=== Nuovo stato corrisponde all'attuale! ===\n");
+            printf("---------------------------------\n");
+            return;
+        }
         setStatus(s, "chiusa");
         break;
     default:
         printf("\n---Scelta non valida---");
     }
 
-    if(strcmp(statusTmp, getStatus(s)) == 0){
-        printf("\n---------------------------------\n");
-        printf("=== Nuovo stato corrisponde all'attuale! ===\n");
-        printf("---------------------------------\n");
-    } else {
-        printf("\n---------------------------------\n");
-        printf("=== Stato aggiornato! ===\n");
-        printf("---------------------------------\n");      
-    }
+    printf("\n---------------------------------\n");
+    printf("=== Stato aggiornato! ===\n");
+    printf("---------------------------------\n");      
 }
 
 void filtraSegnalazioni(BST Albero){
+    int trovato = 0;
+
+    if(Albero == NULL){
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
+        return;
+    } 
 
     int choice;
 
     printf("\nQuali segnalazioni vuoi visualizzare:\n");
     printf("1. Aperte\n2. In lavorazione\n3. Chiuse\n4. Elenco completo");
+    printf("\nscelta:");
     scanf("%d", &choice);
     getchar();
 
     switch(choice){
     case 1:
-        printf("\nSegnalazioni Aperte\n");
-        stampaPerStatus(Albero, "aperta");
+
+        printf("\n---------------------------------\n");
+        printf("\n=== Segnalazioni Aperte! ===\n");
+        stampaPerStatus(Albero, "aperta", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
         break;
     case 2: 
+
+        printf("\n---------------------------------\n");
         printf("\nSegnalazioni In Lavorazione\n");
-        stampaPerStatus(Albero, "in lavorazione");
+        stampaPerStatus(Albero, "in lavorazione", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
         break;
     case 3:
+
+        printf("\n---------------------------------\n");
         printf("\nSegnalazioni Chiuse\n");
-        stampaPerStatus(Albero, "chiusa");
+        stampaPerStatus(Albero, "chiusa", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
         break;
     case 4: 
-        printf("\n--- ELENCO COMPLETO ---\n");
 
-        printf("\nSegnalazioni Aperte\n");
-        stampaPerStatus(Albero, "aperta");
+        printf("\n---------------------------------\n");
+        printf("\n=== ELENCO COMPLETO ===\n");
 
-        printf("\nSegnalazioni In Lavorazione\n");
-        stampaPerStatus(Albero, "in lavorazione");
+        trovato = 0;
+        printf("\n---------------------------------\n");
+        printf("Segnalazioni Aperte: \n");
+        stampaPerStatus(Albero, "aperta", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
 
-        printf("\nSegnalazioni Chiuse\n");
-        stampaPerStatus(Albero, "chiusa");
+        trovato = 0;
+        printf("\n---------------------------------\n");
+        printf("Segnalazioni In Lavorazione: \n");
+        stampaPerStatus(Albero, "in lavorazione", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
+
+        trovato = 0;
+        printf("\n---------------------------------\n");
+        printf("Segnalazioni Chiuse: \n");
+        stampaPerStatus(Albero, "chiusa", &trovato);
+        if(trovato == 0){
+            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+        }
         break;
     default:
         printf("\n---Scelta non valida---\n");
@@ -160,24 +213,26 @@ void filtraSegnalazioni(BST Albero){
 void mostraUrgenza(BST Albero){
 
     if(Albero == NULL){
-        printf("Nessuna Segnalazione presente\n");
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
         return;
     }
 
     if(esisteUrgenza(Albero, 1)){
-        printf("Segnalazioni con urgenza Massima (1):\n");
+        printf("\nSegnalazioni con urgenza Massima (1):\n");
         stampaPerUrgenza(Albero, 1);
     } 
     else if(esisteUrgenza(Albero, 2)){
-        printf("Segnalazioni con urgenza Media (2):\n");
+        printf("\nSegnalazioni con urgenza Media (2):\n");
         stampaPerUrgenza(Albero, 2);
     } 
     else if(esisteUrgenza(Albero, 3)){
-        printf("Segnalazione con urgenza Minima (3):\n");
+        printf("\nSegnalazione con urgenza Minima (3):\n");
         stampaPerUrgenza(Albero, 3);
     }
     else{
-        printf("Nessuna segnalazione trovata\n");
+        printf("\nNessuna segnalazione trovata\n");
     }
 
 }

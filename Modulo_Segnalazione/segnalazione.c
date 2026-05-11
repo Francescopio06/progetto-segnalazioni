@@ -137,7 +137,7 @@ void stampaSegnalazione(segnalazione s){
     printf("Stato della segnalazione: %s\n", s->status);
     printf("-----------------------------\n");
 
-    printf("===STAMPA COMPLETATA===");
+    printf("\n===STAMPA COMPLETATA===\n");
 }
 
 //helper

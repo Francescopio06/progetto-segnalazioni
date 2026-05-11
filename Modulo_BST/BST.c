@@ -151,16 +151,18 @@ int esisteUrgenza(BST Albero, int livello){
 
 //FUNZIONI DI STAMPA
 
-void stampaPerStatus(BST Albero, char* status){
+void stampaPerStatus(BST Albero, char* status, int* trovato){
+
     if(Albero == NULL) return;
 
-   stampaPerStatus(Albero->sx, status);
+   stampaPerStatus(Albero->sx, status, trovato);
    
     if(strcmp(getStatus(Albero->s), status) == 0){
         stampaSegnalazione(Albero->s);
+        *trovato = 1;
     }
 
-    stampaPerStatus(Albero->dx, status);
+    stampaPerStatus(Albero->dx, status, trovato);
 }
 
 void stampaPerUrgenza(BST Albero, int livello){

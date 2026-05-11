@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_5_Filtri/caso_limite_6_elenco_completo/oracolo.txt tests/test_5_Filtri/caso_limite_6_elenco_completo/output.txt
+
+ESITO: === TEST SUPERATO ===

@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_5_Filtri/caso_limite_4_stato_nella_radice/oracolo.txt tests/test_5_Filtri/caso_limite_4_stato_nella_radice/output.txt
+
+ESITO: === TEST SUPERATO ===
