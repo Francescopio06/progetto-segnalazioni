@@ -1,67 +1,4 @@
 
-ID generato Automaticamente: HOYNU2JI
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 07/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
-ID generato Automaticamente: I4U5H2H8
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 07/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
-ID generato Automaticamente: CE0RST4H
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 07/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
 Inserire ID della segnalazione: 
 Status: aperta
 Scegliere il nuovo status della segnalazione:
@@ -70,5 +7,5 @@ Scegliere il nuovo status della segnalazione:
 3. Chiusa
 scelta: 
 ---------------------------------
-=== STATO AGGIORNATO CORRETTAMENTE ===
+=== Stato aggiornato! ===
 ---------------------------------

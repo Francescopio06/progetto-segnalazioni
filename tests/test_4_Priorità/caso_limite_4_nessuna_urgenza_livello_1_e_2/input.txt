@@ -1,17 +1,2 @@
 4
-Mario Rossi
-Strade
-Buca davanti scuola
-3
-1
-Giulia Bianchi
-Illuminazione
-Lampione guasto
-3
-2
-Luca Verdi
-Rifiuti
-Cassonetto pieno
-3
-3
-1
+4

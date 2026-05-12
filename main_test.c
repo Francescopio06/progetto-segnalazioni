@@ -11,7 +11,12 @@ static void testAggiornamento();
 static void testUrgenza();
 static void testFiltra();
 static void testReport();
-static void caricaDataset(BST* T);
+//Dataset Pre-impostati per Test Priorità
+static void caricaDatasetMisto(BST* T);
+static void datasetStessaUrgenzaAlta(BST* T);
+static void datasetSenzaUrgenzaAlta(BST* T);
+static void datasetSenzaUrgenzaAltaMedia(BST* T);
+static void datasetUrgenzaFoglia(BST* T);
 
 int main(){
 
@@ -64,7 +69,7 @@ static void testRicerca(){
 
     BST T = newBST();
 
-    caricaDataset(&T);
+    caricaDatasetMisto(&T);
 
     int scelta;
 
@@ -115,7 +120,7 @@ static void testAggiornamento(){
 
     BST T = newBST();
 
-    caricaDataset(&T);
+    caricaDatasetMisto(&T);
 
     int tipoTest;
 
@@ -144,18 +149,37 @@ static void testUrgenza(){
     scanf("%d", &tipoTest);
     getchar();
 
-    if(tipoTest == 1){
+    switch(tipoTest){
+        case 1: 
+            mostraUrgenza(T);
+            break;
 
-        mostraUrgenza(T);
+        case 2: 
+            srand(1);
+            datasetStessaUrgenzaAlta(&T);
+            mostraUrgenza(T);
+            break;
 
-        return;
+        case 3:
+            srand(1);
+            datasetSenzaUrgenzaAlta(&T);
+            mostraUrgenza(T);
+            break;
+
+        case 4:
+            srand(1);
+            datasetSenzaUrgenzaAltaMedia(&T);
+            mostraUrgenza(T);
+            break;
+
+        case 5:
+            srand(1);
+            datasetUrgenzaFoglia(&T);
+            mostraUrgenza(T);
+            break;
+        default:
+            printf("--- Scelta non valida ---");
     }
-
-    srand(1);
-
-    caricaDataset(&T);
-
-    mostraUrgenza(T);
 }
 
 static void testFiltra(){
@@ -174,7 +198,7 @@ static void testFiltra(){
 
     srand(1);
 
-    caricaDataset(&T);
+    caricaDatasetMisto(&T);
 
     filtraSegnalazioni(T);
 }
@@ -202,12 +226,12 @@ static void testReport(){
         return;
     }
 
-    caricaDataset(&T);
+    caricaDatasetMisto(&T);
 
     generaReport(T);
 }
 
-static void caricaDataset(BST* T){
+static void caricaDatasetMisto(BST* T){
 
     segnalazione s1 = creaSegnalazione(
         "Mario Rossi",
@@ -238,4 +262,52 @@ static void caricaDataset(BST* T){
     );
 
     *T = insert(*T, s3);
+}
+
+static void datasetStessaUrgenzaAlta(BST* T){
+
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",1,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Luci","Lampione",1,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+}
+
+static void datasetSenzaUrgenzaAlta(BST* T){
+
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",2,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Luci","Lampione",2,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+}
+
+static void datasetSenzaUrgenzaAltaMedia(BST* T){
+    
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",3,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Luci","Lampione",3,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+}
+
+static void datasetUrgenzaFoglia(BST* T){
+
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",3,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Luci","Lampione",2,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
 }

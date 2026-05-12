@@ -1,82 +1,19 @@
 
-ID generato Automaticamente: HOYNU2JI
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 11/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
-ID generato Automaticamente: I4U5H2H8
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 11/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
-ID generato Automaticamente: CE0RST4H
------------------------------
-Inserire Nome del Segnalatore:
------------------------------
-Inserire Categoria della segnalazione:
------------------------------
-Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 11/05/2026
------------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
------------------------------
-Inserisci stato:
-1. Aperta
-2. In lavorazione
-3. Chiusa
-Scelta:
------------------------------
-
-=== Segnalazione Inserita! ===
-
 Segnalazioni con urgenza Massima (1):
 
 Codice Identificativo: CE0RST4H
 -----------------------------
-Nome Segnalatore: Luca Verdi
+Nome Segnalatore: Luca
 -----------------------------
 Categoria della segnalazione: Rifiuti
 -----------------------------
-Descrizione: Cassonetto pieno
+Descrizione: Cassonetto
 -----------------------------
-Data di inserimento: 11/05/2026
+Data di inserimento: 12/05/2026
 -----------------------------
 Livello di Urgenza: 1 (1= elevato, 2= intermedio, 3= lieve)
 -----------------------------
-Stato della segnalazione: chiusa
+Stato della segnalazione: aperta
 -----------------------------
 
 ===STAMPA COMPLETATA===
