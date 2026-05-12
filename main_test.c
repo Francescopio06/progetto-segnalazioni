@@ -5,18 +5,25 @@
 #include "Modulo_Gestione/gestione.h"
 #include "Modulo_Segnalazione/segnalazione.h"
 
+//Funzioni Test
 static void testInserimento();
 static void testRicerca();
 static void testAggiornamento();
 static void testUrgenza();
 static void testFiltra();
 static void testReport();
-//Dataset Pre-impostati per Test Priorità
+
+//Funzione Helper
 static void caricaDatasetMisto(BST* T);
+
+//Dataset Pre-impostati per Test Priorità
 static void datasetStessaUrgenzaAlta(BST* T);
 static void datasetSenzaUrgenzaAlta(BST* T);
 static void datasetSenzaUrgenzaAltaMedia(BST* T);
 static void datasetUrgenzaFoglia(BST* T);
+
+//Dataset Pre-impostati per Test Filtri
+static void datasetTutteAperte(BST* T);
 
 int main(){
 
@@ -46,6 +53,7 @@ int main(){
             case 5: 
                 testFiltra();
                 break;
+
             case 6:
                 testReport();
                 break;
@@ -189,18 +197,45 @@ static void testFiltra(){
     int tipoTest;
 
     scanf("%d", &tipoTest);
-    getchar();
 
-    if(tipoTest == 1){
-        filtraSegnalazioni(T);
-        return;
+    switch(tipoTest){
+        case 1:
+            filtraSegnalazioni(T);
+            break;
+        
+        case 2: 
+            srand(1);
+            datasetTutteAperte(&T);
+            filtraSegnalazioni(T);
+            break;
+
+        case 3:
+            srand(1);
+            datasetTutteAperte(&T);
+            filtraSegnalazioni(T);
+            break;
+
+        case 4:
+            srand(1);
+            caricaDatasetMisto(&T);
+            filtraSegnalazioni(T);
+            break;
+
+        case 5: 
+            srand(1);
+            caricaDatasetMisto(&T);
+            filtraSegnalazioni(T);
+            break;
+        
+        case 6:
+            srand(1);
+            caricaDatasetMisto(&T);
+            filtraSegnalazioni(T);
+            break;
+
+        default:
+            printf("\n--- Scelta non valida ---\n");
     }
-
-    srand(1);
-
-    caricaDatasetMisto(&T);
-
-    filtraSegnalazioni(T);
 }
 
 static void testReport(){
@@ -264,6 +299,8 @@ static void caricaDatasetMisto(BST* T){
     *T = insert(*T, s3);
 }
 
+
+//Dataset Pre-impostati per Test Priorità
 static void datasetStessaUrgenzaAlta(BST* T){
 
     *T = insert(*T,
@@ -307,6 +344,20 @@ static void datasetUrgenzaFoglia(BST* T){
 
     *T = insert(*T,
         creaSegnalazione("Giulia","Luci","Lampione",2,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
+}
+
+
+//Dataset Pre-impostati per Test Filtri
+static void datasetTutteAperte(BST* T){
+    
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",1,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Luci","Lampione",1,1));
 
     *T = insert(*T,
         creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));

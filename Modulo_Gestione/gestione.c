@@ -164,7 +164,7 @@ void filtraSegnalazioni(BST Albero){
         printf("\n=== Segnalazioni Aperte! ===\n");
         stampaPerStatus(Albero, "aperta", &trovato);
         if(trovato == 0){
-            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+            printf("\n=== Nessuna Segnalazione presente per lo stato richiesto ===\n");
         }
         break;
     case 2: 
@@ -173,7 +173,7 @@ void filtraSegnalazioni(BST Albero){
         printf("\nSegnalazioni In Lavorazione\n");
         stampaPerStatus(Albero, "in lavorazione", &trovato);
         if(trovato == 0){
-            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+            printf("\n=== Nessuna Segnalazione presente per lo stato richiesto ===\n");
         }
         break;
     case 3:
@@ -182,7 +182,7 @@ void filtraSegnalazioni(BST Albero){
         printf("\nSegnalazioni Chiuse\n");
         stampaPerStatus(Albero, "chiusa", &trovato);
         if(trovato == 0){
-            printf("\n=== Nessuna Segnalazione presente per lo satto richiesto ===\n");
+            printf("\n=== Nessuna Segnalazione presente per lo stato richiesto ===\n");
         }
         break;
     case 4: 
