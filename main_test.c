@@ -10,6 +10,8 @@ static void testRicerca();
 static void testAggiornamento();
 static void testUrgenza();
 static void testFiltra();
+static void testReport();
+static void caricaDataset(BST* T);
 
 int main(){
 
@@ -39,6 +41,9 @@ int main(){
             case 5: 
                 testFiltra();
                 break;
+            case 6:
+                testReport();
+                break;
 
             default:
                 printf("Scelta non valida\n");
@@ -59,21 +64,12 @@ static void testRicerca(){
 
     BST T = newBST();
 
-
-    // Dataset di test
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
-
+    caricaDataset(&T);
 
     int scelta;
 
-    printf("1. Ricerca per ID\n");
-    printf("2. Ricerca per Categoria\n");
-
-    printf("Scelta:\n");
-
     scanf("%d", &scelta);
+
     getchar();
 
 
@@ -81,15 +77,11 @@ static void testRicerca(){
 
         char idRicerca[20];
 
-        printf("\nInserire ID da cercare:\n");
-
         fgets(idRicerca, 20, stdin);
 
         idRicerca[strcspn(idRicerca, "\n")] = '\0';
 
-
         segnalazione risultato = ricercaPerId(T, idRicerca);
-
 
         if(risultato != NULL){
 
@@ -99,22 +91,20 @@ static void testRicerca(){
 
             printf("\n=== Segnalazione non trovata ===\n");
         }
-
     }
+
     else if(scelta == 2){
 
         char categoria[50];
-
-        printf("\nInserire categoria da cercare:\n");
 
         fgets(categoria, 50, stdin);
 
         categoria[strcspn(categoria, "\n")] = '\0';
 
 
-        // uso la funzione di ricerca categoria
         if(ricercaPerCategoria(T, categoria) == 0){
-        printf("\n=== NESSUNA SEGNALAZIONE TROVATA ===\n");
+
+            printf("\n=== Nessuna segnalazione trovata ===\n");
         }
     }
 }
@@ -125,9 +115,7 @@ static void testAggiornamento(){
 
     BST T = newBST();
 
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
+    caricaDataset(&T);
 
     int tipoTest;
 
@@ -156,7 +144,6 @@ static void testUrgenza(){
     scanf("%d", &tipoTest);
     getchar();
 
-    // Caso struttura vuota
     if(tipoTest == 1){
 
         mostraUrgenza(T);
@@ -166,9 +153,7 @@ static void testUrgenza(){
 
     srand(1);
 
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
+    caricaDataset(&T);
 
     mostraUrgenza(T);
 }
@@ -189,9 +174,68 @@ static void testFiltra(){
 
     srand(1);
 
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
-    inserisciSegnalazione(&T);
+    caricaDataset(&T);
 
     filtraSegnalazioni(T);
+}
+
+static void testReport(){
+
+    BST T = newBST();
+
+    int tipoTest;
+
+    scanf("%d", &tipoTest);
+    getchar();
+
+    if(tipoTest == 1){
+        generaReport(T);
+        return;
+    }
+
+    srand(1);
+
+    if(tipoTest == 2){
+        segnalazione s1 = creaSegnalazione("Mario Rossi", "Strade", "Buca davanti scuola", 1, 1); 
+        T = insert(T, s1);
+        generaReport(T);
+        return;
+    }
+
+    caricaDataset(&T);
+
+    generaReport(T);
+}
+
+static void caricaDataset(BST* T){
+
+    segnalazione s1 = creaSegnalazione(
+        "Mario Rossi",
+        "Strade",
+        "Buca davanti scuola",
+        1,
+        1
+    );
+
+    *T = insert(*T, s1);
+
+    segnalazione s2 = creaSegnalazione(
+        "Giulia Bianchi",
+        "Illuminazione",
+        "Lampione guasto",
+        2,
+        2
+    );
+
+    *T = insert(*T, s2);
+
+    segnalazione s3 = creaSegnalazione(
+        "Luca Verdi",
+        "Rifiuti",
+        "Cassonetto pieno",
+        3,
+        3
+    );
+
+    *T = insert(*T, s3);
 }

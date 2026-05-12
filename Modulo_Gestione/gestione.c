@@ -10,15 +10,24 @@ typedef struct {
     int count;
 } ContaCategoria;
 
-static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie);
+static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, int* inLavorazione, ContaCategoria stats[], int* nCategorie);
 static void controlloID(BST Albero, char* ID);
+static segnalazione acquisisciSegnalazione();
 
 //funzioni principali
-void inserisciSegnalazione(BST* Albero){
+void inserisciSegnalazione(BST* T){
 
-    segnalazione s = creaSegnalazione();
-    controlloID(*Albero, getID(s));
-    *Albero = insert(*Albero, s);
+    segnalazione s = acquisisciSegnalazione();
+
+    if(s == NULL){
+        return;
+    }
+
+    controlloID(*T, getID(s));
+
+    *T = insert(*T, s);
+
+    printf("\n=== Segnalazione Inserita! ===\n");
 }
 
 void visualizzaSegnalazione(BST Albero){
@@ -263,24 +272,28 @@ void eliminaSegnalazione(BST Albero){
 void generaReport(BST Albero){
 
     if(Albero == NULL){
-        printf("Nessuna segnalazione presente\n");
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
         return;
     }
 
     int tot = 0;
     int aperte = 0;
     int chiuse = 0;
+    int inLavorazione = 0;
 
     ContaCategoria stats[100];
     int nCategorie = 0;
 
-    visitaReport(Albero, &tot, &aperte, &chiuse, stats, &nCategorie);
+    visitaReport(Albero, &tot, &aperte, &chiuse, &inLavorazione, stats, &nCategorie);
 
     // stampa base
     printf("\n--- REPORT ---\n");
     printf("Totale segnalazioni: %d\n", tot);
     printf("Aperte: %d\n", aperte);
     printf("Chiuse: %d\n", chiuse);
+    printf("In lavorazione: %d\n", inLavorazione);
 
     // per categoria
     printf("\nSegnalazioni per categoria:\n");
@@ -307,11 +320,11 @@ void generaReport(BST Albero){
 }
 
 //funzione helper per il Report
-static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCategoria stats[], int* nCategorie){
+static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inLavorazione, ContaCategoria stats[], int* nCategorie){
 
     if(Albero == NULL) return;
 
-    visitaReport(figlioSX(Albero), tot, aperte, chiuse, stats, nCategorie);
+    visitaReport(figlioSX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 
     segnalazione s = getSegnalazione(Albero);
 
@@ -322,6 +335,8 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCa
         (*aperte)++;
     else if(strcmp(getStatus(s), "chiusa") == 0)
         (*chiuse)++;
+    else if(strcmp(getStatus(s), "in lavorazione") == 0)
+        (*inLavorazione)++;
 
     // categoria
     char* cat = getCategoria(s);
@@ -341,7 +356,7 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, ContaCa
         (*nCategorie)++;
     }
 
-    visitaReport(figlioDX(Albero), tot, aperte, chiuse, stats, nCategorie);
+    visitaReport(figlioDX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 }
 
 static void controlloID(BST Albero, char* ID){
@@ -351,5 +366,85 @@ static void controlloID(BST Albero, char* ID){
         generaID(ID);
 
     }
+}
 
+static segnalazione acquisisciSegnalazione(){
+
+    char nome[50];
+    char categoria[50];
+    char descrizione[100];
+    int urgenza;
+    int stato;
+
+    do{
+        printf("Inserire Nome del Segnalatore:\n");
+
+        fgets(nome, 50, stdin);
+
+        nome[strcspn(nome, "\n")] = '\0';
+
+    }while(strlen(nome) == 0);
+    
+    printf("-----------------------------\n");
+
+    do{
+        printf("Inserire Categoria della segnalazione:\n");
+
+        fgets(categoria, 50, stdin);
+
+        categoria[strcspn(categoria, "\n")] = '\0';
+
+    }while(strlen(categoria) == 0);
+
+    printf("-----------------------------\n");
+
+    do{
+        printf("Inserire informazioni aggiuntive della segnalazione:\n");
+
+        fgets(descrizione, 100, stdin);
+
+        descrizione[strcspn(descrizione, "\n")] = '\0';
+
+    }while(strlen(descrizione) == 0);
+
+    printf("-----------------------------\n");
+
+    do{
+        printf("Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):\n");
+
+        scanf("%d", &urgenza);
+
+        getchar();
+
+    }while(urgenza < 1 || urgenza > 3);
+
+    printf("-----------------------------\n");
+
+    do{
+
+        printf("Inserisci stato:\n");
+
+        printf("1. Aperta\n");
+
+        printf("2. In lavorazione\n");
+
+        printf("3. Chiusa\n");
+
+        printf("Scelta:\n");
+
+        scanf("%d", &stato);
+
+        getchar();
+
+    }while(stato < 1 || stato > 3);
+
+    printf("-----------------------------\n");
+
+    return creaSegnalazione(
+        nome,
+        categoria,
+        descrizione,
+        urgenza,
+        stato
+    );
 }

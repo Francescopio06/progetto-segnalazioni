@@ -62,88 +62,52 @@ automaticamente tramite funzioni helper.
 In caso di fallimento dell'allocazione dinamica,
 la funzione restituisce NULL.
 */
-segnalazione creaSegnalazione(){
-    segnalazione s;
+segnalazione creaSegnalazione(char* nome, char* categoria, char* descrizione, int urgenza, int stato){
 
-    s = malloc(sizeof(Segnalazione));
-    if(s == NULL) return NULL;
+    segnalazione s = malloc(sizeof(Segnalazione));
+
+    if(s == NULL){
+        return NULL;
+    }
 
     generaID(s->id);
-    printf("\nID generato Automaticamente: %s\n", s->id);
-    printf("-----------------------------\n");
 
     s->chiave = incrementaChiave();
 
-    do{
-    printf("Inserire Nome del Segnalatore:\n");
-    fgets(s->nome, 50, stdin);
-    s->nome[strcspn(s->nome, "\n")] = '\0';
-    }while(strlen(s->nome) == 0);
-
-    printf("-----------------------------\n");
-    
-    do{
-    printf("Inserire Categoria della segnalazione:\n");
-    fgets(s->categoria, 50, stdin);
-    s->categoria[strcspn(s->categoria, "\n")] = '\0';
-    }while(strlen(s->categoria) == 0);
-
-    printf("-----------------------------\n");
-
-    do{
-    printf("Inserire informazioni aggiuntive della segnalazione:\n");
-    fgets(s->descrizione, 100, stdin);
-    s->descrizione[strcspn(s->descrizione, "\n")] = '\0';
-    }while(strlen(s->descrizione) == 0);
-
-    printf("-----------------------------\n");
-
     s->data = generaData();
-    stampaData(s->data);
-    printf("-----------------------------\n");
 
-    do{
-    printf("Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):\n");
-    scanf("%d", &s->urgenza);
-    getchar();
-    }while(s->urgenza < 1 || s->urgenza > 3);
-    
-    printf("-----------------------------\n");
+    strcpy(s->nome, nome);
 
-    int choice = 0;
-    do{
-    printf("Inserisci stato:");
-    printf("\n1. Aperta");
-    printf("\n2. In lavorazione");
-    printf("\n3. Chiusa");
-    printf("\nScelta:\n");
-    
-    scanf("%d", &choice);
-    getchar();
+    strcpy(s->categoria, categoria);
 
-   } while(choice < 1 || choice > 3);
-    
-    switch(choice){
-    case 1:
-        strcpy(s->status, "aperta");
-        break;
-    case 2:
-        strcpy(s->status, "in lavorazione");
-        break;
-    case 3:
-        strcpy(s->status, "chiusa");
-        break;
-    default:
-        printf("\nScelta non valida");
+    strcpy(s->descrizione, descrizione);
+
+    s->urgenza = urgenza;
+
+    switch(stato){
+
+        case 1:
+            strcpy(s->status, "aperta");
+            break;
+
+        case 2:
+            strcpy(s->status, "in lavorazione");
+            break;
+
+        case 3:
+            strcpy(s->status, "chiusa");
+            break;
+
+        default:
+            strcpy(s->status, "aperta");
     }
-    printf("-----------------------------\n");
-
-    printf("\n=== Segnalazione Inserita! ===\n");
 
     return s;
 }
 
 void stampaSegnalazione(segnalazione s){
+    
+    /* Caso in cui la segnalazione sia vuota */
     if(s == NULL){
         printf("\nSegnalazione non valida\n");
         return;

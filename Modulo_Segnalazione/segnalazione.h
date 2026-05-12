@@ -29,7 +29,7 @@ Funzione creaSegnalazione()
     Return:
         - Puntatore alla segnalazione creata
 */
-segnalazione creaSegnalazione();
+segnalazione creaSegnalazione(char* nome, char* categoria, char* descrizione, int urgenza, int stato);
 
 /*
 Funzione stampaSegnalazione(segnalazione s)
