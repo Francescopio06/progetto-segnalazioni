@@ -1,0 +1,11 @@
+
+--- REPORT ---
+Totale segnalazioni: 1
+Aperte: 1
+Chiuse: 0
+In lavorazione: 0
+
+Segnalazioni per categoria:
+Strade: 1
+
+Categoria più frequente: Strade (1)

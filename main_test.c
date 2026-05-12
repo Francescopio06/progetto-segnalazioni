@@ -25,6 +25,9 @@ static void datasetUrgenzaFoglia(BST* T);
 //Dataset Pre-impostati per Test Filtri
 static void datasetTutteAperte(BST* T);
 
+//Dataset Pre-impostati per Test Report
+static void datasetCategorieUguali(BST* T);
+
 int main(){
 
     int scelta;
@@ -33,7 +36,7 @@ int main(){
     getchar();
 
         switch(scelta){
-
+            
             case 1:
                 testInserimento();
                 return 0;
@@ -85,7 +88,7 @@ static void testRicerca(){
 
     getchar();
 
-
+    //Test ricerca per id
     if(scelta == 1){
 
         char idRicerca[20];
@@ -106,6 +109,7 @@ static void testRicerca(){
         }
     }
 
+    //Test ricerca per Categoria
     else if(scelta == 2){
 
         char categoria[50];
@@ -135,7 +139,7 @@ static void testAggiornamento(){
     scanf("%d", &tipoTest);
     getchar();
 
-
+    //Test transizione completa di stato
     if(tipoTest == 1){
 
         aggiornaStato(T);
@@ -158,33 +162,39 @@ static void testUrgenza(){
     getchar();
 
     switch(tipoTest){
+
+         //caso limite struttura vuota
         case 1: 
             mostraUrgenza(T);
             break;
-
+         //caso limite stessa urgenza (massima)
         case 2: 
             srand(1);
             datasetStessaUrgenzaAlta(&T);
             mostraUrgenza(T);
             break;
 
+         //caso limite nessuna urgenza massima
         case 3:
             srand(1);
             datasetSenzaUrgenzaAlta(&T);
             mostraUrgenza(T);
             break;
 
+         //caso limite solo urgenza minima 
         case 4:
             srand(1);
             datasetSenzaUrgenzaAltaMedia(&T);
             mostraUrgenza(T);
             break;
 
+         //caso limite urgenza richiesta nel nodo foglia
         case 5:
             srand(1);
             datasetUrgenzaFoglia(&T);
             mostraUrgenza(T);
             break;
+
         default:
             printf("--- Scelta non valida ---");
     }
@@ -199,34 +209,41 @@ static void testFiltra(){
     scanf("%d", &tipoTest);
 
     switch(tipoTest){
+
+         //caso limite struttura vuota
         case 1:
             filtraSegnalazioni(T);
             break;
         
+         //caso limite segnalazioni tutte aperte
         case 2: 
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
             break;
 
+         //caso limite stato richiesto (in lavorazione) assente 
         case 3:
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
             break;
 
+         //caso limite stato nella radice
         case 4:
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
             break;
 
+         //caso limite stato nel nodo foglia
         case 5: 
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
             break;
         
+         //caso limite elenco completo
         case 6:
             srand(1);
             caricaDatasetMisto(&T);
@@ -247,23 +264,46 @@ static void testReport(){
     scanf("%d", &tipoTest);
     getchar();
 
-    if(tipoTest == 1){
-        generaReport(T);
-        return;
+    switch(tipoTest){
+
+         //Test struttura vuota
+        case 1:
+            generaReport(T);
+            break;
+
+         //Test struttura con un'unica segnalazione
+        case 2:
+            srand(1);
+            segnalazione s1 = creaSegnalazione("Mario Rossi", "Strade", "Buca davanti scuola", 1, 1); 
+            T = insert(T, s1);
+            generaReport(T);
+            break;
+        
+         //Test tutte stesse categorie
+        case 3:
+            srand(1);
+            datasetCategorieUguali(&T);
+            generaReport(T);
+            break;
+
+         //Test categoria diverse
+        case 4:
+            srand(1);
+            caricaDatasetMisto(&T);
+            generaReport(T);
+            break;
+
+         //Test categoria in pareggio
+        case 5:
+            srand(1);
+            caricaDatasetMisto(&T);
+            generaReport(T);
+            break;
+
+        default:
+            printf("\n--- Scelta non valida ---\n");
+            break;
     }
-
-    srand(1);
-
-    if(tipoTest == 2){
-        segnalazione s1 = creaSegnalazione("Mario Rossi", "Strade", "Buca davanti scuola", 1, 1); 
-        T = insert(T, s1);
-        generaReport(T);
-        return;
-    }
-
-    caricaDatasetMisto(&T);
-
-    generaReport(T);
 }
 
 static void caricaDatasetMisto(BST* T){
@@ -361,4 +401,17 @@ static void datasetTutteAperte(BST* T){
 
     *T = insert(*T,
         creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
+}
+
+//Dataset Pre-impostati per Test Report
+static void datasetCategorieUguali(BST* T){
+     
+    *T = insert(*T,
+        creaSegnalazione("Mario","Strade","Buca",1,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Giulia","Strade","Lampione",1,1));
+
+    *T = insert(*T,
+        creaSegnalazione("Luca","Strade","Cassonetto",1,1));
 }

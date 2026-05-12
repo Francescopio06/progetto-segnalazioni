@@ -1,0 +1,13 @@
+
+--- REPORT ---
+Totale segnalazioni: 3
+Aperte: 1
+Chiuse: 1
+In lavorazione: 1
+
+Segnalazioni per categoria:
+Strade: 1
+Illuminazione: 1
+Rifiuti: 1
+
+Categoria più frequente: Strade (1)
