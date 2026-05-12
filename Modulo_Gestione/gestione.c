@@ -4,13 +4,6 @@
 #include "BST.h"
 #include "segnalazione.h"
 
-//struttura Helper
-typedef struct {
-    char categoria[50];
-    int count;
-} ContaCategoria;
-
-static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse, int* inLavorazione, ContaCategoria stats[], int* nCategorie);
 static void controlloID(BST Albero, char* ID);
 static segnalazione acquisisciSegnalazione();
 
@@ -269,96 +262,11 @@ void eliminaSegnalazione(BST Albero){
     printf("Cancellazione Riuscita!\n");
 }
 
-void generaReport(BST Albero){
-
-    if(Albero == NULL){
-        printf("\n---------------------------------\n");
-        printf("=== Nessuna Segnalazione presente! ===\n");
-        printf("---------------------------------\n");
-        return;
-    }
-
-    int tot = 0;
-    int aperte = 0;
-    int chiuse = 0;
-    int inLavorazione = 0;
-
-    ContaCategoria stats[100];
-    int nCategorie = 0;
-
-    visitaReport(Albero, &tot, &aperte, &chiuse, &inLavorazione, stats, &nCategorie);
-
-    // stampa base
-    printf("\n--- REPORT ---\n");
-    printf("Totale segnalazioni: %d\n", tot);
-    printf("Aperte: %d\n", aperte);
-    printf("Chiuse: %d\n", chiuse);
-    printf("In lavorazione: %d\n", inLavorazione);
-
-    // per categoria
-    printf("\nSegnalazioni per categoria:\n");
-    for(int i = 0; i < nCategorie; i++){
-        printf("%s: %d\n", stats[i].categoria, stats[i].count);
-    }
-
-    // categoria più frequente
-    int max = 0;
-    int indice = -1;
-
-    for(int i = 0; i < nCategorie; i++){
-        if(stats[i].count > max){
-            max = stats[i].count;
-            indice = i;
-        }
-    }
-
-    if(indice != -1){
-        printf("\nCategoria più frequente: %s (%d)\n",
-               stats[indice].categoria,
-               stats[indice].count);
-    }
+void chiamaReport(BST Albero){
+    generaReport(Albero);
 }
 
 //funzione helper per il Report
-static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inLavorazione, ContaCategoria stats[], int* nCategorie){
-
-    if(Albero == NULL) return;
-
-    visitaReport(figlioSX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
-
-    segnalazione s = getSegnalazione(Albero);
-
-    (*tot)++;
-
-    // stato
-    if(strcmp(getStatus(s), "aperta") == 0)
-        (*aperte)++;
-    else if(strcmp(getStatus(s), "chiusa") == 0)
-        (*chiuse)++;
-    else if(strcmp(getStatus(s), "in lavorazione") == 0)
-        (*inLavorazione)++;
-
-    // categoria
-    char* cat = getCategoria(s);
-    int trovato = 0;
-
-    for(int i = 0; i < *nCategorie; i++){
-        if(strcmp(stats[i].categoria, cat) == 0){
-            stats[i].count++;
-            trovato = 1;
-            break;
-        }
-    }
-
-    if(!trovato){
-        strcpy(stats[*nCategorie].categoria, cat);
-        stats[*nCategorie].count = 1;
-        (*nCategorie)++;
-    }
-
-    visitaReport(figlioDX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
-}
-
 static void controlloID(BST Albero, char* ID){
 
     while(ricercaPerId(Albero, ID) != NULL){

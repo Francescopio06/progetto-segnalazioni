@@ -292,14 +292,7 @@ static void testReport(){
             caricaDatasetMisto(&T);
             generaReport(T);
             break;
-
-         //Test categoria in pareggio
-        case 5:
-            srand(1);
-            caricaDatasetMisto(&T);
-            generaReport(T);
-            break;
-
+            
         default:
             printf("\n--- Scelta non valida ---\n");
             break;

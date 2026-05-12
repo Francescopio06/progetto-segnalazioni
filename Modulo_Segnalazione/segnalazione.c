@@ -52,9 +52,6 @@ static time_t generaData();
 NOTE IMPLEMENTATIVE:
 La funzione crea dinamicamente una nuova segnalazione
 e inizializza tutti i suoi campi.
- 
-I dati testuali vengono acquisiti da tastiera con
-controlli per evitare stringhe vuote.
 
 I campi ID, chiave e data vengono invece generati
 automaticamente tramite funzioni helper.

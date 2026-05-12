@@ -16,6 +16,6 @@ void mostraUrgenza(BST Albero);
 
 void eliminaSegnalazione(BST Albero);
 
-void generaReport(BST Albero);
+void chiamaReport(BST Albero);
 
 #endif

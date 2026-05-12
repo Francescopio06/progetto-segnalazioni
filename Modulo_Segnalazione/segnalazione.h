@@ -24,7 +24,11 @@ Funzione creaSegnalazione()
     La funzione ha lo scopo di compilare i singoli campi della struttura segnalazione.
 
     Parametri: 
-        - Nessuno
+        - nome -> puntatore ad un array di caratteri
+        - categoria -> puntatore ad un array di caratteri
+        - descrizione -> puntatore ad un array di caratteri
+        - urgenza -> intero che indica il livello di priorità
+        - stato -> intero che indica lo stato da assegnare
     
     Return:
         - Puntatore alla segnalazione creata
