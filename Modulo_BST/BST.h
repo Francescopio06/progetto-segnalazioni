@@ -2,6 +2,23 @@
 #define BST_H
 #include "segnalazione.h"
 
+/*
+FILE: BST.h
+AUTORE: Francesco Pio Siano
+
+Questo header definisce l'interfaccia pubblica
+del modulo 'BST'.
+
+Il modulo espone:
+- il tipo astratto BST
+- funzioni di creazione, stampa e modifica
+- funzioni di accesso e modifica (getter/setter)
+
+L'implementazione interna della struttura
+è nascosta secondo il principio di
+information hiding.
+*/
+
 //ADT BST come puntatore alla struttura nodo
 typedef struct nodo *BST;
 

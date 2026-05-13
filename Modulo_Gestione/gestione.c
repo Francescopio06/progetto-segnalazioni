@@ -348,11 +348,17 @@ static segnalazione acquisisciSegnalazione(){
 
     printf("-----------------------------\n");
 
-    return creaSegnalazione(
+    segnalazione s = creaSegnalazione(
         nome,
         categoria,
         descrizione,
         urgenza,
         stato
     );
+
+    printf("Codice identificativo: %s", getID(s));
+    printf("\nNumero Segnalazione: 0%d\n", getChiave(s) +1);
+    stampaData(getData(s));
+
+    return s;
 }

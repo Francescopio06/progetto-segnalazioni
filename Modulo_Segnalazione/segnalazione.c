@@ -6,11 +6,12 @@
 
 /*
 FILE: segnalazione.c
+AUTORE: Francesco Pio Siano
 
 Questo modulo si occupa della gestione della struttura astratta
 segnalazione e di tutte le operazioni legate ad essa.
 
-Il file si occupa nello specifica della creazione e della stampa
+Il file si occupa nello specifico della creazione e della stampa
 della segnalazione.
 
 Sono implementati funzioni helper per permettere la corretta
@@ -43,7 +44,6 @@ typedef struct Segnalazione{
 }Segnalazione;
 
 /* Prototipi di funzioni helper: */
-static void stampaData(time_t data);
 void generaID(char* id);
 static int incrementaChiave();
 static time_t generaData();
@@ -184,7 +184,8 @@ Funzione stampaData(time_t data)
     
     Nessun valore di ritorno
  */ 
-static void stampaData(time_t data){
+
+void stampaData(time_t data){
     struct tm tm = *localtime(&data);
 
     printf("Data di inserimento: %02d/%02d/%d\n", 
@@ -214,6 +215,9 @@ int getChiave(segnalazione s){
     return s->chiave;
 }
 
+time_t getData(segnalazione s){
+    return s->data;
+}
 /* Setter */
 void setStatus(segnalazione s, char* status){
     strcpy(s->status, status);

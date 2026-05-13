@@ -5,7 +5,28 @@
 #include "Modulo_Gestione/gestione.h"
 #include "Modulo_Segnalazione/segnalazione.h"
 
-//Funzioni Test
+/*
+FILE: main_test.c
+AUTORE: Francesco Pio Siano
+
+Questo file si occupa dell'esecuzione dei test delle 
+funzioni richieste.
+
+Sono stati adottati dei dataset pre-impostati per poter
+evitare di sporcare l'output dei test con l'output di richiesta
+degli input per l'inserimento delle segnalazioni.
+
+I test eseguiti sono relativi alle funzioni utilizzate nel main
+e riguardano le operazioni di:
+- Inserimento
+- Ricerca (ID e Categoria)
+- Aggiornamento stato
+- Stampa per urgenza
+- Filtra per status
+- Generazione del report
+*/
+
+// Funzioni Test
 static void testInserimento();
 static void testRicerca();
 static void testAggiornamento();
@@ -13,19 +34,19 @@ static void testUrgenza();
 static void testFiltra();
 static void testReport();
 
-//Funzione Helper
+// Funzione Helper
 static void caricaDatasetMisto(BST* T);
 
-//Dataset Pre-impostati per Test Priorità
+// Dataset Pre-impostati per Test Priorità
 static void datasetStessaUrgenzaAlta(BST* T);
 static void datasetSenzaUrgenzaAlta(BST* T);
 static void datasetSenzaUrgenzaAltaMedia(BST* T);
 static void datasetUrgenzaFoglia(BST* T);
 
-//Dataset Pre-impostati per Test Filtri
+// Dataset Pre-impostati per Test Filtri
 static void datasetTutteAperte(BST* T);
 
-//Dataset Pre-impostati per Test Report
+// Dataset Pre-impostati per Test Report
 static void datasetCategorieUguali(BST* T);
 
 int main(){
@@ -69,6 +90,8 @@ int main(){
 }
 
 static void testInserimento(){
+    /* Utilizzo srand(1) affinchè il codice alfanumerico generato
+    sia lo stesso ad ogni nuova chiamata*/
     srand(1);
     BST T = newBST();
     inserisciSegnalazione(&T);
@@ -88,7 +111,6 @@ static void testRicerca(){
 
     getchar();
 
-    //Test ricerca per id
     if(scelta == 1){
 
         char idRicerca[20];
@@ -109,7 +131,6 @@ static void testRicerca(){
         }
     }
 
-    //Test ricerca per Categoria
     else if(scelta == 2){
 
         char categoria[50];
@@ -139,7 +160,7 @@ static void testAggiornamento(){
     scanf("%d", &tipoTest);
     getchar();
 
-    //Test transizione completa di stato
+    // Test transizione completa di stato
     if(tipoTest == 1){
 
         aggiornaStato(T);
@@ -163,32 +184,32 @@ static void testUrgenza(){
 
     switch(tipoTest){
 
-         //caso limite struttura vuota
+         // caso limite struttura vuota
         case 1: 
             mostraUrgenza(T);
             break;
-         //caso limite stessa urgenza (massima)
+         // caso limite stessa urgenza (massima)
         case 2: 
             srand(1);
             datasetStessaUrgenzaAlta(&T);
             mostraUrgenza(T);
             break;
 
-         //caso limite nessuna urgenza massima
+         // caso limite nessuna urgenza massima
         case 3:
             srand(1);
             datasetSenzaUrgenzaAlta(&T);
             mostraUrgenza(T);
             break;
 
-         //caso limite solo urgenza minima 
+         // caso limite solo urgenza minima 
         case 4:
             srand(1);
             datasetSenzaUrgenzaAltaMedia(&T);
             mostraUrgenza(T);
             break;
 
-         //caso limite urgenza richiesta nel nodo foglia
+         // caso limite urgenza richiesta nel nodo foglia
         case 5:
             srand(1);
             datasetUrgenzaFoglia(&T);
@@ -210,40 +231,40 @@ static void testFiltra(){
 
     switch(tipoTest){
 
-         //caso limite struttura vuota
+         // caso limite struttura vuota
         case 1:
             filtraSegnalazioni(T);
             break;
         
-         //caso limite segnalazioni tutte aperte
+         // caso limite segnalazioni tutte aperte
         case 2: 
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
             break;
 
-         //caso limite stato richiesto (in lavorazione) assente 
+         // caso limite stato richiesto (in lavorazione) assente 
         case 3:
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
             break;
 
-         //caso limite stato nella radice
+         // caso limite stato nella radice
         case 4:
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
             break;
 
-         //caso limite stato nel nodo foglia
+         // caso limite stato nel nodo foglia
         case 5: 
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
             break;
         
-         //caso limite elenco completo
+         // caso limite elenco completo
         case 6:
             srand(1);
             caricaDatasetMisto(&T);
@@ -266,12 +287,12 @@ static void testReport(){
 
     switch(tipoTest){
 
-         //Test struttura vuota
+         // Test struttura vuota
         case 1:
             generaReport(T);
             break;
 
-         //Test struttura con un'unica segnalazione
+         // Test struttura con un'unica segnalazione
         case 2:
             srand(1);
             segnalazione s1 = creaSegnalazione("Mario Rossi", "Strade", "Buca davanti scuola", 1, 1); 
@@ -279,14 +300,14 @@ static void testReport(){
             generaReport(T);
             break;
         
-         //Test tutte stesse categorie
+         // Test tutte stesse categorie
         case 3:
             srand(1);
             datasetCategorieUguali(&T);
             generaReport(T);
             break;
 
-         //Test categoria diverse
+         // Test categoria diverse
         case 4:
             srand(1);
             caricaDatasetMisto(&T);
@@ -299,6 +320,18 @@ static void testReport(){
     }
 }
 
+/*
+Funzione caricaDatasetMisto
+    La funzione crea tre segnalazioni predefinite 
+    con lo scopo di ricoprire più casi
+    di test possibili.
+
+    Parametri:
+        - T -> puntatore all'ADT BST
+
+    Return:
+        - Nessun valore restituito
+*/
 static void caricaDatasetMisto(BST* T){
 
     segnalazione s1 = creaSegnalazione(
@@ -333,7 +366,19 @@ static void caricaDatasetMisto(BST* T){
 }
 
 
-//Dataset Pre-impostati per Test Priorità
+// Dataset Pre-impostati per Test Priorità
+/*
+Funzione datasetStessaUrgenzaAlta(T)
+    La funzione ha lo scopo di creare due segnalazioni
+    aventi lo stesso livello di urgenza(1), tale funzione sarà
+    usata anche per altri test rendendola riutilizzabile.
+
+    Parametri:
+        - T -> puntatore all' ADT BST
+
+    Return:
+        - Nessun valore restituito
+*/
 static void datasetStessaUrgenzaAlta(BST* T){
 
     *T = insert(*T,
@@ -346,6 +391,7 @@ static void datasetStessaUrgenzaAlta(BST* T){
         creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
 }
 
+/* Caso limite stampa segnalazioni con urgenza (2) */
 static void datasetSenzaUrgenzaAlta(BST* T){
 
     *T = insert(*T,
@@ -358,6 +404,7 @@ static void datasetSenzaUrgenzaAlta(BST* T){
         creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
 }
 
+/* Caso limite stampa segnalazioni con urgenza (3) */
 static void datasetSenzaUrgenzaAltaMedia(BST* T){
     
     *T = insert(*T,
@@ -370,6 +417,19 @@ static void datasetSenzaUrgenzaAltaMedia(BST* T){
         creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
 }
 
+/*
+Funzione datasetUrgenzaFoglia
+    La funzione ha lo scopo di generare un dataset ove
+    la segnalazione da ricercare ricopra il ruolo di 
+    foglia.
+
+    Parametri:
+        - T -> puntatore all' ADT BST
+
+    Return:
+        - Nessun valore restituito
+
+*/
 static void datasetUrgenzaFoglia(BST* T){
 
     *T = insert(*T,
@@ -382,8 +442,7 @@ static void datasetUrgenzaFoglia(BST* T){
         creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
 }
 
-
-//Dataset Pre-impostati per Test Filtri
+/* Dataset che crea tre segnalazioni con lo status aperto */
 static void datasetTutteAperte(BST* T){
     
     *T = insert(*T,
@@ -396,7 +455,8 @@ static void datasetTutteAperte(BST* T){
         creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
 }
 
-//Dataset Pre-impostati per Test Report
+/* Dataset che crea tre segnalazioni con la stessa categorie 
+    per verificare il relativo caso limite*/
 static void datasetCategorieUguali(BST* T){
      
     *T = insert(*T,

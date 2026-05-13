@@ -3,6 +3,22 @@
 #include <string.h>
 #include "BST.h"
 #include "segnalazione.h"
+/*
+FILE: BST.c
+AUTORE: Francesco Pio Siano
+
+Il compito di questo modulo rirguarda la gestione 
+di tutto ciò che è relativo alla struttura dati BST.
+
+Sono presenti funzioni relative la creazione, la stampa
+e la midifica del BST.
+
+Sono state implementate funzioni helper per consentire
+una più facile gestione del codice in caso di necessarie modifiche.
+
+Sono stati adottate funzioni di getter e setter per permettere a moduli
+più alti di poter accedere ai campi della struttura BST in modo protetto.
+*/
 
 /*
 Nodo interno del BST.

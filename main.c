@@ -4,6 +4,28 @@
 #include "BST.h"
 #include "gestione.h"
 
+/*
+FILE: main.c
+AUTORE: Francesco Pio Siano
+
+Questo file rappresenta il punto di ingresso
+del programma.
+
+Il modulo si occupa della gestione dell'interazione
+con l'utente attraverso un menu testuale,
+consentendo l'accesso alle principali operazioni
+di gestione delle segnalazioni.
+
+Le operazioni disponibili includono:
+- inserimento
+- ricerca
+- aggiornamento stato
+- visualizzazione per priorità
+- cancellazione
+- filtro per stato
+- generazione report
+*/
+
 int main(){
 
     BST T = newBST();
@@ -28,6 +50,7 @@ int main(){
             while(getchar() != '\n');
             continue;
         }
+        getchar();
 
         switch(scelta){
 

@@ -1,8 +1,10 @@
 #ifndef SEGNALAZIONE_H
 #define SEGNALAZIONE_H
+#include <time.h>
 
 /*
 FILE: segnalazione.h
+AUTORE: Francesco Pio Siano
 
 Questo header definisce l'interfaccia pubblica
 del modulo 'Segnalazione'.
@@ -15,7 +17,7 @@ Il modulo espone:
 L'implementazione interna della struttura
 è nascosta secondo il principio di
 information hiding.
- */
+*/
 
 typedef struct Segnalazione* segnalazione;
 
@@ -59,6 +61,7 @@ Funzione generaID(char *id)
         - nessun parametro restituito
 */
 void generaID(char* id);
+void stampaData(time_t data);
 
 /*
 Funzioni di getter e setter necessarie per concedere l'accesso 
@@ -69,6 +72,7 @@ char* getCategoria(segnalazione s);
 char* getStatus(segnalazione s);
 int getUrgenza(segnalazione s);
 int getChiave(segnalazione s);
+time_t getData(segnalazione s);
 void setStatus(segnalazione s, char* status);
 
 #endif
