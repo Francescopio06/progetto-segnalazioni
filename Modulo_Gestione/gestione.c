@@ -4,6 +4,33 @@
 #include "BST.h"
 #include "segnalazione.h"
 
+/*
+FILE: gestione.c
+AUTORE: Francesco Pio Siano
+
+Questo modulo si occupa della gestione delle principali
+operazioni applicative sulle segnalazioni.
+
+Il file funge da livello intermedio tra l'interfaccia utente
+ed i moduli che implementano le strutture dati, coordinando
+l'acquisizione degli input, la validazione dei dati e
+l'esecuzione delle operazioni richieste.
+
+Le funzionalità implementate includono:
+- inserimento di una nuova segnalazione
+- visualizzazione delle segnalazioni presenti
+- ricerca per ID o categoria
+- aggiornamento dello stato
+- filtraggio per stato
+- visualizzazione per priorità
+- eliminazione di una segnalazione
+- generazione del report statistico
+
+Sono inoltre presenti funzioni helper utilizzate
+per separare la logica di interazione con l'utente
+dalla gestione dei dati.
+*/
+
 static void controlloID(BST Albero, char* ID);
 static segnalazione acquisisciSegnalazione();
 
@@ -27,6 +54,12 @@ void visualizzaSegnalazione(BST Albero){
     outputBST(Albero);
 }
 
+/*
+La funzione consente di ricercare una segnalazione
+tramite due criteri differenti:
+- codice identificativo
+- categoria
+*/
 void ricercaSegnalazione(BST Albero){
 
     int choice;
@@ -69,6 +102,13 @@ void ricercaSegnalazione(BST Albero){
     }
 }
 
+/*
+La funzione ricerca una segnalazione tramite ID
+e consente l'aggiornamento del suo stato.
+
+Viene impedito l'inserimento dello stesso
+stato già presente.
+*/
 void aggiornaStato(BST Albero){
 
     char IDtemp[10];
@@ -93,6 +133,7 @@ void aggiornaStato(BST Albero){
     printf("\nscelta: ");
 
     scanf("%d", &choice);
+    // pulisce il buffer dopo l'input
     getchar();
 
     switch(choice){
@@ -239,8 +280,15 @@ void mostraUrgenza(BST Albero){
 
 }
 
-void eliminaSegnalazione(BST Albero){
-    if(Albero == NULL){
+/*
+La funzione consente di eliminare una segnalazione
+tramite il suo ID.
+
+Una volta individuata, viene utilizzata la chiave
+interna per eseguire la cancellazione nel BST.
+*/
+void eliminaSegnalazione(BST* Albero){
+    if(*Albero == NULL){
         printf("Nessuna segnalazione trovata");
         return;
     }
@@ -249,15 +297,16 @@ void eliminaSegnalazione(BST Albero){
 
     printf("Inserire ID della segnalazione da eliminare: ");
     fgets(IDtemp, 9, stdin);
+    // toglie la new line dall'input
     IDtemp[strcspn(IDtemp, "\n")] = '\0';
 
-    segnalazione s = ricercaPerId(Albero, IDtemp);
+    segnalazione s = ricercaPerId(*Albero, IDtemp);
     if(s == NULL){
         printf("Segnalazione non trovata\n");
         return;
     }
 
-    Albero = CancellaSegnalazione(Albero, getChiave(s));
+    *Albero = CancellaSegnalazione(*Albero, getChiave(s));
 
     printf("Cancellazione Riuscita!\n");
 }
@@ -266,7 +315,18 @@ void chiamaReport(BST Albero){
     generaReport(Albero);
 }
 
-//funzione helper per il Report
+/*
+Funzione controlloID(Albero, ID)
+    La funzione ha lo scopo di verificare che
+    l'ID generato sia unico di quella segnalazione.
+
+    Parametri:
+        - Albero -> puntatore alla struttura dati BST
+        - ID -> puntatore ad un array di caratteri
+
+    Return:
+        - Nessun valore restituito
+*/
 static void controlloID(BST Albero, char* ID){
 
     while(ricercaPerId(Albero, ID) != NULL){
@@ -276,6 +336,20 @@ static void controlloID(BST Albero, char* ID){
     }
 }
 
+/*
+Funzione acquisisciSegnalazione
+    La funzione si occupa della parte di interfaccia utente 
+    acquisendo i parametri necessari, passandoli poi alla funzione 
+    creaSegnalazione.
+    La funzione si occupa anche della stampa di valori generati automaticamente
+    come ID, chiave e data.
+
+    Parametri: 
+        - Nessun parametro in input
+
+    Return:
+        - Restituisce la segnalazione
+*/
 static segnalazione acquisisciSegnalazione(){
 
     char nome[50];
@@ -357,7 +431,7 @@ static segnalazione acquisisciSegnalazione(){
     );
 
     printf("Codice identificativo: %s", getID(s));
-    printf("\nNumero Segnalazione: 0%d\n", getChiave(s) +1);
+    printf("\nNumero Segnalazione: 0%d\n", getChiave(s));
     stampaData(getData(s));
 
     return s;

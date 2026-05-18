@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_7_Report/caso_limite_2_unica_segnalazione/oracolo.txt tests/test_6_Report/caso_limite_2_unica_segnalazione/output.txt
+
+ESITO: === TEST SUPERATO ===

@@ -1,5 +1,3 @@
-ID generato Automaticamente: HOYNU2JI
------------------------------
 Inserire Nome del Segnalatore:
 Inserire Nome del Segnalatore:
 -----------------------------
@@ -8,8 +6,6 @@ Inserire Categoria della segnalazione:
 -----------------------------
 Inserire informazioni aggiuntive della segnalazione:
 Inserire informazioni aggiuntive della segnalazione:
------------------------------
-Data di inserimento: 06/05/2026
 -----------------------------
 Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
 -----------------------------
@@ -19,5 +15,8 @@ Inserisci stato:
 3. Chiusa
 Scelta:
 -----------------------------
+Codice identificativo: HOYNU2JI
+Numero Segnalazione: 01
+Data di inserimento: 18/05/2026
 
 === Segnalazione Inserita! ===

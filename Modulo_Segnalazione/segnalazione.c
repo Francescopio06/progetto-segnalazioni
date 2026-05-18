@@ -147,7 +147,7 @@ void generaID(char* id){
 
 static int incrementaChiave(){
     // variabile che conserva il valore 
-    static int contatore = 0;
+    static int contatore = 1;
     return contatore++;
 }
 

@@ -1,4 +1,0 @@
-COMANDO ESEGUITO:
-diff tests/test_6_Report/caso_limite_3_stesse_categorie/oracolo.txt tests/test_6_Report/caso_limite_3_stesse_categorie/output.txt
-
-ESITO: === TEST SUPERATO ===
