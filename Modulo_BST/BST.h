@@ -65,7 +65,7 @@ Funzione CancellaSegnalazione(root, chiave)
     Return:
         - puntatore alla struttura dati BST con il nodo rimosso
 */
-BST CancellaSegnalazione(BST root, int chiave);
+BST CancellaSegnalazione(BST Albero, int chiave);
 
 //operazioni di ricerca
 /*
@@ -109,10 +109,10 @@ void generaReport(BST Albero);
 //getter
 BST figlioDX(BST Albero);
 BST figlioSX(BST Albero);
-segnalazione getSegnalazione(BST T);
+segnalazione getSegnalazione(BST Albero);
 
 //setter
-void setSegnalazione(BST T, segnalazione s);
+void setSegnalazione(BST Albero, segnalazione s);
 
 
 #endif

@@ -35,7 +35,7 @@ static void controlloID(BST Albero, char* ID);
 static segnalazione acquisisciSegnalazione();
 
 //funzioni principali
-void inserisciSegnalazione(BST* T){
+void inserisciSegnalazione(BST* Albero){
 
     segnalazione s = acquisisciSegnalazione();
 
@@ -43,9 +43,9 @@ void inserisciSegnalazione(BST* T){
         return;
     }
 
-    controlloID(*T, getID(s));
+    controlloID(*Albero, getID(s));
 
-    *T = insert(*T, s);
+    *Albero = insert(*Albero, s);
 
     printf("\n=== Segnalazione Inserita! ===\n");
 }

@@ -44,7 +44,6 @@ typedef struct Segnalazione{
 }Segnalazione;
 
 /* Prototipi di funzioni helper: */
-void generaID(char* id);
 static int incrementaChiave();
 static time_t generaData();
 

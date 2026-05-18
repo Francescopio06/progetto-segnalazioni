@@ -131,36 +131,36 @@ BST insert(BST Albero, segnalazione s){
     return Albero;
 }
 
-BST CancellaSegnalazione(BST root, int chiave){
+BST CancellaSegnalazione(BST Albero, int chiave){
     
-    if(root == NULL) return NULL;
+    if(Albero == NULL) return NULL;
 
     //controlla che il nodo interessato sia la radice
-    if(minore(chiave, getChiave(root->s))){
-        root->sx = CancellaSegnalazione(root->sx, chiave);
-    } else if(minore(getChiave(root->s), chiave)){
-        root->dx = CancellaSegnalazione(root->dx, chiave);
+    if(minore(chiave, getChiave(Albero->s))){
+        Albero->sx = CancellaSegnalazione(Albero->sx, chiave);
+    } else if(minore(getChiave(Albero->s), chiave)){
+        Albero->dx = CancellaSegnalazione(Albero->dx, chiave);
     } 
 
     
     else{
         //caso con nessuno o un figlio
-        if(figlioSX(root) == NULL){
-            BST temp = root->dx;
-            free(root); 
+        if(figlioSX(Albero) == NULL){
+            BST temp = Albero->dx;
+            free(Albero); 
             return temp;
-        } else if(root->dx == NULL){
-            BST temp = root->sx;
-            free(root);
+        } else if(Albero->dx == NULL){
+            BST temp = Albero->sx;
+            free(Albero);
             return temp;
         }
         
         //caso con 2 figli
-        BST temp = minvalue(root->dx);
-        root->s = getSegnalazione(temp);
-        root->dx = CancellaSegnalazione(root->dx, getChiave(root->s));
+        BST temp = minvalue(Albero->dx);
+        Albero->s = getSegnalazione(temp);
+        Albero->dx = CancellaSegnalazione(Albero->dx, getChiave(Albero->s));
     }
-    return root;
+    return Albero;
 }
 
 //FUNZIONI DI RICERCA
@@ -339,11 +339,11 @@ BST figlioDX(BST Albero){
     return Albero->dx;
 }
 
-segnalazione getSegnalazione(BST T){
-    return T->s;
+segnalazione getSegnalazione(BST Albero){
+    return Albero->s;
 }
 
 //SETTER
-void setSegnalazione(BST T, segnalazione s){
-    T->s = s;
+void setSegnalazione(BST Albero, segnalazione s){
+    Albero->s = s;
 }

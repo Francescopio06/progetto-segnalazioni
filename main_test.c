@@ -334,15 +334,19 @@ static void testCancellazione(){
     getchar();
 
     switch(tipotest){
+        
+        //test struttura vuota
         case 1: 
             eliminaSegnalazione(&T);
             break;
         
+        //test eliminazione radice
         case 2:
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
             break;
         
+        //test eliminazione nodo foglia 
         case 3:
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
@@ -353,10 +357,6 @@ static void testCancellazione(){
             break;
 
     }
-
-
-
-
 }
 
 
