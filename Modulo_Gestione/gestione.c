@@ -289,26 +289,26 @@ interna per eseguire la cancellazione nel BST.
 */
 void eliminaSegnalazione(BST* Albero){
     if(*Albero == NULL){
-        printf("Nessuna segnalazione trovata");
+        printf("\n=== Nessuna segnalazione presente ===\n");
         return;
     }
 
     char IDtemp[9];
 
-    printf("Inserire ID della segnalazione da eliminare: ");
+    printf("\nInserire ID della segnalazione da eliminare: ");
     fgets(IDtemp, 9, stdin);
     // toglie la new line dall'input
     IDtemp[strcspn(IDtemp, "\n")] = '\0';
 
     segnalazione s = ricercaPerId(*Albero, IDtemp);
     if(s == NULL){
-        printf("Segnalazione non trovata\n");
+        printf("\nSegnalazione non trovata\n");
         return;
     }
 
     *Albero = CancellaSegnalazione(*Albero, getChiave(s));
-
-    printf("Cancellazione Riuscita!\n");
+    printf("\n---------------------------------\n");
+    printf("=== Cancellazione Riuscita! ===\n");
 }
 
 void chiamaReport(BST Albero){

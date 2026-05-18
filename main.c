@@ -79,7 +79,7 @@ int main(){
                 break;
 
             case 7:
-                eliminaSegnalazione(T);
+                eliminaSegnalazione(&T);
                 break;
 
             case 8:

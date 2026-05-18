@@ -1,0 +1,4 @@
+
+Inserire ID della segnalazione da eliminare: 
+---------------------------------
+=== Cancellazione Riuscita! ===

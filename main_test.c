@@ -33,6 +33,7 @@ static void testAggiornamento();
 static void testUrgenza();
 static void testFiltra();
 static void testReport();
+static void testCancellazione();
 
 // Funzione Helper
 static void caricaDatasetMisto(BST* T);
@@ -80,6 +81,10 @@ int main(){
 
             case 6:
                 testReport();
+                break;
+            
+            case 7:
+                testCancellazione();
                 break;
 
             default:
@@ -319,6 +324,41 @@ static void testReport(){
             break;
     }
 }
+
+static void testCancellazione(){
+    
+    BST T = newBST();
+
+    int tipotest;
+    scanf("%d", &tipotest);
+    getchar();
+
+    switch(tipotest){
+        case 1: 
+            eliminaSegnalazione(&T);
+            break;
+        
+        case 2:
+            caricaDatasetMisto(&T);
+            eliminaSegnalazione(&T);
+            break;
+        
+        case 3:
+            caricaDatasetMisto(&T);
+            eliminaSegnalazione(&T);
+            break;
+
+        default:
+            printf("\nScelta non valida\n");
+            break;
+
+    }
+
+
+
+
+}
+
 
 /*
 Funzione caricaDatasetMisto

@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/oracolo.txt tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/output.txt
+
+ESITO: === TEST SUPERATO ===

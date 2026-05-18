@@ -1,0 +1,4 @@
+COMANDO ESEGUITO:
+diff tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/oracolo.txt tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/output.txt
+
+ESITO: === TEST SUPERATO ===
