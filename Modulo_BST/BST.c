@@ -145,20 +145,26 @@ BST CancellaSegnalazione(BST Albero, int chiave){
     
     else{
         //caso con nessuno o un figlio
-        if(figlioSX(Albero) == NULL){
+        if(Albero->sx == NULL){
             BST temp = Albero->dx;
+            liberaSegnalazione(Albero->s);
             free(Albero); 
             return temp;
         } else if(Albero->dx == NULL){
             BST temp = Albero->sx;
+            liberaSegnalazione(Albero->s);
             free(Albero);
             return temp;
         }
         
         //caso con 2 figli
         BST temp = minvalue(Albero->dx);
-        Albero->s = getSegnalazione(temp);
-        Albero->dx = CancellaSegnalazione(Albero->dx, getChiave(Albero->s));
+
+        segnalazione tmp = Albero->s;
+        Albero->s = temp->s;
+        temp->s = tmp;
+
+        Albero->dx = CancellaSegnalazione(Albero->dx, getChiave(temp->s));
     }
     return Albero;
 }

@@ -29,7 +29,7 @@ Funzione creaSegnalazione()
         - nome -> puntatore ad un array di caratteri
         - categoria -> puntatore ad un array di caratteri
         - descrizione -> puntatore ad un array di caratteri
-        - urgenza -> intero che indica il livello di priorità
+        - urgenza -> intero che indica il livello di urgenza
         - stato -> intero che indica lo stato da assegnare
     
     Return:
@@ -62,7 +62,11 @@ Funzione generaID(char *id)
 */
 void generaID(char* id);
 void stampaData(time_t data);
-
+/*
+La funzione liberaSegnalazione incapsula la procedura di deallocazione
+della memoria
+*/
+void liberaSegnalazione(segnalazione s);
 /*
 Funzioni di getter e setter necessarie per concedere l'accesso 
 alla struttura dati in altri moduli che non ne hanno accesso

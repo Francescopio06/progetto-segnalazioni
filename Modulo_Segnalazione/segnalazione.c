@@ -14,7 +14,7 @@ segnalazione e di tutte le operazioni legate ad essa.
 Il file si occupa nello specifico della creazione e della stampa
 della segnalazione.
 
-Sono implementati funzioni helper per permettere la corretta
+Sono implementate funzioni helper per permettere la corretta
 suddivisioni delle operazioni per una migliore manutenibilità.
 
 Sono state implementate funzioni di getter e setter
@@ -193,6 +193,23 @@ void stampaData(time_t data){
         tm.tm_year + 1900);
 }
 
+/*
+Funzione liberaSegnalazione(s)
+    La funzione libera la memoria allocata
+    dinamicamente per una segnalazione.
+
+    Parametri:
+        - s -> puntatore alla struttura segnalazione
+
+    Return:
+        - Nessun valore restituito
+*/
+
+void liberaSegnalazione(segnalazione s){
+    if(s != NULL) free(s);
+}
+
+
 /* Getter */
 char* getID(segnalazione s){
     return s->id;
@@ -217,6 +234,7 @@ int getChiave(segnalazione s){
 time_t getData(segnalazione s){
     return s->data;
 }
+
 /* Setter */
 void setStatus(segnalazione s, char* status){
     strcpy(s->status, status);
