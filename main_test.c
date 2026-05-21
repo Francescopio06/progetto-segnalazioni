@@ -23,6 +23,7 @@ e riguardano le operazioni di:
 - Aggiornamento stato
 - Stampa per urgenza
 - Filtra per status
+- Cancellazione della segnalazione
 - Generazione del report
 */
 
@@ -342,12 +343,14 @@ static void testCancellazione(){
         
         //test eliminazione radice
         case 2:
+            srand(1);
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
             break;
         
         //test eliminazione nodo foglia 
         case 3:
+            srand(1);
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
             break;

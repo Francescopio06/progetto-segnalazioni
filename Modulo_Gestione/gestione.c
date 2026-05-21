@@ -311,10 +311,6 @@ void eliminaSegnalazione(BST* Albero){
     printf("=== Cancellazione Riuscita! ===\n");
 }
 
-void chiamaReport(BST Albero){
-    generaReport(Albero);
-}
-
 /*
 Funzione controlloID(Albero, ID)
     La funzione ha lo scopo di verificare che

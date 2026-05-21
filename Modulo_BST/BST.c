@@ -7,16 +7,16 @@
 FILE: BST.c
 AUTORE: Francesco Pio Siano
 
-Il compito di questo modulo rirguarda la gestione 
+Il compito di questo modulo riguarda la gestione 
 di tutto ciò che è relativo alla struttura dati BST.
 
 Sono presenti funzioni relative la creazione, la stampa
-e la midifica del BST.
+e la modifica del BST.
 
 Sono state implementate funzioni helper per consentire
 una più facile gestione del codice in caso di necessarie modifiche.
 
-Sono stati adottate funzioni di getter e setter per permettere a moduli
+Sono state adottate funzioni di getter e setter per permettere a moduli
 più alti di poter accedere ai campi della struttura BST in modo protetto.
 */
 
@@ -84,6 +84,7 @@ Scorre il sottoalbero sinistro fino a raggiungere
 il nodo con chiave minima.
 */
 static BST minvalue(BST Albero){
+    if(Albero == NULL) return NULL;
     BST current = Albero;
 
     while(current->sx != NULL){
@@ -301,9 +302,9 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inL
 
     if(Albero == NULL) return;
 
-    visitaReport(figlioSX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
+    visitaReport(Albero->sx, tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 
-    segnalazione s = getSegnalazione(Albero);
+    segnalazione s = Albero->s;
 
     (*tot)++;
 
@@ -333,7 +334,7 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inL
         (*nCategorie)++;
     }
 
-    visitaReport(figlioDX(Albero), tot, aperte, chiuse, inLavorazione, stats, nCategorie);
+    visitaReport(Albero->dx, tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 }
 
 //GETTER

@@ -22,7 +22,7 @@ information hiding.
 //ADT BST come puntatore alla struttura nodo
 typedef struct nodo *BST;
 
-//operazioni su lista
+//operazioni sul BST
 
 /*
 Funzione newBST()
@@ -56,7 +56,11 @@ BST insert(BST Albero, segnalazione s);
 /*
 Funzione CancellaSegnalazione(root, chiave)
     La funzione cancella un nodo e gestisce i principali casi di cancellazione
-    nel BST in cui il nodo sia la radice, in cui sia una foglia o che abbia un figlio.
+    nel BST:
+    - nodo foglia
+    - nodo con un figlio
+    - nodo con due figli
+    - eventuale aggiornamento della radice
 
     Parametri:
         - root -> puntatore alla struttura dati BST

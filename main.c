@@ -20,7 +20,7 @@ Le operazioni disponibili includono:
 - inserimento
 - ricerca
 - aggiornamento stato
-- visualizzazione per priorità
+- visualizzazione per urgenza
 - cancellazione
 - filtro per stato
 - generazione report
