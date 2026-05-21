@@ -400,9 +400,19 @@ static segnalazione acquisisciSegnalazione(void){
     do{
         printf("Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):\n");
 
-        scanf("%d", &urgenza);
+        if(scanf("%d", &urgenza) != 1){
+
+        printf("Input non valido\n");
+
+        while(getchar() != '\n');
+
+        urgenza = 0;
+
+    } else {
 
         getchar();
+
+    }
 
     }while(urgenza < 1 || urgenza > 3);
 
@@ -420,9 +430,20 @@ static segnalazione acquisisciSegnalazione(void){
 
         printf("Scelta:\n");
 
-        scanf("%d", &stato);
+        if(scanf("%d", &stato) != 1){
+            
+            printf("Input non valido\n");
+            
+            while(getchar() != '\n');
 
-        getchar();
+            stato = 0;
+            
+        } else {
+
+            getchar();
+
+        }
+
 
     }while(stato < 1 || stato > 3);
 
