@@ -22,7 +22,7 @@ Le funzionalità implementate includono:
 - ricerca per ID o categoria
 - aggiornamento dello stato
 - filtraggio per stato
-- visualizzazione per priorità
+- visualizzazione per urgenza
 - eliminazione di una segnalazione
 - generazione del report statistico
 
@@ -61,6 +61,11 @@ tramite due criteri differenti:
 - categoria
 */
 void ricercaSegnalazione(BST Albero){
+
+    if(Albero == NULL){
+        printf("\n=== Nessuna segnalazione registrata ===\n");
+        return NULL;
+    }
 
     int choice;
     char IDtemp[9];
