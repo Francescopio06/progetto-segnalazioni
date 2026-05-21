@@ -44,7 +44,7 @@ typedef struct {
     int count;
 } ContaCategoria;
 
-//funzioni Helper
+/* funzioni Helper */
 static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inLavorazione, ContaCategoria stats[], int* nCategorie);
 
 /*
@@ -84,8 +84,10 @@ Scorre il sottoalbero sinistro fino a raggiungere
 il nodo con chiave minima.
 */
 static BST minvalue(BST Albero){
+    BST current; 
+    
     if(Albero == NULL) return NULL;
-    BST current = Albero;
+    current = Albero;
 
     while(current->sx != NULL){
         current = current->sx;
@@ -94,8 +96,8 @@ static BST minvalue(BST Albero){
 
 }
 
-//FUNZIONI PRINCIPALI
-BST newBST(){
+/* FUNZIONI PRINCIPALI */
+BST newBST(void){
     return NULL;
 }
 
@@ -114,7 +116,7 @@ void outputBST(BST Albero){
     outputBST(Albero->dx);
 }
 
-//FUNZIONI DI MODIFICA
+/* FUNZIONI DI MODIFICA */
 /*
 NOTE IMPLEMENTATIVE:
 La funzione confronta la chiave della segnalazione attuale con
@@ -133,10 +135,13 @@ BST insert(BST Albero, segnalazione s){
 }
 
 BST CancellaSegnalazione(BST Albero, int chiave){
-    
+
+    BST temp, temp1, temp2;
+    segnalazione tmp;
+
     if(Albero == NULL) return NULL;
 
-    //controlla che il nodo interessato sia la radice
+    /* controlla che il nodo interessato sia la radice */
     if(minore(chiave, getChiave(Albero->s))){
         Albero->sx = CancellaSegnalazione(Albero->sx, chiave);
     } else if(minore(getChiave(Albero->s), chiave)){
@@ -145,41 +150,44 @@ BST CancellaSegnalazione(BST Albero, int chiave){
 
     
     else{
-        //caso con nessuno o un figlio
+        /* caso con nessuno o un figlio */
         if(Albero->sx == NULL){
-            BST temp = Albero->dx;
+            temp = Albero->dx;
             liberaSegnalazione(Albero->s);
             free(Albero); 
             return temp;
         } else if(Albero->dx == NULL){
-            BST temp = Albero->sx;
+            temp1 = Albero->sx;
             liberaSegnalazione(Albero->s);
             free(Albero);
-            return temp;
+            return temp1;
         }
         
-        //caso con 2 figli
-        BST temp = minvalue(Albero->dx);
+        /* caso con 2 figli */
+        temp2 = minvalue(Albero->dx);
 
-        segnalazione tmp = Albero->s;
-        Albero->s = temp->s;
-        temp->s = tmp;
+        tmp = Albero->s;
+        Albero->s = temp2->s;
+        temp2->s = tmp;
 
-        Albero->dx = CancellaSegnalazione(Albero->dx, getChiave(temp->s));
+        Albero->dx = CancellaSegnalazione(Albero->dx, getChiave(temp2->s));
     }
     return Albero;
 }
 
-//FUNZIONI DI RICERCA
+/* FUNZIONI DI RICERCA */
 
 segnalazione ricercaPerId(BST Albero, char* id){
+    
+    segnalazione tmp;
+
     if(Albero == NULL) return NULL;
     
     if(strcmp(getID(Albero->s), id) == 0){
         return Albero->s;
     }
     
-    segnalazione tmp = ricercaPerId(Albero->sx, id);
+    tmp = ricercaPerId(Albero->sx, id);
     if(tmp != NULL) return tmp;
 
     return ricercaPerId(Albero->dx, id);
@@ -187,8 +195,9 @@ segnalazione ricercaPerId(BST Albero, char* id){
 
 int ricercaPerCategoria(BST Albero, char* categoria){ 
 
-    // Contatore delle segnalazioni con la categoria richiesta
-    int cont = 0;
+    /* Contatore delle segnalazioni con la categoria richiesta */
+    int cont;
+    cont = 0;
 
     if(Albero == NULL) return 0;
     
@@ -213,7 +222,7 @@ int esisteUrgenza(BST Albero, int livello){
     return esisteUrgenza(Albero->sx, livello) || esisteUrgenza(Albero->dx, livello);
 }
 
-//FUNZIONI DI STAMPA
+/* FUNZIONI DI STAMPA */
 void stampaPerStatus(BST Albero, char* status, int* trovato){
 
     if(Albero == NULL) return;
@@ -242,6 +251,15 @@ void stampaPerUrgenza(BST Albero, int livello){
 
 void generaReport(BST Albero){
 
+    int tot, aperte, chiuse, inLavorazione, nCategorie, i, j, max, indice;
+    ContaCategoria stats[100];
+
+    tot = 0;
+    aperte = 0;
+    chiuse = 0;
+    inLavorazione = 0;
+    nCategorie = 0;
+
     if(Albero == NULL){
         printf("\n---------------------------------\n");
         printf("=== Nessuna Segnalazione presente! ===\n");
@@ -249,34 +267,24 @@ void generaReport(BST Albero){
         return;
     }
 
-    int tot = 0;
-    int aperte = 0;
-    int chiuse = 0;
-    int inLavorazione = 0;
-
-    ContaCategoria stats[100];
-    int nCategorie = 0;
-
     visitaReport(Albero, &tot, &aperte, &chiuse, &inLavorazione, stats, &nCategorie);
 
-    // stampa base
     printf("\n--- REPORT ---\n");
     printf("Totale segnalazioni: %d\n", tot);
     printf("Aperte: %d\n", aperte);
     printf("Chiuse: %d\n", chiuse);
     printf("In lavorazione: %d\n", inLavorazione);
 
-    // per categoria
+    /* per categoria */
     printf("\nSegnalazioni per categoria:\n");
-    for(int i = 0; i < nCategorie; i++){
-        printf("%s: %d\n", stats[i].categoria, stats[i].count);
+    for( j = 0; j < nCategorie; j++){
+        printf("%s: %d\n", stats[j].categoria, stats[j].count);
     }
 
-    // categoria più frequente
-    int max = 0;
-    int indice = -1;
-
-    for(int i = 0; i < nCategorie; i++){
+    /* categoria più frequente */
+    max = 0;
+    indice = -1;
+    for(i = 0; i < nCategorie; i++){
         if(stats[i].count > max){
             max = stats[i].count;
             indice = i;
@@ -299,16 +307,20 @@ Attraversa ricorsivamente il BST e aggiorna:
 - conteggio per categoria
 */
 static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inLavorazione, ContaCategoria stats[], int* nCategorie){
+    
+    segnalazione s;
+    char* cat;
+    int trovato, i;
 
     if(Albero == NULL) return;
 
     visitaReport(Albero->sx, tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 
-    segnalazione s = Albero->s;
+    s = Albero->s;
 
     (*tot)++;
 
-    // stato
+    /* Stato */
     if(strcmp(getStatus(s), "aperta") == 0)
         (*aperte)++;
     else if(strcmp(getStatus(s), "chiusa") == 0)
@@ -316,11 +328,10 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inL
     else if(strcmp(getStatus(s), "in lavorazione") == 0)
         (*inLavorazione)++;
 
-    // categoria
-    char* cat = getCategoria(s);
-    int trovato = 0;
-
-    for(int i = 0; i < *nCategorie; i++){
+    /* Categoria */
+    cat = getCategoria(s);
+    trovato = 0;
+    for(i = 0; i < *nCategorie; i++){
         if(strcmp(stats[i].categoria, cat) == 0){
             stats[i].count++;
             trovato = 1;
@@ -337,7 +348,7 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inL
     visitaReport(Albero->dx, tot, aperte, chiuse, inLavorazione, stats, nCategorie);
 }
 
-//GETTER
+/* GETTER */
 BST figlioSX(BST Albero){
     return Albero->sx;
 }
@@ -350,7 +361,7 @@ segnalazione getSegnalazione(BST Albero){
     return Albero->s;
 }
 
-//SETTER
+/* SETTER */
 void setSegnalazione(BST Albero, segnalazione s){
     Albero->s = s;
 }

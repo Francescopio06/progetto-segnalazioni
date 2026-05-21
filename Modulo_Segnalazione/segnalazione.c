@@ -35,17 +35,17 @@ typedef struct Segnalazione{
     char nome[50];
     char categoria[50];
     char descrizione[100];
-    //timestamp della data
+    /* timestamp della data */
     time_t data;
     int urgenza;
     char status[20];
-    // chiave per ordinare BST
+    /* chiave per ordinare BST */
     int chiave;
 }Segnalazione;
 
 /* Prototipi di funzioni helper: */
-static int incrementaChiave();
-static time_t generaData();
+static int incrementaChiave(void);
+static time_t generaData(void);
 
 /*
 NOTE IMPLEMENTATIVE:
@@ -135,18 +135,19 @@ void stampaSegnalazione(segnalazione s){
 
 void generaID(char* id){
     const char set[] = "ABCDEFGHIJKLMNOPQRSTUVWYZ0123456789";
-
-    for(int i = 0; i < 8; i++){
-        //esclude il terminatore '\0' dalla selezione casuale
+    int i;
+    for(i = 0; i < 8; i++){
+        /* esclude il terminatore '\0' dalla selezione casuale */
         int indice = rand() % (sizeof(set)-1);
         id[i] = set[indice];
     }
     id[8] = '\0';
 }
 
-static int incrementaChiave(){
-    // variabile che conserva il valore 
-    static int contatore = 1;
+static int incrementaChiave(void){
+    /* variabile che conserva il valore */
+    static int contatore;
+    contatore = 1;
     return contatore++;
 }
 
@@ -164,7 +165,7 @@ Funzione generaData
     
     Restituito il tipo time_t
 */
-static time_t generaData(){
+static time_t generaData(void){
     return time(NULL);
 }
 
@@ -185,7 +186,8 @@ Funzione stampaData(time_t data)
  */ 
 
 void stampaData(time_t data){
-    struct tm tm = *localtime(&data);
+    struct tm tm;
+    tm = *localtime(&data);
 
     printf("Data di inserimento: %02d/%02d/%d\n", 
         tm.tm_mday, 

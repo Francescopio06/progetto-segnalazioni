@@ -32,9 +32,9 @@ dalla gestione dei dati.
 */
 
 static void controlloID(BST Albero, char* ID);
-static segnalazione acquisisciSegnalazione();
+static segnalazione acquisisciSegnalazione(void);
 
-//funzioni principali
+/* funzioni principali */
 void inserisciSegnalazione(BST* Albero){
 
     segnalazione s = acquisisciSegnalazione();
@@ -62,14 +62,16 @@ tramite due criteri differenti:
 */
 void ricercaSegnalazione(BST Albero){
 
-    if(Albero == NULL){
-        printf("\n=== Nessuna segnalazione registrata ===\n");
-        return NULL;
-    }
-
     int choice;
     char IDtemp[9];
     char CategoriaTemp[50];
+    segnalazione s;
+
+    if(Albero == NULL){
+        printf("\n=== Nessuna segnalazione registrata ===\n");
+        return;
+    }
+
     printf("Scegliere il criterio di ricerca: ");
     printf("\n1. Ricerca per ID\n2. Ricerca per Categoria");
     scanf("%d", &choice);
@@ -82,7 +84,7 @@ void ricercaSegnalazione(BST Albero){
         fgets(IDtemp, 9, stdin);
         IDtemp[strcspn(IDtemp, "\n")] = '\0';
 
-        segnalazione s = ricercaPerId(Albero, IDtemp);
+        s = ricercaPerId(Albero, IDtemp);
 
         if(s == NULL){
             printf("segnalazione non trovata");
@@ -119,12 +121,13 @@ void aggiornaStato(BST Albero){
     char IDtemp[10];
     int choice;
     char statusTmp[20];
+    segnalazione s;
 
     printf("\nInserire ID della segnalazione: ");
     fgets(IDtemp, 10, stdin);
     IDtemp[strcspn(IDtemp, "\n")]= '\0';
 
-    segnalazione s = ricercaPerId(Albero, IDtemp);
+    s = ricercaPerId(Albero, IDtemp);
     if(s == NULL){
         printf("\nSegnalazione non trovata\n");
         return;
@@ -138,7 +141,7 @@ void aggiornaStato(BST Albero){
     printf("\nscelta: ");
 
     scanf("%d", &choice);
-    // pulisce il buffer dopo l'input
+    /* pulisce il buffer dopo l'input */
     getchar();
 
     switch(choice){
@@ -179,7 +182,9 @@ void aggiornaStato(BST Albero){
 }
 
 void filtraSegnalazioni(BST Albero){
-    int trovato = 0;
+    int trovato;
+    int choice;
+    trovato = 0;
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -187,8 +192,6 @@ void filtraSegnalazioni(BST Albero){
         printf("---------------------------------\n");
         return;
     } 
-
-    int choice;
 
     printf("\nQuali segnalazioni vuoi visualizzare:\n");
     printf("1. Aperte\n2. In lavorazione\n3. Chiuse\n4. Elenco completo");
@@ -293,19 +296,20 @@ Una volta individuata, viene utilizzata la chiave
 interna per eseguire la cancellazione nel BST.
 */
 void eliminaSegnalazione(BST* Albero){
+    char IDtemp[9];
+    segnalazione s;
+
     if(*Albero == NULL){
         printf("\n=== Nessuna segnalazione presente ===\n");
         return;
     }
 
-    char IDtemp[9];
-
     printf("\nInserire ID della segnalazione da eliminare: ");
     fgets(IDtemp, 9, stdin);
-    // toglie la new line dall'input
+    /* toglie la new line dall'input */
     IDtemp[strcspn(IDtemp, "\n")] = '\0';
 
-    segnalazione s = ricercaPerId(*Albero, IDtemp);
+    s = ricercaPerId(*Albero, IDtemp);
     if(s == NULL){
         printf("\nSegnalazione non trovata\n");
         return;
@@ -351,13 +355,14 @@ Funzione acquisisciSegnalazione
     Return:
         - Restituisce la segnalazione
 */
-static segnalazione acquisisciSegnalazione(){
+static segnalazione acquisisciSegnalazione(void){
 
     char nome[50];
     char categoria[50];
     char descrizione[100];
     int urgenza;
     int stato;
+    segnalazione s;
 
     do{
         printf("Inserire Nome del Segnalatore:\n");
@@ -423,7 +428,7 @@ static segnalazione acquisisciSegnalazione(){
 
     printf("-----------------------------\n");
 
-    segnalazione s = creaSegnalazione(
+    s = creaSegnalazione(
         nome,
         categoria,
         descrizione,

@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra \
+CFLAGS = -std=c89 -Wall -Wextra -pedantic \
 		 -I./Modulo_Segnalazione \
 		 -I./Modulo_BST \
 		 -I./Modulo_Gestione

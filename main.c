@@ -26,10 +26,12 @@ Le operazioni disponibili includono:
 - generazione report
 */
 
-int main(){
-
-    BST T = newBST();
+int main(void){
+    
     int scelta;
+    BST T; 
+
+    T = newBST();
     srand(time(NULL));
 
     do{

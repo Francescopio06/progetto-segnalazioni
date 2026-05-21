@@ -19,10 +19,10 @@ L'implementazione interna della struttura
 information hiding.
 */
 
-//ADT BST come puntatore alla struttura nodo
+/* ADT BST come puntatore alla struttura nodo */
 typedef struct nodo *BST;
 
-//operazioni sul BST
+/* operazioni sul BST */
 
 /*
 Funzione newBST()
@@ -34,11 +34,11 @@ Funzione newBST()
     Return:
         - puntatore vuoto alla struttura dati BST
 */
-BST newBST();
+BST newBST(void);
 int emptyBST(BST Albero);
 void outputBST(BST Albero);
 
-//operazione di modifica
+/* operazione di modifica */
 /*
 Funzione insert(Albero, s)
     La funzione inserisce all'interno dell'Albero
@@ -71,7 +71,7 @@ Funzione CancellaSegnalazione(root, chiave)
 */
 BST CancellaSegnalazione(BST Albero, int chiave);
 
-//operazioni di ricerca
+/* operazioni di ricerca */
 /*
 Funzione ricercaPerId(Albero, id)
     Usa la ricorsione per scorrere il BST e ricercare la 
@@ -88,7 +88,7 @@ segnalazione ricercaPerId(BST Albero, char* id);
 int ricercaPerCategoria(BST Albero, char* categoria);
 int esisteUrgenza(BST Albero, int livello);
 
-//operazioni di stampa
+/* operazioni di stampa */
 void stampaPerStatus(BST Albero, char* status, int* trovato);
 void stampaPerUrgenza(BST Albero, int livello);
 
@@ -110,12 +110,12 @@ Funzione generaReport(Albero)
 */
 void generaReport(BST Albero);
 
-//getter
+/* getter */
 BST figlioDX(BST Albero);
 BST figlioSX(BST Albero);
 segnalazione getSegnalazione(BST Albero);
 
-//setter
+/* setter */
 void setSegnalazione(BST Albero, segnalazione s);
 
 
