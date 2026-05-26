@@ -51,6 +51,13 @@ void inserisciSegnalazione(BST* Albero){
 }
 
 void visualizzaSegnalazione(BST Albero){
+    if(Albero == NULL){
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
+        return;
+    }
+    
     outputBST(Albero);
 }
 
@@ -68,7 +75,9 @@ void ricercaSegnalazione(BST Albero){
     segnalazione s;
 
     if(Albero == NULL){
-        printf("\n=== Nessuna segnalazione registrata ===\n");
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
         return;
     }
 
@@ -122,6 +131,13 @@ void aggiornaStato(BST Albero){
     int choice;
     char statusTmp[20];
     segnalazione s;
+    
+    if(Albero == NULL){
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
+        return;
+    }
 
     printf("\nInserire ID della segnalazione: ");
     fgets(IDtemp, 10, stdin);
@@ -182,9 +198,7 @@ void aggiornaStato(BST Albero){
 }
 
 void filtraSegnalazioni(BST Albero){
-    int trovato;
-    int choice;
-    trovato = 0;
+    int trovato = 0, choice;
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -300,7 +314,9 @@ void eliminaSegnalazione(BST* Albero){
     segnalazione s;
 
     if(*Albero == NULL){
-        printf("\n=== Nessuna segnalazione presente ===\n");
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
         return;
     }
 
@@ -318,6 +334,7 @@ void eliminaSegnalazione(BST* Albero){
     *Albero = CancellaSegnalazione(*Albero, getChiave(s));
     printf("\n---------------------------------\n");
     printf("=== Cancellazione Riuscita! ===\n");
+    printf("\n---------------------------------\n");
 }
 
 /*

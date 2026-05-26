@@ -48,7 +48,9 @@ int main(void){
         printf("Scelta: ");
 
         if(scanf("%d", &scelta) != 1){
-            printf("\nInput non valido.\n");
+            printf("\n---------------------------------\n");
+            printf("\nInserire un valore valido da 0 a 8\n");
+            printf("\n---------------------------------\n");
             while(getchar() != '\n');
             continue;
         }
@@ -93,7 +95,9 @@ int main(void){
                 break;
 
             default:
-                printf("Scelta non valida\n");
+                printf("\n---------------------------------\n");
+                printf("Inserire un valore valido da 0 a 8\n");
+                printf("\n---------------------------------\n");
         }
 
     } while(scelta != 0);

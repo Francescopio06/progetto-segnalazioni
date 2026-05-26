@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -std=c89 -Wall -Wextra -pedantic \
+CFLAGS = -std=c89 -Wall -Wextra -Werror -pedantic \
 		 -I./Modulo_Segnalazione \
 		 -I./Modulo_BST \
 		 -I./Modulo_Gestione
@@ -19,6 +19,11 @@ TEST_OBJ = $(OBJDIR)/main_test.o \
 		   $(OBJDIR)/BST.o \
 		   $(OBJDIR)/gestione.o
 
+run: main.out
+	./main.out
+
+run-test: main_test.out
+	./main_test.out
 
 all: main.out main_test.out
 

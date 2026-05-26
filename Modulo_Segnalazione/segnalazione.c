@@ -146,8 +146,7 @@ void generaID(char* id){
 
 static int incrementaChiave(void){
     /* variabile che conserva il valore */
-    static int contatore;
-    contatore = 1;
+    static int contatore = 1;
     return contatore++;
 }
 
@@ -186,8 +185,7 @@ Funzione stampaData(time_t data)
  */ 
 
 void stampaData(time_t data){
-    struct tm tm;
-    tm = *localtime(&data);
+    struct tm tm = *localtime(&data);
 
     printf("Data di inserimento: %02d/%02d/%d\n", 
         tm.tm_mday, 

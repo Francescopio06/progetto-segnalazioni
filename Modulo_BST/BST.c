@@ -196,8 +196,7 @@ segnalazione ricercaPerId(BST Albero, char* id){
 int ricercaPerCategoria(BST Albero, char* categoria){ 
 
     /* Contatore delle segnalazioni con la categoria richiesta */
-    int cont;
-    cont = 0;
+    int cont = 0;
 
     if(Albero == NULL) return 0;
     
@@ -251,14 +250,16 @@ void stampaPerUrgenza(BST Albero, int livello){
 
 void generaReport(BST Albero){
 
-    int tot, aperte, chiuse, inLavorazione, nCategorie, i, j, max, indice;
     ContaCategoria stats[100];
-
-    tot = 0;
-    aperte = 0;
-    chiuse = 0;
-    inLavorazione = 0;
-    nCategorie = 0;
+    int tot = 0;
+    int aperte = 0;
+    int chiuse = 0;
+    int inLavorazione = 0;
+    int nCategorie = 0;
+    int j;
+    int max = 0;
+    int indice = -1;
+    int i;
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -277,13 +278,12 @@ void generaReport(BST Albero){
 
     /* per categoria */
     printf("\nSegnalazioni per categoria:\n");
-    for( j = 0; j < nCategorie; j++){
+    
+    for(j = 0; j < nCategorie; j++){
         printf("%s: %d\n", stats[j].categoria, stats[j].count);
     }
 
     /* categoria più frequente */
-    max = 0;
-    indice = -1;
     for(i = 0; i < nCategorie; i++){
         if(stats[i].count > max){
             max = stats[i].count;

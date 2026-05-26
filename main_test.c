@@ -55,42 +55,66 @@ int main(void){
 
     int scelta;
 
+    printf("===== MENU TEST =====\n");
+    printf("1. Test Inserimento\n");
+    printf("2. Test Ricerca\n");
+    printf("3. Test Aggiornamento\n");
+    printf("4. Test Urgenza\n");
+    printf("5. Test Filtro\n");
+    printf("6. Test Report\n");
+    printf("7. Test Cancellazione\n");
+    printf("Scelta: ");
+
     scanf("%d", &scelta);
     getchar();
 
-        switch(scelta){
-            
-            case 1:
-                testInserimento();
-                return 0;
+    switch(scelta){
 
-            case 2:
-                testRicerca();
-                break;
-            
-            case 3:
-                testAggiornamento();
-                break;
+        case 1:
+            printf("\n=== Avvio Test Inserimento ===\n");
+            testInserimento();
+            printf("\n=== Test completato ===\n");
+            break;
 
-            case 4:
-                testUrgenza();
-                break;
+        case 2:
+            printf("\n=== Avvio Test Ricerca ===\n");
+            testRicerca();
+            printf("\n=== Test completato ===\n");
+            break;
 
-            case 5: 
-                testFiltra();
-                break;
+        case 3:
+            printf("\n=== Avvio Test Aggiornamento ===\n");
+            testAggiornamento();
+            printf("\n=== Test completato ===\n");
+            break;
 
-            case 6:
-                testReport();
-                break;
-            
-            case 7:
-                testCancellazione();
-                break;
+        case 4:
+            printf("\n=== Avvio Test Urgenza ===\n");
+            testUrgenza();
+            printf("\n=== Test completato ===\n");
+            break;
 
-            default:
-                printf("Scelta non valida\n");
-            }
+        case 5:
+            printf("\n=== Avvio Test Filtro ===\n");
+            testFiltra();
+            printf("\n=== Test completato ===\n");
+            break;
+
+        case 6:
+            printf("\n=== Avvio Test Report ===\n");
+            testReport();
+            printf("\n=== Test completato ===\n");
+            break;
+
+        case 7:
+            printf("\n=== Avvio Test Cancellazione ===\n");
+            testCancellazione();
+            printf("\n=== Test completato ===\n");
+            break;
+
+        default:
+            printf("Scelta non valida\n");
+    }
 
     return 0;
 }
