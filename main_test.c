@@ -55,7 +55,20 @@ int main(void){
 
     int scelta;
 
-    printf("===== MENU TEST =====\n");
+    do{
+    
+    pulisciSchermo();
+
+    printf(
+    "  __  __                _____       _   \n"
+    " |  \\/  |___ _ _ _  _  |_   _|__ __| |_ \n"
+    );
+
+    printf(
+    " | |\\/| / -_) ' \\ || |   | |/ -_|_-<  _|\n"
+    " |_|  |_|\\___|_||_\\_,_|   |_|\\___/__/\\__|\n"
+    "                                         \n"
+    ); 
     printf("1. Test Inserimento\n");
     printf("2. Test Ricerca\n");
     printf("3. Test Aggiornamento\n");
@@ -63,9 +76,21 @@ int main(void){
     printf("5. Test Filtro\n");
     printf("6. Test Report\n");
     printf("7. Test Cancellazione\n");
+    printf("0. Esci\n");
     printf("Scelta: ");
 
-    scanf("%d", &scelta);
+    if(scanf("%d", &scelta) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 8\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
+    
     getchar();
 
     switch(scelta){
@@ -112,10 +137,21 @@ int main(void){
             printf("\n=== Test completato ===\n");
             break;
 
-        default:
-            printf("Scelta non valida\n");
-    }
+        case 0: 
+            printf("Uscita...\n");
+            break;
 
+        default:
+            printf("Inserire un valore tra 0 a 7\n");
+        }
+
+        if(scelta != 0){
+            printf("\npremi INVIO per continuare...\n");
+            getchar();
+        }
+
+    }while(scelta != 0);
+    
     return 0;
 }
 
@@ -123,6 +159,8 @@ static void testInserimento(void){
     /* Utilizzo srand(1) affinchè il codice alfanumerico generato
     sia lo stesso ad ogni nuova chiamata*/
     BST T;
+
+    pulisciSchermo();
     srand(1);
     T = newBST();
     inserisciSegnalazione(&T);
@@ -132,98 +170,235 @@ static void testRicerca(void){
 
     BST T;
     segnalazione risultato;
-    int scelta;
+    int tipoTest;
+    char idRicerca[20];
+    char categoria[50];
 
+    do{
+    pulisciSchermo();
+
+
+printf(
+"  _____       _     ___ _                    \n"
+" |_   _|__ __| |_  | _ (_)__ ___ _ _ __ __ _ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _| |   / / _/ -_) '_/ _/ _` |\n"
+"   |_|\\___/__/\\__| |_|_\\_\\__\\___|_| \\__\\__,_|\n"
+"                                              \n"
+);
     srand(1);
-
     T = newBST();
-
     caricaDatasetMisto(&T);
 
-    scanf("%d", &scelta);
+    printf("Scegliere il tipo di test\n");
+    printf("\n1. Ricerca per ID\n");
+    printf("2. Ricerca per Categoria\n");
+    printf("0. esci\n");
+    printf("Scelta: ");
+
+    if(scanf("%d", &tipoTest) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 8\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
 
     getchar();
 
-    if(scelta == 1){
+    switch(tipoTest){
+        case 1: 
 
-        char idRicerca[20];
+            printf("-------------------------");
+            printf("\nDitigare: HOYNU2JI\n");
+            printf("...inserire: ");
 
-        fgets(idRicerca, 20, stdin);
+            fgets(idRicerca, 20, stdin);
 
-        idRicerca[strcspn(idRicerca, "\n")] = '\0';
+            idRicerca[strcspn(idRicerca, "\n")] = '\0';
 
-        risultato = ricercaPerId(T, idRicerca);
+            risultato = ricercaPerId(T, idRicerca);
 
-        if(risultato != NULL){
+            if(risultato != NULL){
 
-            stampaSegnalazione(risultato);
+                stampaSegnalazione(risultato);
 
-        }else{
+            }else{
 
-            printf("\n=== Segnalazione non trovata ===\n");
+                printf("\n=== Segnalazione non trovata ===\n");
+            }
+
+            break;
+
+        case 2:
+
+            printf("-------------------------");
+            printf("\nDigitare: Rifiuti\n");
+            printf("...inserire: ");
+
+            fgets(categoria, 50, stdin);
+            categoria[strcspn(categoria, "\n")] = '\0';
+
+            if(ricercaPerCategoria(T, categoria) == 0){
+
+                printf("\n=== Nessuna segnalazione trovata ===\n");
+            }
+            break;
+
+        case 0:
+            printf("\nUscita...");
+            break;
+
+        default:
+            printf("\nInserire un valore valido tra 0 e 2\n");
         }
-    }
-
-    else if(scelta == 2){
-
-        char categoria[50];
-
-        fgets(categoria, 50, stdin);
-
-        categoria[strcspn(categoria, "\n")] = '\0';
-
-
-        if(ricercaPerCategoria(T, categoria) == 0){
-
-            printf("\n=== Nessuna segnalazione trovata ===\n");
+        
+        if(tipoTest != 0){
+            printf("\npremi INVIO per continuare...\n");
+            getchar();
         }
-    }
+
+    }while(tipoTest != 0);
 }
 
 static void testAggiornamento(void){
 
     BST T;
     int tipoTest;
+    do{
+    
+    pulisciSchermo();
 
+printf(
+"  _____       _       _             _                                 _       \n"
+" |_   _|__ __| |_    /_\\  __ _ __ _(_)___ _ _ _ _  __ _ _ __  ___ _ _| |_ ___ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _|  / _ \\/ _` / _` | / _ \\ '_| ' \\/ _` | '  \\/ -_) ' \\  _/ _ \\\n"
+"   |_|\\___/__/\\__| /_/ \\_\\__, \\__, |_|\\___|_| |_||_\\__,_|_|_|_\\___|_||_\\__\\___/\n"
+"                         |___/|___/                                            \n"
+);
+    
     srand(1);
-
     T = newBST();
-
     caricaDatasetMisto(&T);
+    
+    printf("-------------------------");
+    printf("\nID da utilizzare: HOYNU2JI\n");
 
-    scanf("%d", &tipoTest);
+    printf("\nScegliere il tipo di test:\n");
+    printf("1. Transizione di stato\n");
+    printf("2. Altri test...\n");
+    printf("0. esci");
+    printf("\nscelta: ");
+
+    if(scanf("%d", &tipoTest) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 2\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
     getchar();
 
     /* Test transizione completa di stato */
-    if(tipoTest == 1){
+    switch(tipoTest){
+        case 1:
+            aggiornaStato(T);
 
-        aggiornaStato(T);
+            aggiornaStato(T);
+            break;
+        
+        case 2: 
+            aggiornaStato(T);
+            
+            break;
 
-        aggiornaStato(T);
-    }
-    else{
+        case 0:
+            printf("\nUscita...");
 
-        aggiornaStato(T);
-    }
+            break;
+
+        default:
+            printf("\nInserire un valore valido tra 0 e 2\n");
+        }
+
+        if(tipoTest != 0){
+            printf("\npremi INVIO per continuare...\n");
+            getchar();
+        }
+
+    }while(tipoTest != 0);
 }
 
 static void testUrgenza(void){
 
-    BST T = newBST();
+    BST T;
 
     int tipoTest;
 
-    scanf("%d", &tipoTest);
+
+
+    do{
+
+        pulisciSchermo();
+      
+printf(
+"  _____       _        _                                                          \n"
+" |_   _|__ __| |_   __| |_ __ _ _ __  _ __  __ _   _  _ _ _ __ _ ___ _ _  _____ _ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _| (_-<  _/ _` | '  \\| '_ \\/ _` | | || | '_/ _` / -_) ' \\|_ / _` |\n"
+"   |_|\\___/__/\\__| /__/\\__\\__,_|_|_|_| .__/\\__,_|  \\_,_|_| \\__, \\___|_||_/__\\__,_|\n"
+"                                     |_|                   |___/                   \n"
+);  
+
+
+
+    printf("\nPossibili Test...\n");
+    printf("1. Caso limite - Struttura Vuota\n");
+    printf("2. Caso limite - Stessa Urgenza\n");
+    printf("3. Casp limite - Nessuna urgenza massima\n");
+    printf("4. Caso limite - Solo urgenza minima\n");
+    printf("5. Caso limite - Urgenza richiesta nel nodo foglia\n");
+    printf("0. esci\n");
+    printf("Scelta: ");
+        
+    if(scanf("%d", &tipoTest) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 5\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
     getchar();
 
     switch(tipoTest){
 
          /* caso limite struttura vuota */
         case 1: 
+            T = newBST();
             mostraUrgenza(T);
             break;
          /* caso limite stessa urgenza (massima) */
         case 2: 
+            T = newBST();
             srand(1);
             datasetStessaUrgenzaAlta(&T);
             mostraUrgenza(T);
@@ -231,6 +406,7 @@ static void testUrgenza(void){
 
          /* caso limite nessuna urgenza massima */
         case 3:
+            T = newBST();
             srand(1);
             datasetSenzaUrgenzaAlta(&T);
             mostraUrgenza(T);
@@ -238,6 +414,7 @@ static void testUrgenza(void){
 
          /* caso limite solo urgenza minima */
         case 4:
+            T = newBST();
             srand(1);
             datasetSenzaUrgenzaAltaMedia(&T);
             mostraUrgenza(T);
@@ -245,33 +422,86 @@ static void testUrgenza(void){
 
          /* caso limite urgenza richiesta nel nodo foglia */
         case 5:
+            T = newBST();
             srand(1);
             datasetUrgenzaFoglia(&T);
             mostraUrgenza(T);
             break;
 
+        case 0:
+
+            printf("Uscita...\n");
+            break;
+
         default:
-            printf("--- Scelta non valida ---");
-    }
+            printf("\nInserire un valore valido tra 0 e 5\n");
+        }
+
+        if(tipoTest != 0){
+        printf("\npremi INVIO per continuare...\n");
+        getchar();
+        }
+
+    }while(tipoTest != 0);
 }
 
 static void testFiltra(void){
 
-    BST T = newBST();
+    BST T;
 
     int tipoTest;
 
-    scanf("%d", &tipoTest);
+
+    do{
+
+        pulisciSchermo();
+
+printf(
+"  _____       _     ___ _ _ _            \n"
+" |_   _|__ __| |_  | __(_) | |_ _ _ __ _ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _| | _|| | |  _| '_/ _` |\n"
+"   |_|\\___/__/\\__| |_| |_|_|\\__|_| \\__,_|\n"
+"                                          \n"
+);
+
+    printf("\nPossibili Test...\n");
+    printf("1. Caso limite - Struttura Vuota\n");
+    printf("2. Caso limite - Segnalazioni tutte aperte\n");
+    printf("3. Caso limite - Stato richiesto (in lavorazione) assente\n");
+    printf("4. Caso limite - Stato nella radice\n");
+    printf("5. Caso limite - Stato nel nodo foglia\n");
+    printf("6. Caso limite - Elenco completo\n");
+    printf("0. esci\n");
+    printf("Scelta: ");
+
+    if(scanf("%d", &tipoTest) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 6\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
+
+    getchar();
 
     switch(tipoTest){
 
          /* caso limite struttura vuota */
         case 1:
+            T = newBST();
             filtraSegnalazioni(T);
             break;
         
          /* caso limite segnalazioni tutte aperte */
         case 2: 
+            T = newBST();
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
@@ -279,6 +509,7 @@ static void testFiltra(void){
 
          /* caso limite stato richiesto (in lavorazione) assente */
         case 3:
+            T = newBST();
             srand(1);
             datasetTutteAperte(&T);
             filtraSegnalazioni(T);
@@ -286,6 +517,7 @@ static void testFiltra(void){
 
          /* caso limite stato nella radice */
         case 4:
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
@@ -293,6 +525,7 @@ static void testFiltra(void){
 
          /* caso limite stato nel nodo foglia */
         case 5: 
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
@@ -300,14 +533,27 @@ static void testFiltra(void){
         
          /* caso limite elenco completo */
         case 6:
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             filtraSegnalazioni(T);
             break;
 
+        case 0:
+            printf("Uscita...\n");
+            break;
+
         default:
-            printf("\n--- Scelta non valida ---\n");
-    }
+            printf("\nInserire un valore valido tra 0 e 6\n");
+            break;
+        }
+        
+        if(tipoTest != 0){
+        printf("\npremi INVIO per continuare...\n");
+        getchar();
+        }
+
+    }while(tipoTest != 0);
 }
 
 static void testReport(void){
@@ -316,19 +562,54 @@ static void testReport(void){
     BST T;
     int tipoTest;
 
-    T = newBST();
-    scanf("%d", &tipoTest);
-    getchar();
+    do{
+
+        pulisciSchermo();
+
+printf(
+"  _____       _     ___                   _   \n"
+" |_   _|__ __| |_  | _ \\___ _ __  ___ _ _| |_ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _| |   / -_) '_ \\/ _ \\ '_|  _|\n"
+"   |_|\\___/__/\\__| |_|_\\___| .__/\\___/_|  \\__|\n"
+"                           |_|                 \n"
+);
+
+        printf("\nPossibili Test...\n");
+        printf("1. Caso limite - Struttura Vuota\n");
+        printf("2. Caso limite - Struttura con una segnalazione\n");
+        printf("3. Caso limite - Segnalazioni con le stesse categorie\n");
+        printf("4. Caso limite - Categorie diverse\n");
+        printf("0. esci\n");
+        printf("Scelta: ");
+
+        if(scanf("%d", &tipoTest) != 1){
+        
+            printf("\nInserire un valore valido da 0 a 4\n");
+            printf("---------------------------------\n");
+            
+            while(getchar() != '\n');
+
+            printf("\nPremi INVIO per continuare...");
+            getchar();
+            continue;
+        }
+
+        getchar();
 
     switch(tipoTest){
 
          /* Test struttura vuota */
         case 1:
+            T = newBST();
             generaReport(T);
             break;
 
          /* Test struttura con un'unica segnalazione */
         case 2:
+            T = newBST();
             srand(1);
             s1 = creaSegnalazione("Mario Rossi", "Strade", "Buca davanti scuola", 1, 1); 
             T = insert(T, s1);
@@ -337,6 +618,7 @@ static void testReport(void){
         
          /* Test tutte stesse categorie */
         case 3:
+            T = newBST();
             srand(1);
             datasetCategorieUguali(&T);
             generaReport(T);
@@ -344,35 +626,81 @@ static void testReport(void){
 
          /* Test categoria diverse */
         case 4:
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             generaReport(T);
             break;
+        
+        case 0:
+            printf("\nUscita...");
+            break;
             
         default:
-            printf("\n--- Scelta non valida ---\n");
+            printf("\nInserire un valore valido tra 0 a 4\n");
             break;
-    }
+        }
+
+        if(tipoTest != 0){
+
+            printf("\npremi INVIO per continuare...\n");
+            getchar();
+        }
+
+    }while(tipoTest != 0);   
 }
 
 static void testCancellazione(void){
     
-    int tipotest;
+    int tipoTest;
     BST T;
-    T = newBST();
 
-    scanf("%d", &tipotest);
+    do{
+
+    /*pulisciSchermo();*/
+
+printf(
+"  _____       _      ___                  _ _         _              \n"
+" |_   _|__ __| |_   / __|__ _ _ _  __ ___| | |__ _ __(_)___ _ _  ___ \n"
+);
+
+printf(
+"   | |/ -_|_-<  _| | (__/ _` | ' \\/ _/ -_) | / _` |_ / / _ \\ ' \\/ -_)\n"
+"   |_|\\___/__/\\__|  \\___\\__,_|_||_\\__\\___|_|_\\__,_/__|_\\___/_||_\\___|\n"
+"                                                                      \n"
+);
+
+    printf("\nPossibili Test...\n");
+    printf("1. Caso limite - Struttura Vuota\n");
+    printf("2. Caso limite - Eliminazione radice [ID da Inserire: HOYNU2JI]\n");
+    printf("3. Caso limite - Eliminazione nodo foglia[ID da inserire: 0RST4HPD]\n");
+    printf("0. esci\n");
+    printf("Scelta: ");
+
+    if(scanf("%d", &tipoTest) != 1){
+        
+        printf("\nInserire un valore valido da 0 a 8\n");
+        printf("---------------------------------\n");
+            
+        while(getchar() != '\n');
+
+        printf("\nPremi INVIO per continuare...");
+        getchar();
+        continue;
+    }
     getchar();
 
-    switch(tipotest){
+    switch(tipoTest){
         
         /* test struttura vuota */
-        case 1: 
+        case 1:
+            T = newBST(); 
             eliminaSegnalazione(&T);
             break;
         
         /* test eliminazione radice */
         case 2:
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
@@ -380,16 +708,27 @@ static void testCancellazione(void){
         
         /* test eliminazione nodo foglia */
         case 3:
+            T = newBST();
             srand(1);
             caricaDatasetMisto(&T);
             eliminaSegnalazione(&T);
             break;
 
-        default:
-            printf("\nScelta non valida\n");
+        case 0:
+            printf("\nUscita...");
             break;
 
-    }
+        default:
+            printf("\nInserire un valore valido tra 0 e 3\n");
+
+        }
+        
+        if(tipoTest != 0){
+            printf("\npremi INVIO per continuare...\n");
+            getchar();
+        }
+
+    }while(tipoTest != 0);
 }
 
 
@@ -416,7 +755,7 @@ static void caricaDatasetMisto(BST* T){
         1,
         1
     );
-
+    setChiave(s1, generaChiave(*T));
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione(
@@ -426,7 +765,7 @@ static void caricaDatasetMisto(BST* T){
         2,
         2
     );
-
+    setChiave(s2, generaChiave(*T));
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione(
@@ -436,7 +775,7 @@ static void caricaDatasetMisto(BST* T){
         3,
         3
     );
-
+    setChiave(s3, generaChiave(*T));
     *T = insert(*T, s3);
 }
 
@@ -456,40 +795,55 @@ Funzione datasetStessaUrgenzaAlta(T)
 */
 static void datasetStessaUrgenzaAlta(BST* T){
 
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",1,1));
+    segnalazione s1, s2, s3;
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Luci","Lampione",1,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+    s2 = creaSegnalazione("Giulia","Luci","Lampione",1,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
+
+    s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }
 
 /* Caso limite stampa segnalazioni con urgenza (2) */
 static void datasetSenzaUrgenzaAlta(BST* T){
 
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",2,1));
+    segnalazione s1, s2, s3;
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Luci","Lampione",2,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",2,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+    s2 = creaSegnalazione("Giulia","Luci","Lampione",2,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
+
+    s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }
 
 /* Caso limite stampa segnalazioni con urgenza (3) */
 static void datasetSenzaUrgenzaAltaMedia(BST* T){
-    
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",3,1));
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Luci","Lampione",3,1));
+    segnalazione s1, s2, s3;
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",3,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
+
+    s2 = creaSegnalazione("Giulia","Luci","Lampione",3,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
+
+    s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }
 
 /*
@@ -507,39 +861,54 @@ Funzione datasetUrgenzaFoglia
 */
 static void datasetUrgenzaFoglia(BST* T){
 
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",3,1));
+    segnalazione s1, s2, s3;
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Luci","Lampione",2,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",3,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
+    s2 = creaSegnalazione("Giulia","Luci","Lampione",2,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
+
+    s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }
 
 /* Dataset che crea tre segnalazioni con lo status aperto */
 static void datasetTutteAperte(BST* T){
+
+    segnalazione s1, s2, s3;
     
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",1,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Luci","Lampione",1,1));
+    s2 = creaSegnalazione("Giulia","Luci","Lampione",1,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1));
+    s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }
 
 /* Dataset che crea tre segnalazioni con la stessa categorie 
     per verificare il relativo caso limite*/
 static void datasetCategorieUguali(BST* T){
-     
-    *T = insert(*T,
-        creaSegnalazione("Mario","Strade","Buca",1,1));
 
-    *T = insert(*T,
-        creaSegnalazione("Giulia","Strade","Lampione",1,1));
+    segnalazione s1, s2, s3;
 
-    *T = insert(*T,
-        creaSegnalazione("Luca","Strade","Cassonetto",1,1));
+    s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
+    setChiave(s1, generaChiave(*T));
+    *T = insert(*T, s1);
+
+    s2 = creaSegnalazione("Giulia","Strade","Lampione",1,1);
+    setChiave(s2, generaChiave(*T));
+    *T = insert(*T, s2);
+
+    s3 = creaSegnalazione("Luca","Strade","Cassonetto",1,1);
+    setChiave(s3, generaChiave(*T));
+    *T = insert(*T, s3);
 }

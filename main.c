@@ -35,23 +35,39 @@ int main(void){
     srand(time(NULL));
 
     do{
-        printf("\n===== MENU =====\n");
-        printf("1. Inserisci segnalazione\n");
+        pulisciSchermo();
+
+        printf(
+"   _____                         __________        .__              .__             .__          \n"
+"  /     \\   ____   ____  __ __   \\______   \\_______|__| ____   ____ |__|__________  |  |   ____  \n"
+" /  \\ /  \\_/ __ \\ /    \\|  |  \\   |     ___/\\_  __ \\  |/    \\_/ ___\\|  \\____ \\__  \\ |  | _/ __ \\ \n"
+);
+
+printf(
+"/    Y    \\  ___/|   |  \\  |  /   |    |     |  | \\/  |   |  \\  \\___|  |  |_> > __ \\|  |_\\  ___/ \n"
+"\\____|__  /\\___  >___|  /____/    |____|     |__|  |__|___|  /\\___  >__|   __(____  /____/\\___  >\n"
+"        \\/     \\/     \\/                                   \\/     \\/   |__|       \\/          \\/ \n"
+);
+        printf("\n1. Inserisci segnalazione\n");
         printf("2. Visualizza tutte le segnalazioni\n");
-        printf("3. Ricerca segnalazione\n");
-        printf("4. Aggiorna stato\n");
-        printf("5. Filtra segnalazioni\n");
-        printf("6. Mostra urgenza\n");
+        printf("3. Ricerca segnalazione [Codice Identificativo o Categoria]\n");
+        printf("4. Aggiorna stato segnalazione\n");
+        printf("5. Stampa segnalazioni per stato\n");
+        printf("6. Stampa per urgenza\n");
         printf("7. Elimina segnalazione\n");
         printf("8. Genera report\n");
         printf("0. Esci\n");
         printf("Scelta: ");
 
         if(scanf("%d", &scelta) != 1){
-            printf("\n---------------------------------\n");
+            
             printf("\nInserire un valore valido da 0 a 8\n");
-            printf("\n---------------------------------\n");
+            printf("---------------------------------\n");
+            
             while(getchar() != '\n');
+
+            printf("\nPremi INVIO per continuare...");
+            getchar();
             continue;
         }
         getchar();
@@ -87,7 +103,7 @@ int main(void){
                 break;
 
             case 8:
-                generaReport(T);
+                visualizzaReport(T);
                 break;
 
             case 0:
@@ -97,9 +113,14 @@ int main(void){
             default:
                 printf("\n---------------------------------\n");
                 printf("Inserire un valore valido da 0 a 8\n");
-                printf("\n---------------------------------\n");
+                printf("---------------------------------\n");
         }
 
+        if(scelta != 0){
+        printf("\npremi INVIO per continuare...");
+        getchar();
+        }
+        
     } while(scelta != 0);
 
     return 0;

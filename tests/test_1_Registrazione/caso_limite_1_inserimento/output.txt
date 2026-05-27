@@ -13,7 +13,6 @@ Inserisci stato:
 Scelta:
 -----------------------------
 Codice identificativo: HOYNU2JI
-Numero Segnalazione: 01
-Data di inserimento: 18/05/2026
+Data di inserimento: 27/05/2026
 
 === Segnalazione Inserita! ===

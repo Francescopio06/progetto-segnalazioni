@@ -52,7 +52,7 @@ Funzione insert(Albero, s)
         - puntatore alla struttura dati BST
 */
 BST insert(BST Albero, segnalazione s);
-
+int generaChiave(BST Albero);
 /*
 Funzione CancellaSegnalazione(root, chiave)
     La funzione cancella un nodo e gestisce i principali casi di cancellazione

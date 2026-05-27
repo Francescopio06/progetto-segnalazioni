@@ -41,4 +41,8 @@ void mostraUrgenza(BST Albero);
 
 void eliminaSegnalazione(BST* Albero);
 
+void visualizzaReport(BST Albero);
+
+void pulisciSchermo(void);
+
 #endif

@@ -46,7 +46,7 @@ typedef struct {
 
 /* funzioni Helper */
 static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inLavorazione, ContaCategoria stats[], int* nCategorie);
-
+static BST ricercaPerChiave(BST Albero, int chiave);
 /*
 Funzione creaFoglia(s)
     crea un nodo e ne inserisce la 
@@ -346,6 +346,33 @@ static void visitaReport(BST Albero, int* tot, int* aperte, int* chiuse,int* inL
     }
 
     visitaReport(Albero->dx, tot, aperte, chiuse, inLavorazione, stats, nCategorie);
+}
+
+static BST ricercaPerChiave(BST Albero, int chiave){
+
+    if(Albero == NULL)
+        return NULL;
+
+    if(getChiave(Albero->s) == chiave)
+        return Albero;
+
+    if(minore(chiave, getChiave(Albero->s)))
+        return ricercaPerChiave(Albero->sx, chiave);
+
+    return ricercaPerChiave(Albero->dx, chiave);
+}
+
+int generaChiave(BST Albero){
+
+    int chiave;
+
+    do{
+
+        chiave = rand() % 10000 + 1;
+
+    }while(ricercaPerChiave(Albero, chiave) != NULL);
+
+    return chiave;
 }
 
 /* GETTER */

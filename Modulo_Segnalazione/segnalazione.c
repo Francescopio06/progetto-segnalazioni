@@ -44,7 +44,6 @@ typedef struct Segnalazione{
 }Segnalazione;
 
 /* Prototipi di funzioni helper: */
-static int incrementaChiave(void);
 static time_t generaData(void);
 
 /*
@@ -67,8 +66,6 @@ segnalazione creaSegnalazione(char* nome, char* categoria, char* descrizione, in
     }
 
     generaID(s->id);
-
-    s->chiave = incrementaChiave();
 
     s->data = generaData();
 
@@ -142,12 +139,6 @@ void generaID(char* id){
         id[i] = set[indice];
     }
     id[8] = '\0';
-}
-
-static int incrementaChiave(void){
-    /* variabile che conserva il valore */
-    static int contatore = 1;
-    return contatore++;
 }
 
 /*
@@ -238,4 +229,9 @@ time_t getData(segnalazione s){
 /* Setter */
 void setStatus(segnalazione s, char* status){
     strcpy(s->status, status);
+}
+
+void setChiave(segnalazione s, int chiave){
+
+    s->chiave = chiave;
 }
