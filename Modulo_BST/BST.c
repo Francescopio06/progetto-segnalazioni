@@ -378,7 +378,6 @@ int generaChiave(BST Albero){
 void resetBST(BST* Albero){
 
     if(*Albero == NULL){
-        printf("\nNon sono presenti segnalazioni | Registro vuoto...\n");
         return;
     }
 
@@ -386,7 +385,7 @@ void resetBST(BST* Albero){
 
     resetBST(&(*Albero)->dx);
 
-    distruggiSegnalazione((*Albero)->s);
+    liberaSegnalazione(getSegnalazione(*Albero));
 
     free(*Albero);
 

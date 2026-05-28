@@ -108,6 +108,11 @@ printf(
                 break;
 
             case 9: 
+                if(T == NULL){
+                    printf("\nNon sono presenti segnalazioni | Registro vuoto...\n");
+                    break;
+                } 
+
                 resetBST(&T);
                 printf("\n=== Reset completato con successo ===\n");
                 break;
