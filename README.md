@@ -38,6 +38,8 @@ Il progetto è strutturato su più livelli ed è diviso nei seguenti moduli:
 - **gestione.c / gestione.h**: si occupa dell'interfaccia utente delle funzioni richieste
 - **BST.c / BST.h**: implementazione dell'ADT BST e le funzioni associate
 - **segnalazione.c / segnalazione.h**: gestione delle funzioni legate alla struttura segnalazione
+- **Modulo_Tests / include**: contiene l'header delle funzioni di test
+- **Modulo_Tests / src**: contiene le funzioni sorgenti
 - **Makefile**: compilazione del progetto
 
 ## Compilazione
