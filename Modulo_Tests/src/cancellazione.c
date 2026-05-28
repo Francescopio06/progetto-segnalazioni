@@ -12,9 +12,10 @@ void testCancellazione(void){
 
     BST T;
 
-    pulisciSchermo();
 
     do{
+
+        pulisciSchermo();
 
         printf("\nPossibili Test...\n");
 

@@ -13,9 +13,10 @@ void testFiltra(void){
 
     int tipoTest;
 
-    pulisciSchermo();
 
     do{
+
+        pulisciSchermo();
 
         printf("\nPossibili Test...\n");
 
