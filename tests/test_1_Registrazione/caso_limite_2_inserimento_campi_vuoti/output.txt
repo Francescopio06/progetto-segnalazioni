@@ -1,4 +1,14 @@
-Inserire Nome del Segnalatore:
+[3J[H[2J __  __ _____ _   _ _   _ 
+|  \/  | ____| \ | | | | |
+| |\/| |  _| |  \| | | | |
+| |  | | |___| |\  | |_| |
+|_|  |_|_____|_| \_|\___/ 
+ ___ _   _ ____  _____ ____  ___ __  __ _____ _   _ _____ ___  
+|_ _| \ | / ___|| ____|  _ \|_ _|  \/  | ____| \ | |_   _/ _ \ 
+ | ||  \| \___ \|  _| | |_) || || |\/| |  _| |  \| | | || | | |
+ | || |\  |___) | |___|  _ < | || |  | | |___| |\  | | || |_| |
+|___|_| \_|____/|_____|_| \_\___|_|  |_|_____|_| \_| |_| \___/ 
+
 Inserire Nome del Segnalatore:
 -----------------------------
 Inserire Categoria della segnalazione:
@@ -8,6 +18,8 @@ Inserire informazioni aggiuntive della segnalazione:
 Inserire informazioni aggiuntive della segnalazione:
 -----------------------------
 Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
+Input non valido
+Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
 -----------------------------
 Inserisci stato:
 1. Aperta
@@ -16,6 +28,6 @@ Inserisci stato:
 Scelta:
 -----------------------------
 Codice identificativo: HOYNU2JI
-Data di inserimento: 27/05/2026
+Data di inserimento: 28/05/2026
 
 === Segnalazione Inserita! ===

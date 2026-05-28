@@ -1,3 +1,8 @@
+[3J[H[2J  ___                     _         _          _   ___ _ _ _            _       
+ / __| ___ __ _ _ _  __ _| |__ _ __(_)___ _ _ (_) | __(_) | |_ _ _ __ _| |_ ___ 
+ \__ \/ -_) _` | ' \/ _` | / _` |_ / / _ \ ' \| | | _|| | |  _| '_/ _` |  _/ -_)
+ |___/\___\__, |_|_|\__,_|_\__,_/__|_\___/_||_|_| |_| |_|_|\__|_| \__,_|\__\___|
+          |___/                                                                  
 
 Quali segnalazioni vuoi visualizzare:
 1. Aperte
@@ -5,8 +10,4 @@ Quali segnalazioni vuoi visualizzare:
 3. Chiuse
 4. Elenco completo
 scelta:
----------------------------------
-
-Segnalazioni Chiuse
-
-=== Nessuna Segnalazione presente per lo stato richiesto ===
+---Inserire un valore valido (1 | 2 | 3 | 4) ---
