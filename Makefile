@@ -19,14 +19,15 @@ TEST_OBJ = $(OBJDIR)/main_test.o \
 		   $(OBJDIR)/BST.o \
 		   $(OBJDIR)/gestione.o
 
+all: main.out main_test.out
+
 run: main.out
 	./main.out
 
 run-test: main_test.out
 	./main_test.out
 
-all: main.out main_test.out
-
+	
 
 main.out: $(MAIN_OBJ)
 	$(CC) $^ -o $@
