@@ -73,9 +73,7 @@ stdout
 
                 aggiornaStato(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -106,9 +104,7 @@ stdout
 
                 aggiornaStato(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -132,9 +128,7 @@ stdout
 
                 aggiornaStato(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -165,9 +159,7 @@ stdout
 
                 aggiornaStato(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 

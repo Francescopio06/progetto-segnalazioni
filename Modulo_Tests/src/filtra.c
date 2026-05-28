@@ -6,13 +6,11 @@
 #include "supporto.h"
 #include "filtra.h"
 
-
 void testFiltra(void){
 
     BST T;
 
     int tipoTest;
-
 
     do{
 
@@ -71,9 +69,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -103,9 +99,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -135,9 +129,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -167,9 +159,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -199,9 +189,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -231,9 +219,7 @@ stdout
 
                 filtraSegnalazioni(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 

@@ -61,9 +61,7 @@ stdout
 
                 inserisciSegnalazione(&T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -98,9 +96,7 @@ stdout
 
                 inserisciSegnalazione(&T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 

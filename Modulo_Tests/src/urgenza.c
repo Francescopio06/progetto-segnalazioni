@@ -16,229 +16,202 @@ void testUrgenza(void){
 
         pulisciSchermo();
 
-    printf("\nPossibili Test...\n");
+        printf("\nPossibili Test...\n");
 
-    printf("1. Caso limite - Struttura Vuota\n");
+        printf("1. Caso limite - Struttura Vuota\n");
 
-    printf("2. Caso limite - Stessa Urgenza\n");
+        printf("2. Caso limite - Stessa Urgenza\n");
 
-    printf("3. Caso limite - Nessuna urgenza massima\n");
+        printf("3. Caso limite - Nessuna urgenza massima\n");
 
-    printf("4. Caso limite - Solo urgenza minima\n");
+        printf("4. Caso limite - Solo urgenza minima\n");
 
-    printf("5. Caso limite - Urgenza richiesta nel nodo foglia\n");
+        printf("5. Caso limite - Urgenza richiesta nel nodo foglia\n");
 
-    printf("0. esci\n");
+        printf("0. esci\n");
 
-    printf("Scelta: ");
+        printf("Scelta: ");
 
-    if(scanf("%d", &tipoTest) != 1){
+        if(scanf("%d", &tipoTest) != 1){
 
-        printf("\nInserire un valore valido da 0 a 5\n");
+            printf("\nInserire un valore valido da 0 a 5\n");
 
-        printf("---------------------------------\n");
+            while(getchar() != '\n');
 
-        while(getchar() != '\n');
+            printf("\nPremi INVIO per continuare...");
 
-        printf("\nPremi INVIO per continuare...");
+            getchar();
+
+            continue;
+        }
 
         getchar();
 
-        continue;
-    }
+        switch(tipoTest){
 
-    getchar();
+            case 1:
 
-    switch(tipoTest){
+                T = newBST();
 
-        case 1:
-
-            T = newBST();
-
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_1_Struttura_vuota/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_1_Struttura_vuota/output.txt",
 "w",
 stdout
 );
 
-            mostraUrgenza(T);
+                mostraUrgenza(T);
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_4_Priorità/caso_limite_1_Struttura_vuota/output.txt",
-"tests/test_4_Priorità/caso_limite_1_Struttura_vuota/oracolo.txt"
-);
+                break;
 
-            break;
+            case 2:
 
-        case 2:
+                T = newBST();
 
-            T = newBST();
+                srand(1);
 
-            srand(1);
+                datasetStessaUrgenzaAlta(&T);
 
-            datasetStessaUrgenzaAlta(&T);
-
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/output.txt",
 "w",
 stdout
 );
 
-            mostraUrgenza(T);
+                mostraUrgenza(T);
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/output.txt",
-"tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/oracolo.txt"
-);
+                break;
 
-            break;
+            case 3:
 
-        case 3:
+                T = newBST();
 
-            T = newBST();
+                srand(1);
 
-            srand(1);
+                datasetSenzaUrgenzaAlta(&T);
 
-            datasetSenzaUrgenzaAlta(&T);
-
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/output.txt",
 "w",
 stdout
 );
 
-            mostraUrgenza(T);
+                mostraUrgenza(T);
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/output.txt",
-"tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/oracolo.txt"
-);
+                break;
 
-            break;
+            case 4:
 
-        case 4:
+                T = newBST();
 
-            T = newBST();
+                srand(1);
 
-            srand(1);
+                datasetSenzaUrgenzaAltaMedia(&T);
 
-            datasetSenzaUrgenzaAltaMedia(&T);
-
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/output.txt",
 "w",
 stdout
 );
 
-            mostraUrgenza(T);
+                mostraUrgenza(T);
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/output.txt",
-"tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/oracolo.txt"
-);
+                break;
 
-            break;
+            case 5:
 
-        case 5:
+                T = newBST();
 
-            T = newBST();
+                srand(1);
 
-            srand(1);
+                datasetUrgenzaFoglia(&T);
 
-            datasetUrgenzaFoglia(&T);
-
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/output.txt",
 "w",
 stdout
 );
 
-            mostraUrgenza(T);
+                mostraUrgenza(T);
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/output.txt",
-"tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/oracolo.txt"
-);
+                break;
 
-            break;
+            case 0:
 
-        case 0:
+                printf("Uscita...\n");
 
-            printf("Uscita...\n");
+                break;
 
-            break;
+            default:
 
-        default:
+                printf("\nInserire un valore valido tra 0 e 5\n");
+        }
 
-            printf("\nInserire un valore valido tra 0 e 5\n");
-    }
+        if(tipoTest != 0){
 
-    if(tipoTest != 0){
+            printf("\npremi INVIO per continuare...\n");
 
-        printf("\npremi INVIO per continuare...\n");
-
-        getchar();
-    }
+            getchar();
+        }
 
     }while(tipoTest != 0);
 }

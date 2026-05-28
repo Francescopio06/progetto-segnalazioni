@@ -12,7 +12,6 @@ void testCancellazione(void){
 
     BST T;
 
-
     do{
 
         pulisciSchermo();
@@ -64,9 +63,7 @@ stdout
 
                 eliminaSegnalazione(&T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -96,9 +93,7 @@ stdout
 
                 eliminaSegnalazione(&T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -128,9 +123,7 @@ stdout
 
                 eliminaSegnalazione(&T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 

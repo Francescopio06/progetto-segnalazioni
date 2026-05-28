@@ -107,7 +107,7 @@ tramite due criteri differenti:
 */
 void ricercaSegnalazione(BST Albero){
 
-    int choice;
+    int scelta;
     char IDtemp[9];
     char CategoriaTemp[50];
     segnalazione s;
@@ -136,12 +136,11 @@ printf(
         printf("---------------------------------\n");
         return;
     }
-
     printf("\nScegliere il criterio di ricerca: ");
     printf("\n1. Ricerca per ID\n2. Ricerca per Categoria");
     printf("\nScelta: ");
     
-    if(scanf("%d", &choice) != 1){
+    if(scanf("%d", &scelta) != 1){
 
         printf("\n--- Inserire un valore valido (1 | 2) ---\n");
 
@@ -151,7 +150,7 @@ printf(
     }
     getchar();
 
-    switch (choice){
+    switch (scelta){
     case 1: 
 
         printf("\nInserire ID: ");
@@ -165,11 +164,19 @@ printf(
         s = ricercaPerId(Albero, IDtemp);
 
         if(s == NULL){
+
             printf("segnalazione non trovata");
         } else {
+
             stampaSegnalazione(s);
+            getchar();
         }
+        
+        printf("\npremi INVIO per continuare...");
+        getchar();
+
         break;
+
     case 2: 
 
         printf("\nInserire Categoria: ");
@@ -184,6 +191,8 @@ printf(
         printf("=== NESSUNA SEGNALAZIONE TROVATA ===");
         }
         
+        printf("\npremi INVIO per continuare...");
+        getchar();
         break;
 
     default:

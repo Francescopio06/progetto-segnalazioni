@@ -67,9 +67,7 @@ stdout
 
                 generaReport(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -107,9 +105,7 @@ stdout
 
                 generaReport(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -139,9 +135,7 @@ stdout
 
                 generaReport(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 
@@ -171,9 +165,7 @@ stdout
 
                 generaReport(T);
 
-                fclose(stdin);
-
-                fclose(stdout);
+                fflush(stdout);
 
                 ripristinaStandardIO();
 

@@ -20,289 +20,264 @@ void testRicerca(void){
 
     do{
 
-    pulisciSchermo();
+        pulisciSchermo();
 
-    srand(1);
+        srand(1);
 
-    T = newBST();
+        T = newBST();
 
-    caricaDatasetMisto(&T);
+        caricaDatasetMisto(&T);
 
-    printf("Scegliere il tipo di test\n");
+        printf("Scegliere il tipo di test\n");
 
-    printf("\n1. Ricerca ID inesistente\n");
+        printf("\n1. Ricerca ID inesistente\n");
 
-    printf("2. Ricerca categoria inesistente\n");
+        printf("2. Ricerca categoria inesistente\n");
 
-    printf("3. Differenza maiuscole/minuscole\n");
+        printf("3. Differenza maiuscole/minuscole\n");
 
-    printf("4. Stringa ID vuota\n");
+        printf("4. Stringa ID vuota\n");
 
-    printf("5. Stringa categoria vuota\n");
+        printf("5. Stringa categoria vuota\n");
 
-    printf("0. Esci\n");
+        printf("0. Esci\n");
 
-    printf("\nScelta: ");
+        printf("\nScelta: ");
 
-    if(scanf("%d", &tipoTest) != 1){
+        if(scanf("%d", &tipoTest) != 1){
 
-        printf("\nInserire un valore valido\n");
+            printf("\nInserire un valore valido\n");
 
-        while(getchar() != '\n');
+            while(getchar() != '\n');
 
-        printf("\nPremi INVIO per continuare...");
+            printf("\nPremi INVIO per continuare...");
+
+            getchar();
+
+            continue;
+        }
 
         getchar();
 
-        continue;
-    }
+        switch(tipoTest){
 
-    getchar();
+            case 1:
 
-    switch(tipoTest){
-
-        case 1:
-
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_1_id_inesistente/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_1_id_inesistente/output.txt",
 "w",
 stdout
 );
 
-            fgets(idRicerca, 20, stdin);
+                fgets(idRicerca, 20, stdin);
 
-            idRicerca[strcspn(idRicerca, "\n")] = '\0';
+                idRicerca[strcspn(idRicerca, "\n")] = '\0';
 
-            while(idRicerca[0] == ' '){
+                while(idRicerca[0] == ' '){
 
-                memmove(idRicerca,
-                        idRicerca + 1,
-                        strlen(idRicerca));
-            }
+                    memmove(idRicerca,
+                            idRicerca + 1,
+                            strlen(idRicerca));
+                }
 
-            risultato = ricercaPerId(T, idRicerca);
+                risultato = ricercaPerId(T, idRicerca);
 
-            if(risultato != NULL){
+                if(risultato != NULL){
 
-                printf("Segnalazione trovata\n");
+                    printf("Segnalazione trovata\n");
 
-            }else{
+                }else{
 
-                printf("Segnalazione non trovata\n");
-            }
+                    printf("Segnalazione non trovata\n");
+                }
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_2_Ricerca/caso_limite_1_id_inesistente/output.txt",
-"tests/test_2_Ricerca/caso_limite_1_id_inesistente/oracolo.txt"
-);
+                break;
 
-            break;
+            case 2:
 
-        case 2:
-
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/output.txt",
 "w",
 stdout
 );
 
-            fgets(categoria, 50, stdin);
+                fgets(categoria, 50, stdin);
 
-            categoria[strcspn(categoria, "\n")] = '\0';
+                categoria[strcspn(categoria, "\n")] = '\0';
 
-            while(categoria[0] == ' '){
+                while(categoria[0] == ' '){
 
-                memmove(categoria,
-                        categoria + 1,
-                        strlen(categoria));
-            }
+                    memmove(categoria,
+                            categoria + 1,
+                            strlen(categoria));
+                }
 
-            if(ricercaPerCategoria(T, categoria) == 0){
+                if(ricercaPerCategoria(T, categoria) == 0){
 
-                printf("Nessuna segnalazione trovata\n");
+                    printf("Nessuna segnalazione trovata\n");
 
-            }else{
+                }else{
 
-                printf("Segnalazioni trovate\n");
-            }
+                    printf("Segnalazioni trovate\n");
+                }
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/output.txt",
-"tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/oracolo.txt"
-);
+                break;
 
-            break;
+            case 3:
 
-        case 3:
-
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/output.txt",
 "w",
 stdout
 );
 
-            fgets(categoria, 50, stdin);
+                fgets(categoria, 50, stdin);
 
-            categoria[strcspn(categoria, "\n")] = '\0';
+                categoria[strcspn(categoria, "\n")] = '\0';
 
-            while(categoria[0] == ' '){
+                while(categoria[0] == ' '){
 
-                memmove(categoria,
-                        categoria + 1,
-                        strlen(categoria));
-            }
+                    memmove(categoria,
+                            categoria + 1,
+                            strlen(categoria));
+                }
 
-            if(ricercaPerCategoria(T, categoria) == 0){
+                if(ricercaPerCategoria(T, categoria) == 0){
 
-                printf("Nessuna segnalazione trovata\n");
+                    printf("Nessuna segnalazione trovata\n");
 
-            }else{
+                }else{
 
-                printf("Segnalazioni trovate\n");
-            }
+                    printf("Segnalazioni trovate\n");
+                }
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/output.txt",
-"tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/oracolo.txt"
-);
+                break;
 
-            break;
+            case 4:
 
-        case 4:
-
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/output.txt",
 "w",
 stdout
 );
 
-            fgets(idRicerca, 20, stdin);
+                fgets(idRicerca, 20, stdin);
 
-            idRicerca[strcspn(idRicerca, "\n")] = '\0';
+                idRicerca[strcspn(idRicerca, "\n")] = '\0';
 
-            risultato = ricercaPerId(T, idRicerca);
+                risultato = ricercaPerId(T, idRicerca);
 
-            if(risultato != NULL){
+                if(risultato != NULL){
 
-                printf("Segnalazione trovata\n");
+                    printf("Segnalazione trovata\n");
 
-            }else{
+                }else{
 
-                printf("Segnalazione non trovata\n");
-            }
+                    printf("Segnalazione non trovata\n");
+                }
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/output.txt",
-"tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/oracolo.txt"
-);
+                break;
 
-            break;
+            case 5:
 
-        case 5:
-
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/input.txt",
 "r",
 stdin
 );
 
-            freopen(
+                freopen(
 "tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/output.txt",
 "w",
 stdout
 );
 
-            fgets(categoria, 50, stdin);
+                fgets(categoria, 50, stdin);
 
-            categoria[strcspn(categoria, "\n")] = '\0';
+                categoria[strcspn(categoria, "\n")] = '\0';
 
-            if(ricercaPerCategoria(T, categoria) == 0){
+                if(ricercaPerCategoria(T, categoria) == 0){
 
-                printf("Nessuna segnalazione trovata\n");
+                    printf("Nessuna segnalazione trovata\n");
 
-            }else{
+                }else{
 
-                printf("Segnalazioni trovate\n");
-            }
+                    printf("Segnalazioni trovate\n");
+                }
 
-            fclose(stdin);
+                fflush(stdout);
 
-            fclose(stdout);
+                ripristinaStandardIO();
 
-            ripristinaStandardIO();
+                printf("\n=== TEST COMPLETATO ===\n");
 
-            verificaOracolo(
-"tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/output.txt",
-"tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/oracolo.txt"
-);
+                break;
 
-            break;
+            case 0:
 
-        case 0:
+                printf("\nUscita...\n");
 
-            printf("\nUscita...\n");
+                break;
 
-            break;
+            default:
 
-        default:
+                printf("\nInserire un valore valido tra 0 e 5\n");
+        }
 
-            printf("\nInserire un valore valido tra 0 e 5\n");
-    }
+        if(tipoTest != 0){
 
-    if(tipoTest != 0){
+            printf("\nPremi INVIO per continuare...");
 
-        printf("\nPremi INVIO per continuare...");
-
-        getchar();
-    }
+            getchar();
+        }
 
     }while(tipoTest != 0);
 }
