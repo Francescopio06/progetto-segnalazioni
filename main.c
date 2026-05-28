@@ -56,6 +56,7 @@ printf(
         printf("6. Stampa per urgenza\n");
         printf("7. Elimina segnalazione\n");
         printf("8. Genera report\n");
+        printf("9. Reset Registro\n");
         printf("0. Esci\n");
         printf("Scelta: ");
 
@@ -104,6 +105,11 @@ printf(
 
             case 8:
                 visualizzaReport(T);
+                break;
+
+            case 9: 
+                resetBST(&T);
+                printf("\n=== Reset completato con successo ===\n");
                 break;
 
             case 0:

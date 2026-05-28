@@ -223,6 +223,10 @@ printf(
 
             idRicerca[strcspn(idRicerca, "\n")] = '\0';
 
+            while(idRicerca[0] == ' '){
+                memmove(idRicerca, idRicerca + 1, strlen(idRicerca));
+            }
+
             risultato = ricercaPerId(T, idRicerca);
 
             if(risultato != NULL){
@@ -244,6 +248,10 @@ printf(
 
             fgets(categoria, 50, stdin);
             categoria[strcspn(categoria, "\n")] = '\0';
+
+            while(categoria[0] == ' '){
+                memmove(categoria, categoria + 1, strlen(categoria));
+            }
 
             if(ricercaPerCategoria(T, categoria) == 0){
 
@@ -294,7 +302,7 @@ printf(
     printf("\nID da utilizzare: HOYNU2JI\n");
 
     printf("\nScegliere il tipo di test:\n");
-    printf("1. Transizione di stato\n");
+    printf("1. Transizione di stato [Aperta -> In lavorazione -> Chiusa]\n");
     printf("2. Altri test...\n");
     printf("0. esci");
     printf("\nscelta: ");
@@ -316,7 +324,8 @@ printf(
     switch(tipoTest){
         case 1:
             aggiornaStato(T);
-
+            printf("\nPremi INVIO per continuare...");
+            getchar();
             aggiornaStato(T);
             break;
         
@@ -370,7 +379,7 @@ printf(
     printf("\nPossibili Test...\n");
     printf("1. Caso limite - Struttura Vuota\n");
     printf("2. Caso limite - Stessa Urgenza\n");
-    printf("3. Casp limite - Nessuna urgenza massima\n");
+    printf("3. Caso limite - Nessuna urgenza massima\n");
     printf("4. Caso limite - Solo urgenza minima\n");
     printf("5. Caso limite - Urgenza richiesta nel nodo foglia\n");
     printf("0. esci\n");

@@ -33,6 +33,7 @@ dalla gestione dei dati.
 
 static void controlloID(BST Albero, char* ID);
 static segnalazione acquisisciSegnalazione(void);
+static void rimuoviSpaziIniziali(char* str);
 void pulisciSchermo(void);
 
 /* funzioni principali */
@@ -139,15 +140,27 @@ printf(
     printf("\nScegliere il criterio di ricerca: ");
     printf("\n1. Ricerca per ID\n2. Ricerca per Categoria");
     printf("\nScelta: ");
-    scanf("%d", &choice);
+    
+    if(scanf("%d", &choice) != 1){
+
+        printf("\n--- Inserire un valore valido (1 | 2) ---\n");
+
+        while(getchar() != '\n');
+
+        return;
+    }
     getchar();
 
     switch (choice){
     case 1: 
 
         printf("\nInserire ID: ");
+
         fgets(IDtemp, 9, stdin);
+
         IDtemp[strcspn(IDtemp, "\n")] = '\0';
+
+        rimuoviSpaziIniziali(IDtemp);
 
         s = ricercaPerId(Albero, IDtemp);
 
@@ -160,8 +173,12 @@ printf(
     case 2: 
 
         printf("\nInserire Categoria: ");
+
         fgets(CategoriaTemp, 50, stdin);
+
         CategoriaTemp[strcspn(CategoriaTemp, "\n")] = '\0';
+
+        rimuoviSpaziIniziali(CategoriaTemp);
 
         if(ricercaPerCategoria(Albero, CategoriaTemp) == 0){
         printf("=== NESSUNA SEGNALAZIONE TROVATA ===");
@@ -170,7 +187,7 @@ printf(
         break;
 
     default:
-        printf("\n---Scelta non valida---");        
+        printf("\n--- Inserire un valore valido (1 | 2) ---");        
     }
 }
 
@@ -225,7 +242,14 @@ printf(
     printf("\n1. Aperta \n2. In lavorazione\n3. Chiusa");
     printf("\nscelta: ");
 
-    scanf("%d", &choice);
+    if(scanf("%d", &choice) != 1){
+
+        printf("\n--- Inserire un valore valido (1 | 2 | 3) ---\n");
+
+        while(getchar() != '\n');
+
+    return;
+    }
     /* pulisce il buffer dopo l'input */
     getchar();
 
@@ -258,7 +282,7 @@ printf(
         setStatus(s, "chiusa");
         break;
     default:
-        printf("\n---Scelta non valida---");
+        printf("\n--- Inserire un valore valido (1 | 2 | 3) ---");
     }
 
     printf("\n---------------------------------\n");
@@ -292,7 +316,16 @@ printf(
     printf("\nQuali segnalazioni vuoi visualizzare:\n");
     printf("1. Aperte\n2. In lavorazione\n3. Chiuse\n4. Elenco completo");
     printf("\nscelta:");
-    scanf("%d", &choice);
+    
+    if(scanf("%d", &choice) != 1){
+
+        printf("\n--- Inserire un valore valido (1 | 2 | 3 | 4) ---\n");
+
+        while(getchar() != '\n');
+
+    return;
+    }
+
     getchar();
 
     switch(choice){
@@ -353,7 +386,7 @@ printf(
         }
         break;
     default:
-        printf("\n---Scelta non valida---\n");
+        printf("\n---Inserire un valore valido (1 | 2 | 3 | 4) ---\n");
     }
 }
 
@@ -523,6 +556,8 @@ static segnalazione acquisisciSegnalazione(void){
 
         nome[strcspn(nome, "\n")] = '\0';
 
+        rimuoviSpaziIniziali(nome);
+
     }while(strlen(nome) == 0);
     
     printf("-----------------------------\n");
@@ -534,6 +569,8 @@ static segnalazione acquisisciSegnalazione(void){
 
         categoria[strcspn(categoria, "\n")] = '\0';
 
+        rimuoviSpaziIniziali(categoria);
+
     }while(strlen(categoria) == 0);
 
     printf("-----------------------------\n");
@@ -544,6 +581,8 @@ static segnalazione acquisisciSegnalazione(void){
         fgets(descrizione, 100, stdin);
 
         descrizione[strcspn(descrizione, "\n")] = '\0';
+
+        rimuoviSpaziIniziali(descrizione);
 
     }while(strlen(descrizione) == 0);
 
@@ -623,4 +662,11 @@ void pulisciSchermo(void){
     system("clear");
 #endif
 
+}
+
+static void rimuoviSpaziIniziali(char* str){
+
+    while(str[0] == ' '){
+        memmove(str, str + 1, strlen(str));
+    }
 }

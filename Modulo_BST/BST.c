@@ -375,6 +375,24 @@ int generaChiave(BST Albero){
     return chiave;
 }
 
+void resetBST(BST* Albero){
+
+    if(*Albero == NULL){
+        printf("\nNon sono presenti segnalazioni | Registro vuoto...\n");
+        return;
+    }
+
+    resetBST(&(*Albero)->sx);
+
+    resetBST(&(*Albero)->dx);
+
+    distruggiSegnalazione((*Albero)->s);
+
+    free(*Albero);
+
+    *Albero = NULL;
+}
+
 /* GETTER */
 BST figlioSX(BST Albero){
     return Albero->sx;
