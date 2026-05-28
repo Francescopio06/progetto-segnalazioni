@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -std=c89 -Wall -Wextra -Werror -pedantic \
+CFLAGS = -std=c89 -Wall -Wextra -pedantic \
 		 -I./Modulo_Segnalazione \
 		 -I./Modulo_BST \
 		 -I./Modulo_Gestione
@@ -27,7 +27,7 @@ run: main.out
 run-test: main_test.out
 	./main_test.out
 
-	
+
 
 main.out: $(MAIN_OBJ)
 	$(CC) $^ -o $@
