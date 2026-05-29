@@ -1,11 +1,7 @@
-[3J[H[2J  __  __  ___  ___ _____ ___    _     _   _ ___  ___ ___ _  _ ____  _   
- |  \/  |/ _ \/ __|_   _| _ \  /_\   | | | | _ \/ __| __| \| |_  / /_\  
- | |\/| | (_) \__ \ | | |   / / _ \  | |_| |   / (_ | _|| .` |/ / / _ \ 
- |_|  |_|\___/|___/ |_| |_|_\/_/ \_\  \___/|_|_\\___|___|_|\_/___/_/ \_\\
 
 Segnalazione con urgenza Minima (3):
 
-Codice Identificativo: HOYNU2JI
+Codice Identificativo: TEST0001
 -----------------------------
 Nome Segnalatore: Mario
 -----------------------------
@@ -22,7 +18,7 @@ Stato della segnalazione: aperta
 
 ===STAMPA COMPLETATA===
 
-Codice Identificativo: 4U5H2H8C
+Codice Identificativo: TEST0002
 -----------------------------
 Nome Segnalatore: Giulia
 -----------------------------
@@ -39,7 +35,7 @@ Stato della segnalazione: aperta
 
 ===STAMPA COMPLETATA===
 
-Codice Identificativo: 0RST4HPD
+Codice Identificativo: TEST0003
 -----------------------------
 Nome Segnalatore: Luca
 -----------------------------

@@ -9,4 +9,4 @@ scelta:
 
 Segnalazioni Chiuse
 
-=== Nessuna Segnalazione presente per lo satto richiesto ===
+=== Nessuna Segnalazione presente per lo stato richiesto ===

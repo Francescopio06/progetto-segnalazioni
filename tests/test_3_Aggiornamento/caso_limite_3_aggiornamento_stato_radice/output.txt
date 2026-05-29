@@ -1,7 +1,11 @@
-[3J[H[2J    _   ___  ___ ___ ___  ___ _  _   _     ___ _____ _ _____ ___  
-   /_\ / __|/ __|_ _/ _ \| _ \ \| | /_\   / __|_   _/_\_   _/ _ \ 
-  / _ \/ (_ | (_ || | (_) |   / .` |/ _ \  \__ \ | |/ _ \| || (_) |
- /_/ \_\___|\___|___\___/|_|_\_|\_/_/ \_\ |___/ |_/_/ \_\_| \___/ 
 
 Inserire ID della segnalazione: 
-Segnalazione non trovata
+Status: aperta
+Scegliere il nuovo status della segnalazione:
+1. Aperta 
+2. In lavorazione
+3. Chiusa
+scelta: 
+---------------------------------
+=== Stato aggiornato! ===
+---------------------------------

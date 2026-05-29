@@ -6,8 +6,8 @@ Chiuse: 1
 In lavorazione: 1
 
 Segnalazioni per categoria:
-Strade: 1
 Illuminazione: 1
 Rifiuti: 1
+Strade: 1
 
-Categoria più frequente: Strade (1)
+Tutte le categorie hanno la stessa frequenza (1)

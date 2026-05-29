@@ -49,15 +49,15 @@ void testInserimento(void){
 
                 freopen(
 "tests/test_1_Registrazione/caso_limite_1_inserimento/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_1_Registrazione/caso_limite_1_inserimento/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 inserisciSegnalazione(&T);
 
@@ -84,15 +84,15 @@ stdout
 
                 freopen(
 "tests/test_1_Registrazione/caso_limite_2_inserimento_campi_vuoti/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_1_Registrazione/caso_limite_2_inserimento_campi_vuoti/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 inserisciSegnalazione(&T);
 

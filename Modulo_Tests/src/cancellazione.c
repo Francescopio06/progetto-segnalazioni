@@ -24,7 +24,7 @@ void testCancellazione(void){
 
         printf("3. Caso limite - Eliminazione nodo foglia\n");
 
-        printf("0. esci\n");
+        printf("0. Esci\n");
 
         printf("Scelta: ");
 
@@ -51,15 +51,15 @@ void testCancellazione(void){
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_1_struttura_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_1_struttura_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 eliminaSegnalazione(&T);
 
@@ -67,7 +67,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_6_Cancellazione/caso_limite_1_struttura_vuota/output.txt",
+"tests/test_6_Cancellazione/caso_limite_1_struttura_vuota/oracolo.txt"
+                );
 
                 break;
 
@@ -81,15 +84,15 @@ stdout
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 eliminaSegnalazione(&T);
 
@@ -97,7 +100,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/output.txt",
+"tests/test_6_Cancellazione/caso_limite_2_eliminazione_radice/oracolo.txt"
+                );
 
                 break;
 
@@ -111,15 +117,15 @@ stdout
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 eliminaSegnalazione(&T);
 
@@ -127,7 +133,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/output.txt",
+"tests/test_6_Cancellazione/caso_limite_3_eliminazione_nodo_foglia/oracolo.txt"
+                );
 
                 break;
 
@@ -144,7 +153,7 @@ stdout
 
         if(tipoTest != 0){
 
-            printf("\npremi INVIO per continuare...\n");
+            printf("\nPremi INVIO per continuare...\n");
 
             getchar();
         }

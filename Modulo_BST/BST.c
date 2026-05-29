@@ -260,6 +260,7 @@ void generaReport(BST Albero){
     int max = 0;
     int indice = -1;
     int i;
+    int tutteUguali;
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -291,10 +292,24 @@ void generaReport(BST Albero){
         }
     }
 
-    if(indice != -1){
-        printf("\nCategoria più frequente: %s (%d)\n",
-               stats[indice].categoria,
-               stats[indice].count);
+    tutteUguali = 1;
+
+    for(i = 1; i < nCategorie; i++){
+
+     if(stats[i].count != stats[0].count){
+
+        tutteUguali = 0;
+        break;
+        }
+    }
+
+    if(tutteUguali){
+
+        printf("\nTutte le categorie hanno la stessa frequenza (%d)\n", stats[0].count);
+
+    }else if(indice != -1){
+
+        printf("\nCategoria più frequente: %s (%d)\n", stats[indice].categoria, stats[indice].count);
     }
 }
 

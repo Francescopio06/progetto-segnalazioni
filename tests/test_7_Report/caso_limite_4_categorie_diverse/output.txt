@@ -10,4 +10,4 @@ Illuminazione: 1
 Rifiuti: 1
 Strade: 1
 
-Categoria più frequente: Illuminazione (1)
+Tutte le categorie hanno la stessa frequenza (1)

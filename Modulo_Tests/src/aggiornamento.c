@@ -59,15 +59,15 @@ void testAggiornamento(void){
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_1_transizione_di_stato/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_1_transizione_di_stato/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 aggiornaStato(T);
 
@@ -77,14 +77,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                if(ricercaPerId(T, "HOYNU2JI") != NULL){
-
-                    printf("\n=== TEST SUPERATO ===\n");
-
-                }else{
-
-                    printf("\n=== TEST FALLITO ===\n");
-                }
+                verificaOracolo(
+"tests/test_3_Aggiornamento/caso_limite_1_transizione_di_stato/output.txt",
+"tests/test_3_Aggiornamento/caso_limite_1_transizione_di_stato/oracolo.txt"
+                );
 
                 break;
 
@@ -92,15 +88,15 @@ stdout
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_2_inserimento_stesso_stato/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_2_inserimento_stesso_stato/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 aggiornaStato(T);
 
@@ -108,7 +104,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_3_Aggiornamento/caso_limite_2_inserimento_stesso_stato/output.txt",
+"tests/test_3_Aggiornamento/caso_limite_2_inserimento_stesso_stato/oracolo.txt"
+                );
 
                 break;
 
@@ -116,15 +115,15 @@ stdout
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 aggiornaStato(T);
 
@@ -132,14 +131,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                if(ricercaPerId(T, "HOYNU2JI") != NULL){
-
-                    printf("\n=== TEST SUPERATO ===\n");
-
-                }else{
-
-                    printf("\n=== TEST FALLITO ===\n");
-                }
+                verificaOracolo(
+"tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/output.txt",
+"tests/test_3_Aggiornamento/caso_limite_3_aggiornamento_stato_radice/oracolo.txt"
+                );
 
                 break;
 
@@ -147,15 +142,15 @@ stdout
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 aggiornaStato(T);
 
@@ -163,7 +158,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/output.txt",
+"tests/test_3_Aggiornamento/caso_limite_4_aggiornamento_nodo_recente/oracolo.txt"
+                );
 
                 break;
 

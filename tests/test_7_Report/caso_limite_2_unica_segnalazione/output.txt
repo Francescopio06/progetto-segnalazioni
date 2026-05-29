@@ -8,4 +8,4 @@ In lavorazione: 0
 Segnalazioni per categoria:
 Strade: 1
 
-Categoria più frequente: Strade (1)
+Tutte le categorie hanno la stessa frequenza (1)

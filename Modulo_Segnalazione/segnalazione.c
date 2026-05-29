@@ -235,3 +235,8 @@ void setChiave(segnalazione s, int chiave){
 
     s->chiave = chiave;
 }
+
+void setID(segnalazione s, const char* id){
+
+    strcpy(s->id, id);
+}

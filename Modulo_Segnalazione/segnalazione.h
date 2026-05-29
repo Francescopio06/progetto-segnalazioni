@@ -79,5 +79,6 @@ int getChiave(segnalazione s);
 time_t getData(segnalazione s);
 void setStatus(segnalazione s, char* status);
 void setChiave(segnalazione s, int chiave);
+void setID(segnalazione s, const char* id);
 
 #endif

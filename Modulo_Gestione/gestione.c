@@ -47,23 +47,6 @@ void inserisciSegnalazione(BST* Albero){
     do{
         pulisciSchermo();
 
-            printf(
-" __  __ _____ _   _ _   _ \n"
-"|  \\/  | ____| \\ | | | | |\n"
-"| |\\/| |  _| |  \\| | | | |\n"
-"| |  | | |___| |\\  | |_| |\n"
-"|_|  |_|_____|_| \\_|\\___/ \n"
-);
-
-printf(
-" ___ _   _ ____  _____ ____  ___ __  __ _____ _   _ _____ ___  \n"
-"|_ _| \\ | / ___|| ____|  _ \\|_ _|  \\/  | ____| \\ | |_   _/ _ \\ \n"
-" | ||  \\| \\___ \\|  _| | |_) || || |\\/| |  _| |  \\| | | || | | |\n"
-" | || |\\  |___) | |___|  _ < | || |  | | |___| |\\  | | || |_| |\n"
-"|___|_| \\_|____/|_____|_| \\_\\___|_|  |_|_____|_| \\_| |_| \\___/ \n"
-);
-
-
         s = acquisisciSegnalazione();
 
         if(s != NULL){
@@ -85,17 +68,6 @@ printf(
 void visualizzaSegnalazione(BST Albero){
 
     pulisciSchermo();
-    
-    printf(
-"  ___                     _         _          _ \n"
-" / __| ___ __ _ _ _  __ _| |__ _ __(_)___ _ _ (_)\n"
-);
-
-printf(
-" \\__ \\/ -_) _` | ' \\/ _` | / _` |_ / / _ \\ ' \\| |\n"
-" |___/\\___\\__, |_|_|\\__,_|_\\__,_/__|_\\___/_||_|_|\n"
-"          |___/                                   \n"
-);
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -120,31 +92,17 @@ void ricercaSegnalazione(BST Albero){
     char CategoriaTemp[50];
     segnalazione s;
 
+    do{
+        
+    pulisciSchermo();
+
     if(Albero == NULL){
         printf("\n---------------------------------\n");
         printf("=== Nessuna Segnalazione presente! ===\n");
         printf("---------------------------------\n");
         return;
     }
-    do{
-        
-    pulisciSchermo();
 
-printf(
-" __  __ _____ _   _ _   _ \n"
-"|  \\/  | ____| \\ | | | | |\n"
-"| |\\/| |  _| |  \\| | | | |\n"
-"| |  | | |___| |\\  | |_| |\n"
-"|_|  |_|_____|_| \\_|\\___/ \n"
-);
-
-printf(
-" ____  ___ ____ _____ ____   ____    _   \n"
-"|  _ \\|_ _/ ___| ____|  _ \\ / ___|  / \\  \n"
-"| |_) || | |   |  _| | |_) | |     / _ \\ \n"
-"|  _ < | | |___| |___|  _ <| |___ / ___ \\\n"
-"|_| \\_\\___\\____|_____|_| \\_\\\\____/_/   \\_\\\n"
-);
 
     printf("\nPossibili criteri di ricerca...\n");
     printf("\n1. Ricerca per ID\n2. Ricerca per Categoria");
@@ -156,8 +114,8 @@ printf(
         printf("\n--- Inserire un valore valido (1 | 2) ---\n");
 
         while(getchar() != '\n');
-
-        return;
+        
+        continue;
     }
     getchar();
 
@@ -207,8 +165,6 @@ printf(
     
     case 0:
         printf("Uscita...");
-         printf("\nPremi INVIO per continuare...");
-        getchar();
         break;
 
     default:
@@ -234,16 +190,6 @@ void aggiornaStato(BST Albero){
 
     pulisciSchermo();
 
-printf(
-"    _   ___  ___ ___ ___  ___ _  _   _     ___ _____ _ _____ ___  \n"
-"   /_\\ / __|/ __|_ _/ _ \\| _ \\ \\| | /_\\   / __|_   _/_\\_   _/ _ \\ \n"
-);
-
-printf(
-"  / _ \\/ (_ | (_ || | (_) |   / .` |/ _ \\  \\__ \\ | |/ _ \\| || (_) |\n"
-" /_/ \\_\\___|\\___|___\\___/|_|_\\_|\\_/_/ \\_\\ |___/ |_/_/ \\_\\_| \\___/ \n"
-);
-
     if(Albero == NULL){
 
         printf("\n---------------------------------\n");
@@ -255,6 +201,7 @@ printf(
     printf("\nInserire ID della segnalazione: ");
     fgets(IDtemp, 10, stdin);
     IDtemp[strcspn(IDtemp, "\n")]= '\0';
+    rimuoviSpaziIniziali(IDtemp);
 
     s = ricercaPerId(Albero, IDtemp);
     if(s == NULL){
@@ -322,16 +269,6 @@ void filtraSegnalazioni(BST Albero){
 
     pulisciSchermo();
 
-printf(
-"  ___                     _         _          _   ___ _ _ _            _       \n"
-" / __| ___ __ _ _ _  __ _| |__ _ __(_)___ _ _ (_) | __(_) | |_ _ _ __ _| |_ ___ \n"
-);
-
-printf(
-" \\__ \\/ -_) _` | ' \\/ _` | / _` |_ / / _ \\ ' \\| | | _|| | |  _| '_/ _` |  _/ -_)\n"
-" |___/\\___\\__, |_|_|\\__,_|_\\__,_/__|_\\___/_||_|_| |_| |_|_|\\__|_| \\__,_|\\__\\___|\n"
-"          |___/                                                                  \n"
-);
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -421,16 +358,6 @@ void mostraUrgenza(BST Albero){
 
     pulisciSchermo();
 
-    printf(
-"  __  __  ___  ___ _____ ___    _     _   _ ___  ___ ___ _  _ ____  _   \n"
-" |  \\/  |/ _ \\/ __|_   _| _ \\  /_\\   | | | | _ \\/ __| __| \\| |_  / /_\\  \n"
-);
-
-printf(
-" | |\\/| | (_) \\__ \\ | | |   / / _ \\  | |_| |   / (_ | _|| .` |/ / / _ \\ \n"
-" |_|  |_|\\___/|___/ |_| |_|_\\/_/ \\_\\  \\___/|_|_\\\\___|___|_|\\_/___/_/ \\_\\\\\n"
-);
-
     if(Albero == NULL){
 
         printf("\n---------------------------------\n");
@@ -466,22 +393,10 @@ interna per eseguire la cancellazione nel BST.
 */
 void eliminaSegnalazione(BST* Albero){
     
-    char IDtemp[9];
+    char IDtemp[20];
     segnalazione s;
 
     pulisciSchermo();
-
-printf(
-"   ___                  _ _        ___                     _         _              \n"
-"  / __|__ _ _ _  __ ___| | |__ _  / __| ___ __ _ _ _  __ _| |__ _ __(_)___ _ _  ___ \n"
-);
-
-printf(
-" | (__/ _` | ' \\/ _/ -_) | / _` | \\__ \\/ -_) _` | ' \\/ _` | / _` |_ / / _ \\ ' \\/ -_)\n"
-"  \\___\\__,_|_||_\\__\\___|_|_\\__,_| |___/\\___\\__, |_|_|\\__,_|_\\__,_/__|_\\___/_||_\\___|\n"
-"                                           |___/                                     \n"
-);
-
 
     if(*Albero == NULL){
         printf("\n---------------------------------\n");
@@ -491,9 +406,10 @@ printf(
     }
 
     printf("\nInserire ID della segnalazione da eliminare: ");
-    fgets(IDtemp, 9, stdin);
+    fgets(IDtemp, sizeof(IDtemp), stdin);
     /* toglie la new line dall'input */
     IDtemp[strcspn(IDtemp, "\n")] = '\0';
+    rimuoviSpaziIniziali(IDtemp);
 
     s = ricercaPerId(*Albero, IDtemp);
     if(s == NULL){
@@ -504,23 +420,12 @@ printf(
     *Albero = CancellaSegnalazione(*Albero, getChiave(s));
     printf("\n---------------------------------\n");
     printf("=== Cancellazione Riuscita! ===\n");
-    printf("\n---------------------------------\n");
+    printf("----------------------------------\n");
 }
 
 void visualizzaReport(BST Albero){
     
     pulisciSchermo();
-
-    printf(
-"  ___                   _     ___ _           _     \n"
-" | _ \\___ _ __  ___ _ _| |_  | __(_)_ _  __ _| |___ \n"
-);
-
-printf(
-" |   / -_) '_ \\/ _ \\ '_|  _| | _|| | ' \\/ _` | / -_)\n"
-" |_|_\\___| .__/\\___/_|  \\__| |_| |_|_||_\\__,_|_\\___|\n"
-"         |_|                                         \n"
-);
 
     if(Albero == NULL){
         printf("\n---------------------------------\n");
@@ -705,6 +610,10 @@ static segnalazione acquisisciSegnalazione(void){
 }
 
 void pulisciSchermo(void){
+
+#ifdef TEST
+    return;
+#endif
 
 #ifdef _WIN32
     system("cls");

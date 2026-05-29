@@ -9,17 +9,17 @@ scelta:
 
 === Segnalazioni Aperte! ===
 
-Codice Identificativo: HOYNU2JI
+Codice Identificativo: TEST0001
 -----------------------------
-Nome Segnalatore: Mario
+Nome Segnalatore: Mario Rossi
 -----------------------------
 Categoria della segnalazione: Strade
 -----------------------------
-Descrizione: Buca
+Descrizione: Buca davanti scuola
 -----------------------------
-Data di inserimento: 12/05/2026
+Data di inserimento: 29/05/2026
 -----------------------------
-Livello di Urgenza: 3 (1= elevato, 2= intermedio, 3= lieve)
+Livello di Urgenza: 1 (1= elevato, 2= intermedio, 3= lieve)
 -----------------------------
 Stato della segnalazione: aperta
 -----------------------------

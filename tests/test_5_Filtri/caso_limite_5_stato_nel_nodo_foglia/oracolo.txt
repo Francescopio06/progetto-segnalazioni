@@ -9,7 +9,7 @@ scelta:
 
 Segnalazioni Chiuse
 
-Codice Identificativo: CE0RST4H
+Codice Identificativo: TEST0003
 -----------------------------
 Nome Segnalatore: Luca Verdi
 -----------------------------
@@ -17,7 +17,7 @@ Categoria della segnalazione: Rifiuti
 -----------------------------
 Descrizione: Cassonetto pieno
 -----------------------------
-Data di inserimento: 12/05/2026
+Data di inserimento: 29/05/2026
 -----------------------------
 Livello di Urgenza: 3 (1= elevato, 2= intermedio, 3= lieve)
 -----------------------------

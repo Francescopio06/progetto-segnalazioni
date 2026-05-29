@@ -28,7 +28,7 @@ void testUrgenza(void){
 
         printf("5. Caso limite - Urgenza richiesta nel nodo foglia\n");
 
-        printf("0. esci\n");
+        printf("0. Esci\n");
 
         printf("Scelta: ");
 
@@ -55,15 +55,15 @@ void testUrgenza(void){
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_1_Struttura_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_1_Struttura_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 mostraUrgenza(T);
 
@@ -71,7 +71,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_4_Priorità/caso_limite_1_Struttura_vuota/output.txt",
+"tests/test_4_Priorità/caso_limite_1_Struttura_vuota/oracolo.txt"
+                );
 
                 break;
 
@@ -85,15 +88,15 @@ stdout
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 mostraUrgenza(T);
 
@@ -101,7 +104,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/output.txt",
+"tests/test_4_Priorità/caso_limite_2_stessa_urgenza_massima/oracolo.txt"
+                );
 
                 break;
 
@@ -115,15 +121,15 @@ stdout
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 mostraUrgenza(T);
 
@@ -131,7 +137,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/output.txt",
+"tests/test_4_Priorità/caso_limite_3_nessuna_urgenza_livello_1/oracolo.txt"
+                );
 
                 break;
 
@@ -145,15 +154,15 @@ stdout
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 mostraUrgenza(T);
 
@@ -161,7 +170,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/output.txt",
+"tests/test_4_Priorità/caso_limite_4_nessuna_urgenza_livello_1_e_2/oracolo.txt"
+                );
 
                 break;
 
@@ -175,15 +187,15 @@ stdout
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 mostraUrgenza(T);
 
@@ -191,13 +203,16 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/output.txt",
+"tests/test_4_Priorità/caso_limite_5_urgenza_nel_nodo_foglia/oracolo.txt"
+                );
 
                 break;
 
             case 0:
 
-                printf("Uscita...\n");
+                printf("\nUscita...\n");
 
                 break;
 
@@ -208,7 +223,7 @@ stdout
 
         if(tipoTest != 0){
 
-            printf("\npremi INVIO per continuare...\n");
+            printf("\nPremi INVIO per continuare...\n");
 
             getchar();
         }

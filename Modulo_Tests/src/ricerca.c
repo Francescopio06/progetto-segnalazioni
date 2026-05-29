@@ -65,15 +65,15 @@ void testRicerca(void){
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_1_id_inesistente/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_1_id_inesistente/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 fgets(idRicerca, 20, stdin);
 
@@ -101,7 +101,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_2_Ricerca/caso_limite_1_id_inesistente/output.txt",
+"tests/test_2_Ricerca/caso_limite_1_id_inesistente/oracolo.txt"
+                );
 
                 break;
 
@@ -109,15 +112,15 @@ stdout
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 fgets(categoria, 50, stdin);
 
@@ -143,7 +146,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/output.txt",
+"tests/test_2_Ricerca/caso_limite_2_categoria_inesistente/oracolo.txt"
+                );
 
                 break;
 
@@ -151,15 +157,15 @@ stdout
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 fgets(categoria, 50, stdin);
 
@@ -185,7 +191,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/output.txt",
+"tests/test_2_Ricerca/caso_limite_3_differenza_min_mausc/oracolo.txt"
+                );
 
                 break;
 
@@ -193,15 +202,15 @@ stdout
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 fgets(idRicerca, 20, stdin);
 
@@ -222,7 +231,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/output.txt",
+"tests/test_2_Ricerca/caso_limite_4_stringaID_vuota/oracolo.txt"
+                );
 
                 break;
 
@@ -230,15 +242,15 @@ stdout
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 fgets(categoria, 50, stdin);
 
@@ -257,7 +269,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/output.txt",
+"tests/test_2_Ricerca/caso_limite_5_stringaCat_vuota/oracolo.txt"
+                );
 
                 break;
 

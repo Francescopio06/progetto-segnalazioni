@@ -28,7 +28,7 @@ void testReport(void){
 
         printf("4. Caso limite - Categorie diverse\n");
 
-        printf("0. esci\n");
+        printf("0. Esci\n");
 
         printf("Scelta: ");
 
@@ -55,15 +55,15 @@ void testReport(void){
 
                 freopen(
 "tests/test_7_Report/caso_limite_1_struttura_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_7_Report/caso_limite_1_struttura_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 generaReport(T);
 
@@ -71,7 +71,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_7_Report/caso_limite_1_struttura_vuota/output.txt",
+"tests/test_7_Report/caso_limite_1_struttura_vuota/oracolo.txt"
+                );
 
                 break;
 
@@ -93,15 +96,15 @@ stdout
 
                 freopen(
 "tests/test_7_Report/caso_limite_2_unica_segnalazione/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_7_Report/caso_limite_2_unica_segnalazione/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 generaReport(T);
 
@@ -109,7 +112,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_7_Report/caso_limite_2_unica_segnalazione/output.txt",
+"tests/test_7_Report/caso_limite_2_unica_segnalazione/oracolo.txt"
+                );
 
                 break;
 
@@ -123,15 +129,15 @@ stdout
 
                 freopen(
 "tests/test_7_Report/caso_limite_3_stesse_categorie/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_7_Report/caso_limite_3_stesse_categorie/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 generaReport(T);
 
@@ -139,7 +145,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_7_Report/caso_limite_3_stesse_categorie/output.txt",
+"tests/test_7_Report/caso_limite_3_stesse_categorie/oracolo.txt"
+                );
 
                 break;
 
@@ -153,15 +162,15 @@ stdout
 
                 freopen(
 "tests/test_7_Report/caso_limite_4_categorie_diverse/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_7_Report/caso_limite_4_categorie_diverse/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 generaReport(T);
 
@@ -169,7 +178,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_7_Report/caso_limite_4_categorie_diverse/output.txt",
+"tests/test_7_Report/caso_limite_4_categorie_diverse/oracolo.txt"
+                );
 
                 break;
 
@@ -188,7 +200,7 @@ stdout
 
         if(tipoTest != 0){
 
-            printf("\npremi INVIO per continuare...\n");
+            printf("\nPremi INVIO per continuare...\n");
 
             getchar();
         }

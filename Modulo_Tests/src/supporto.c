@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "supporto.h"
+#include "segnalazione.h"
 
 
 /*
@@ -31,6 +32,7 @@ void caricaDatasetMisto(BST* T){
         1
     );
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione(
@@ -42,6 +44,7 @@ void caricaDatasetMisto(BST* T){
     );
     setChiave(s2, generaChiave(*T));
     *T = insert(*T, s2);
+    setID(s2, "TEST0002");
 
     s3 = creaSegnalazione(
         "Luca Verdi",
@@ -52,6 +55,7 @@ void caricaDatasetMisto(BST* T){
     );
     setChiave(s3, generaChiave(*T));
     *T = insert(*T, s3);
+    setID(s3, "TEST0003");
 }
 
 
@@ -74,14 +78,17 @@ void datasetStessaUrgenzaAlta(BST* T){
 
     s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Luci","Lampione",1,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0002");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 
@@ -92,14 +99,17 @@ void datasetSenzaUrgenzaAlta(BST* T){
 
     s1 = creaSegnalazione("Mario","Strade","Buca",2,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Luci","Lampione",2,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0004");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 
@@ -110,14 +120,17 @@ void datasetSenzaUrgenzaAltaMedia(BST* T){
 
     s1 = creaSegnalazione("Mario","Strade","Buca",3,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Luci","Lampione",3,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0002");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",3,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 
@@ -140,14 +153,17 @@ void datasetUrgenzaFoglia(BST* T){
 
     s1 = creaSegnalazione("Mario","Strade","Buca",3,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Luci","Lampione",2,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0002");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 
@@ -158,14 +174,17 @@ void datasetTutteAperte(BST* T){
     
     s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Luci","Lampione",1,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0002");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Rifiuti","Cassonetto",1,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 
@@ -177,14 +196,17 @@ void datasetCategorieUguali(BST* T){
 
     s1 = creaSegnalazione("Mario","Strade","Buca",1,1);
     setChiave(s1, generaChiave(*T));
+    setID(s1, "TEST0001");
     *T = insert(*T, s1);
 
     s2 = creaSegnalazione("Giulia","Strade","Lampione",1,1);
     setChiave(s2, generaChiave(*T));
+    setID(s2, "TEST0002");
     *T = insert(*T, s2);
 
     s3 = creaSegnalazione("Luca","Strade","Cassonetto",1,1);
     setChiave(s3, generaChiave(*T));
+    setID(s3, "TEST0003");
     *T = insert(*T, s3);
 }
 

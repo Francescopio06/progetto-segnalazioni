@@ -127,7 +127,7 @@ printf(
                 printf("---------------------------------\n");
         }
 
-        if(scelta != 0 && scelta != 3){
+        if(scelta != 0){
         printf("\npremi INVIO per continuare...");
         getchar();
         }

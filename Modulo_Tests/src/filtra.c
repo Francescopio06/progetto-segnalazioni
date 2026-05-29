@@ -57,15 +57,15 @@ void testFiltra(void){
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_1_struttura_vuota/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_1_struttura_vuota/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -73,7 +73,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_1_struttura_vuota/output.txt",
+"tests/test_5_Filtri/caso_limite_1_struttura_vuota/oracolo.txt"
+                );
 
                 break;
 
@@ -87,15 +90,15 @@ stdout
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_2_tutte_aperte/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_2_tutte_aperte/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -103,7 +106,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_2_tutte_aperte/output.txt",
+"tests/test_5_Filtri/caso_limite_2_tutte_aperte/oracolo.txt"
+                );
 
                 break;
 
@@ -117,15 +123,15 @@ stdout
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_3_stato_richiesto_assente/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_3_stato_richiesto_assente/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -133,7 +139,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_3_stato_richiesto_assente/output.txt",
+"tests/test_5_Filtri/caso_limite_3_stato_richiesto_assente/oracolo.txt"
+                );
 
                 break;
 
@@ -147,15 +156,15 @@ stdout
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_4_stato_nella_radice/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_4_stato_nella_radice/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -163,7 +172,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_4_stato_nella_radice/output.txt",
+"tests/test_5_Filtri/caso_limite_4_stato_nella_radice/oracolo.txt"
+                );
 
                 break;
 
@@ -177,15 +189,15 @@ stdout
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -193,7 +205,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/output.txt",
+"tests/test_5_Filtri/caso_limite_5_stato_nel_nodo_foglia/oracolo.txt"
+                );
 
                 break;
 
@@ -207,15 +222,15 @@ stdout
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_6_elenco_completo/input.txt",
-"r",
-stdin
-);
+                "r",
+                stdin
+                );
 
                 freopen(
 "tests/test_5_Filtri/caso_limite_6_elenco_completo/output.txt",
-"w",
-stdout
-);
+                "w",
+                stdout
+                );
 
                 filtraSegnalazioni(T);
 
@@ -223,7 +238,10 @@ stdout
 
                 ripristinaStandardIO();
 
-                printf("\n=== TEST COMPLETATO ===\n");
+                verificaOracolo(
+"tests/test_5_Filtri/caso_limite_6_elenco_completo/output.txt",
+"tests/test_5_Filtri/caso_limite_6_elenco_completo/oracolo.txt"
+                );
 
                 break;
 
