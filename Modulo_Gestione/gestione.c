@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "BST.h"
+#include <ctype.h>
 #include "segnalazione.h"
 
 /*
@@ -35,15 +36,18 @@ static void controlloID(BST Albero, char* ID);
 static segnalazione acquisisciSegnalazione(void);
 static void rimuoviSpaziIniziali(char* str);
 void pulisciSchermo(void);
+static int soloNumeri(const char *s);
 
 /* funzioni principali */
 void inserisciSegnalazione(BST* Albero){
 
     segnalazione s;
+    char scelta;
 
-    pulisciSchermo();
+    do{
+        pulisciSchermo();
 
-    printf(
+            printf(
 " __  __ _____ _   _ _   _ \n"
 "|  \\/  | ____| \\ | | | | |\n"
 "| |\\/| |  _| |  \\| | | | |\n"
@@ -59,19 +63,23 @@ printf(
 "|___|_| \\_|____/|_____|_| \\_\\___|_|  |_|_____|_| \\_| |_| \\___/ \n"
 );
 
-    s = acquisisciSegnalazione();
 
-    if(s == NULL){
-        return;
-    }
-    
-    controlloID(*Albero, getID(s));
+        s = acquisisciSegnalazione();
 
-    setChiave(s, generaChiave(*Albero));
+        if(s != NULL){
 
-    *Albero = insert(*Albero, s);
+            controlloID(*Albero, getID(s));
+            setChiave(s, generaChiave(*Albero));
+            *Albero = insert(*Albero, s);
 
-    printf("\n=== Segnalazione Inserita! ===\n");
+            printf("\n=== Segnalazione Inserita! ===\n");
+        }
+
+        printf("\nInserire un'altra segnalazione? (s/n): ");
+        scanf(" %c", &scelta);
+        getchar();
+
+    }while(scelta == 's' || scelta == 'S');
 }
 
 void visualizzaSegnalazione(BST Albero){
@@ -108,13 +116,21 @@ tramite due criteri differenti:
 void ricercaSegnalazione(BST Albero){
 
     int scelta;
-    char IDtemp[9];
+    char IDtemp[20];
     char CategoriaTemp[50];
     segnalazione s;
 
+    if(Albero == NULL){
+        printf("\n---------------------------------\n");
+        printf("=== Nessuna Segnalazione presente! ===\n");
+        printf("---------------------------------\n");
+        return;
+    }
+    do{
+        
     pulisciSchermo();
 
-    printf(
+printf(
 " __  __ _____ _   _ _   _ \n"
 "|  \\/  | ____| \\ | | | | |\n"
 "| |\\/| |  _| |  \\| | | | |\n"
@@ -130,14 +146,9 @@ printf(
 "|_| \\_\\___\\____|_____|_| \\_\\\\____/_/   \\_\\\n"
 );
 
-    if(Albero == NULL){
-        printf("\n---------------------------------\n");
-        printf("=== Nessuna Segnalazione presente! ===\n");
-        printf("---------------------------------\n");
-        return;
-    }
-    printf("\nScegliere il criterio di ricerca: ");
+    printf("\nPossibili criteri di ricerca...\n");
     printf("\n1. Ricerca per ID\n2. Ricerca per Categoria");
+    printf("\n0. Esci");
     printf("\nScelta: ");
     
     if(scanf("%d", &scelta) != 1){
@@ -155,7 +166,7 @@ printf(
 
         printf("\nInserire ID: ");
 
-        fgets(IDtemp, 9, stdin);
+        fgets(IDtemp, sizeof(IDtemp), stdin);
 
         IDtemp[strcspn(IDtemp, "\n")] = '\0';
 
@@ -169,7 +180,6 @@ printf(
         } else {
 
             stampaSegnalazione(s);
-            getchar();
         }
         
         printf("\npremi INVIO per continuare...");
@@ -181,7 +191,7 @@ printf(
 
         printf("\nInserire Categoria: ");
 
-        fgets(CategoriaTemp, 50, stdin);
+        fgets(CategoriaTemp, sizeof(CategoriaTemp), stdin);
 
         CategoriaTemp[strcspn(CategoriaTemp, "\n")] = '\0';
 
@@ -194,10 +204,18 @@ printf(
         printf("\npremi INVIO per continuare...");
         getchar();
         break;
+    
+    case 0:
+        printf("Uscita...");
+         printf("\nPremi INVIO per continuare...");
+        getchar();
+        break;
 
     default:
         printf("\n--- Inserire un valore valido (1 | 2) ---");        
     }
+
+    }while(scelta != 0);
 }
 
 /*
@@ -210,7 +228,7 @@ stato già presente.
 void aggiornaStato(BST Albero){
 
     char IDtemp[10];
-    int choice;
+    int scelta;
     char statusTmp[20];
     segnalazione s;
 
@@ -251,7 +269,7 @@ printf(
     printf("\n1. Aperta \n2. In lavorazione\n3. Chiusa");
     printf("\nscelta: ");
 
-    if(scanf("%d", &choice) != 1){
+    if(scanf("%d", &scelta) != 1){
 
         printf("\n--- Inserire un valore valido (1 | 2 | 3) ---\n");
 
@@ -262,7 +280,7 @@ printf(
     /* pulisce il buffer dopo l'input */
     getchar();
 
-    switch(choice){
+    switch(scelta){
     case 1:
         if(strcmp(getStatus(s), "aperta") == 0){
             printf("\n---------------------------------\n");
@@ -300,7 +318,7 @@ printf(
 }
 
 void filtraSegnalazioni(BST Albero){
-    int trovato = 0, choice;
+    int trovato = 0, scelta;
 
     pulisciSchermo();
 
@@ -326,7 +344,7 @@ printf(
     printf("1. Aperte\n2. In lavorazione\n3. Chiuse\n4. Elenco completo");
     printf("\nscelta:");
     
-    if(scanf("%d", &choice) != 1){
+    if(scanf("%d", &scelta) != 1){
 
         printf("\n--- Inserire un valore valido (1 | 2 | 3 | 4) ---\n");
 
@@ -337,7 +355,7 @@ printf(
 
     getchar();
 
-    switch(choice){
+    switch(scelta){
     case 1:
 
         printf("\n---------------------------------\n");
@@ -559,28 +577,51 @@ static segnalazione acquisisciSegnalazione(void){
     segnalazione s;
 
     do{
-        printf("\nInserire Nome del Segnalatore:\n");
 
-        fgets(nome, 50, stdin);
+    printf("\nInserire Nome del Segnalatore:\n");
 
-        nome[strcspn(nome, "\n")] = '\0';
+    fgets(nome, 50, stdin);
 
-        rimuoviSpaziIniziali(nome);
+    nome[strcspn(nome, "\n")] = '\0';
 
-    }while(strlen(nome) == 0);
+    rimuoviSpaziIniziali(nome);
+
+    if(strlen(nome) == 0){
+
+        printf("\nIl nome non puo' essere vuoto\n");
+        printf("-----------------------------\n");
+
+    }else if(soloNumeri(nome)){
+
+        printf("Il nome non puo' contenere solo numeri\n");
+        printf("-----------------------------\n");
+    }
+    }while(strlen(nome) == 0 || soloNumeri(nome));
     
     printf("-----------------------------\n");
 
     do{
-        printf("Inserire Categoria della segnalazione:\n");
+    printf("Inserire Categoria della segnalazione:\n");
 
-        fgets(categoria, 50, stdin);
+    fgets(categoria, 50, stdin);
 
-        categoria[strcspn(categoria, "\n")] = '\0';
+    categoria[strcspn(categoria, "\n")] = '\0';
 
-        rimuoviSpaziIniziali(categoria);
+    rimuoviSpaziIniziali(categoria);
 
-    }while(strlen(categoria) == 0);
+    if(strlen(categoria) == 0){
+
+        printf("\nLa categoria non puo' essere vuota.\n");
+        printf("-----------------------------\n");
+    }
+
+    else if(soloNumeri(categoria)){
+
+        printf("\nLa categoria non puo' contenere solo numeri.\n");
+        printf("-----------------------------\n");
+    }
+
+    }while(strlen(categoria) == 0 || soloNumeri(categoria));
 
     printf("-----------------------------\n");
 
@@ -678,4 +719,20 @@ static void rimuoviSpaziIniziali(char* str){
     while(str[0] == ' '){
         memmove(str, str + 1, strlen(str));
     }
+}
+
+static int soloNumeri(const char *s){
+
+    int i;
+
+    if(strlen(s) == 0)
+        return 0;
+
+    for(i = 0; s[i] != '\0'; i++){
+
+        if(!isdigit((unsigned char)s[i]))
+            return 0;
+    }
+
+    return 1;
 }

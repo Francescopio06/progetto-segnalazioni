@@ -10,15 +10,25 @@
 |___|_| \_|____/|_____|_| \_\___|_|  |_|_____|_| \_| |_| \___/ 
 
 Inserire Nome del Segnalatore:
+Il nome non puo' contenere solo numeri
+-----------------------------
+
+Inserire Nome del Segnalatore:
+
+Il nome non puo' essere vuoto
+-----------------------------
+
+Inserire Nome del Segnalatore:
 -----------------------------
 Inserire Categoria della segnalazione:
+
+La categoria non puo' essere vuota.
+-----------------------------
 Inserire Categoria della segnalazione:
 -----------------------------
 Inserire informazioni aggiuntive della segnalazione:
 Inserire informazioni aggiuntive della segnalazione:
 -----------------------------
-Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
-Input non valido
 Inserire livello di urgenza (1 = Alta, 2 = Media, 3 = Bassa):
 -----------------------------
 Inserisci stato:
@@ -31,3 +41,5 @@ Codice identificativo: HOYNU2JI
 Data di inserimento: 29/05/2026
 
 === Segnalazione Inserita! ===
+
+Inserire un'altra segnalazione? (s/n): 
